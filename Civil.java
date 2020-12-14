@@ -136,4 +136,75 @@ public class Civil {
         return nbMission;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setCivilite(String civilite) {
+        this.civilite = civilite;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
+    }
+
+    public void setDateNais(Date dateNais) {
+        this.dateNais = dateNais;
+    }
+
+    public void setNationnalite(String nationnalite) {
+        this.nationnalite = nationnalite;
+    }
+
+    public void setOrganisation(ArrayList<String> organisation) {
+        this.organisation = organisation;
+    }
+
+    public void setDateMort(Date dateMort) {
+        this.dateMort = dateMort;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+
+    public void setDateAjout(Date dateAjout) {
+        this.dateAjout = dateAjout;
+    }
+
+    public void setDateDerniereModif(Date dateDerniereModif) {
+        this.dateDerniereModif = dateDerniereModif;
+    }
+
+    public void setNbIncident(int nbIncident) {
+        this.nbIncident = nbIncident;
+    }
+
+    public void setNbMission(int nbMission) {
+        this.nbMission = nbMission;
+    }
 }
