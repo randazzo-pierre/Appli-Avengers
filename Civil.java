@@ -64,146 +64,254 @@ public class Civil {
         this.nbMission = nbMission;
     }
 
+    /**
+     * @return String
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * @return String
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     * @return String
+     */
     public String getCivilite() {
         return civilite;
     }
 
+    /**
+     * @return String
+     */
     public String getAdresse() {
         return adresse;
     }
 
+    /**
+     * @return String
+     */
     public String getVille() {
         return ville;
     }
 
+    /**
+     * @return String
+     */
     public String getZip() {
         return zip;
     }
 
+    /**
+     * @return String
+     */
     public String getPays() {
         return pays;
     }
 
+    /**
+     * @return String
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @return int
+     */
     public int getTel() {
         return tel;
     }
 
+    /**
+     * @return Date
+     */
     public Date getDateNais() {
         return dateNais;
     }
 
+    /**
+     * @return String
+     */
     public String getNationnalite() {
         return nationnalite;
     }
 
+    /**
+     * @return ArrayList<String>
+     */
     public ArrayList<String> getOrganisation() {
         return organisation;
     }
 
+    /**
+     * @return Date
+     */
     public Date getDateMort() {
         return dateMort;
     }
 
+    /**
+     * @return String
+     */
     public String getCommentaire() {
         return commentaire;
     }
 
+    /**
+     * @return Date
+     */
     public Date getDateAjout() {
         return dateAjout;
     }
 
+    /**
+     * @return Date
+     */
     public Date getDateDerniereModif() {
         return dateDerniereModif;
     }
 
+    /**
+     * @return int
+     */
     public int getNbIncident() {
         return nbIncident;
     }
 
+    /**
+     * @return int
+     */
     public int getNbMission() {
         return nbMission;
     }
 
+    /**
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     * @param civilite
+     */
     public void setCivilite(String civilite) {
         this.civilite = civilite;
     }
 
+    /**
+     * @param adresse
+     */
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 
+    /**
+     * @param ville
+     */
     public void setVille(String ville) {
         this.ville = ville;
     }
 
+    /**
+     * @param zip
+     */
     public void setZip(String zip) {
         this.zip = zip;
     }
 
+    /**
+     * @param pays
+     */
     public void setPays(String pays) {
         this.pays = pays;
     }
 
+    /**
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @param tel
+     */
     public void setTel(int tel) {
         this.tel = tel;
     }
 
+    /**
+     * @param dateNais
+     */
     public void setDateNais(Date dateNais) {
         this.dateNais = dateNais;
     }
 
+    /**
+     * @param nationnalite
+     */
     public void setNationnalite(String nationnalite) {
         this.nationnalite = nationnalite;
     }
 
+    /**
+     * @param organisation
+     */
     public void setOrganisation(ArrayList<String> organisation) {
         this.organisation = organisation;
     }
 
+    /**
+     * @param dateMort
+     */
     public void setDateMort(Date dateMort) {
         this.dateMort = dateMort;
     }
 
+    /**
+     * @param commentaire
+     */
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
 
+    /**
+     * @param dateAjout
+     */
     public void setDateAjout(Date dateAjout) {
         this.dateAjout = dateAjout;
     }
 
+    /**
+     * @param dateDerniereModif
+     */
     public void setDateDerniereModif(Date dateDerniereModif) {
         this.dateDerniereModif = dateDerniereModif;
     }
 
+    /**
+     * @param nbIncident
+     */
     public void setNbIncident(int nbIncident) {
         this.nbIncident = nbIncident;
     }
 
+    /**
+     * @param nbMission
+     */
     public void setNbMission(int nbMission) {
         this.nbMission = nbMission;
     }
