@@ -6,9 +6,10 @@ public class Organisations {
     private String adresse;
     private String ville;
     private String zip;
+    private String pays;
     private int dirigeant;
     private ArrayList<Integer> membres;
-    private String commentaires;
+    private String commentaireOrga;
     private Date dateAjout;
     private Date dateDerniereModif;
     private int nbIncidentDeclare;
@@ -17,25 +18,29 @@ public class Organisations {
     /**
      * @param nomOrga
      * @param adresse
+     * @param ville
+     * @param zip
+     * @param pays
      * @param dirigeant
      * @param membres
-     * @param commentaires
+     * @param commentaireOrga
      * @param dateAjout
      * @param dateDerniereModif
      * @param nbIncidentDeclare;
      * @param nbMissionsImpliques
      */
 
-     public Organisations(String nomOrga, String adresse, String ville ,String zip, int dirigeant,
-     ArrayList<Integer> membres, String commentaires, Date dateAjout, Date dateDerniereModif,
+     public Organisations(String nomOrga, String adresse, String ville ,String zip, String pays, int dirigeant,
+     ArrayList<Integer> membres, String commentaireOrga, Date dateAjout, Date dateDerniereModif,
      int nbIncidentDeclare, int nbMissionsImpliques){
          this.nomOrga = nomOrga;
          this.adresse = adresse;
          this.ville = ville;
          this.zip = zip;
+         this.pays = pays;
          this.dirigeant = dirigeant;
          this.membres = membres;
-         this.commentaires = commentaires;
+         this.commentaireOrga = commentaireOrga;
          this.dateAjout = dateAjout;
          this.dateDerniereModif = dateDerniereModif;
          this.nbIncidentDeclare = nbIncidentDeclare;
@@ -69,6 +74,12 @@ public String getVille(){
 public String getZip(){
     return zip;
 }
+/**
+ * @return String
+ */
+public String getPays(){
+    return pays;
+}
 
 /**
  * @return int
@@ -87,8 +98,8 @@ public ArrayList<Integer> getMembres(){
 /**
  * @return String
  */
-public String getCommentaires(){
-    return commentaires;
+public String getcommentaireOrga(){
+    return commentaireOrga;
 }
 
 /**
@@ -151,6 +162,13 @@ public void setZip(String zip){
 }
 
 /**
+ * @param pays
+ */
+public void setPays(String pays){
+    this.pays = pays;
+}
+
+/**
  * @param dirigeant
  */
 public void setDirigeant(int dirigeant){
@@ -165,10 +183,10 @@ public void setMembres(ArrayList<Integer> membres){
 }
 
 /**
- * @param commentaires
+ * @param commentaireOrga
  */
-public void setCommentaires(String commentaires){
-    this.commentaires = commentaires;
+public void setcommentaireOrga(String commentaireOrga){
+    this.commentaireOrga = commentaireOrga;
 }
 
 /**
