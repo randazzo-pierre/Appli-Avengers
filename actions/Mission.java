@@ -13,20 +13,20 @@ public class Mission {
     private String urgence;
     private ArrayList<String> assignes;
     private String leader;
-    private Integer countMission;
+    private Integer countMission = 0;
 
     /**
      * @param nature
      * @param titre
      * @param datedeb
-     * @param datfin
-     * @param Itineraire
+     * @param datefin
+     * @param itineraire
      * @param gravite
      * @param urgence
      * @param assignes
      * @param leader
      */
-    public Mission(String nature, String titre, Date datedeb, Date datfin, ArrayList<String> Itineraire, String gravite,
+    public Mission(String nature, String titre, Date datedeb, Date datefin, ArrayList<String> itineraire, String gravite,
                    String urgence, ArrayList<String> assignes, String leader) {
         this.countMission ++;
         this.nature = nature;
