@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8421b8ba-b9a1-4d63-9f95-08198e6f94cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Appli-Avengers.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Civil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Civil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hero.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vilain.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vilain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class/Mission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +41,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CESI\JAVA\Appli-Avengers\class" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -72,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607934915734</updated>
-      <workItem from="1607934918188" duration="7855000" />
+      <workItem from="1607934918188" duration="12715000" />
     </task>
     <servers />
   </component>
@@ -91,6 +87,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1607944236635">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607944236635" />
     <state x="184" y="86" key="MergeDialog" timestamp="1607942888277">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -99,6 +99,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607942888281" />
+    <state x="759" y="240" key="RollbackChangesDialog" timestamp="1607944237808">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="759" y="240" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607944237808" />
     <state width="498" height="398" key="SwitcherDM" timestamp="1607941403476">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
