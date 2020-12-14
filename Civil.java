@@ -15,7 +15,7 @@ public class Civil {
     private String nationnalite;
     private ArrayList<String> organisation;
     private Date dateMort;
-    private String commentaire;
+    private String commentaireCivil;
     private Date dateAjout;
     private Date dateDerniereModif;
     private int nbIncident;
@@ -35,7 +35,7 @@ public class Civil {
      * @param nationnalite
      * @param organisation
      * @param dateMort
-     * @param commentaire
+     * @param commentaireCivil
      * @param dateAjout
      * @param dateDerniereModif
      * @param nbIncident
@@ -43,7 +43,7 @@ public class Civil {
      */
     public Civil(String nom, String prenom, String civilite, String adresse, String ville, String zip, String pays,
                  String email, int tel, Date dateNais, String nationnalite, ArrayList<String> organisation, Date dateMort,
-                 String commentaire, Date dateAjout, Date dateDerniereModif, int nbIncident, int nbMission) {
+                 String commentaireCivil, Date dateAjout, Date dateDerniereModif, int nbIncident, int nbMission) {
         this.nom = nom;
         this.prenom = prenom;
         this.civilite = civilite;
@@ -57,7 +57,7 @@ public class Civil {
         this.nationnalite = nationnalite;
         this.organisation = organisation;
         this.dateMort = dateMort;
-        this.commentaire = commentaire;
+        this.commentaireCivil = commentaireCivil;
         this.dateAjout = dateAjout;
         this.dateDerniereModif = dateDerniereModif;
         this.nbIncident = nbIncident;
@@ -158,8 +158,8 @@ public class Civil {
     /**
      * @return String
      */
-    public String getCommentaire() {
-        return commentaire;
+    public String getcommentaireCivil() {
+        return commentaireCivil;
     }
 
     /**
@@ -282,10 +282,10 @@ public class Civil {
     }
 
     /**
-     * @param commentaire
+     * @param commentaireCivil
      */
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
+    public void setcommentaireCivil(String commentaireCivil) {
+        this.commentaireCivil = commentaireCivil;
     }
 
     /**
