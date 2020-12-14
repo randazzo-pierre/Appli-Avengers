@@ -1,3 +1,5 @@
+package actions;
+
 public class Cible {
     private String nom;
     private String type;
