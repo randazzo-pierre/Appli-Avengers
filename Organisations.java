@@ -32,6 +32,7 @@ public class Organisations {
          this.membres = membres;
          this.commentaires = commentaires;
          this.dateAjout = dateAjout;
+         this.dateDerniereModif = dateDerniereModif;
          this.nbIncidentDeclare = nbIncidentDeclare;
          this.nbMissionsImpliques = nbMissionsImpliques;
          
@@ -83,7 +84,7 @@ public Date getDateAjout(){
 /**
  * @return Date
  */
-public Date getDateDernierModif(){
+public Date getDateDerniereModif(){
     return dateDerniereModif;
 }
 
@@ -149,7 +150,7 @@ public void setDateAjout(Date dateAjout){
 /**
  * @param dateDerniereModif
  */
-public void setDateDernierModif(Date dateDerniereModif){
+public void setDateDerniereModif(Date dateDerniereModif){
     this.dateDerniereModif = dateDerniereModif;
 }
 
