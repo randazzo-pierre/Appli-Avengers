@@ -10,7 +10,7 @@ public class Crise {
      * @param nomCr
      * @param typeCr
      * @param cibleCr
-     * @param descriptonCr
+     * @param descriptionCr
      */
 
      public Crise(String nomCr, String typeCr, String cibleCr, String descriptionCr){
@@ -68,10 +68,10 @@ public void setCibleCr(String cibleCr){
     this.cibleCr = cibleCr;
 }
 /**
- * @param descritpionCr
+ * @param descriptionCr
  */
-public void setDesccritpionCr(String descritpionCr){
-    this.descriptionCr = descritpionCr;
+public void setDesccritpionCr(String descriptionCr){
+    this.descriptionCr = descriptionCr;
 }
 
 }
