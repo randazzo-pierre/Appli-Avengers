@@ -2,10 +2,12 @@ import java.util.*;
 
 
 public class Organisations {
-    private String nom;
+    private String nomOrga;
     private String adresse;
-    private String dirigeant;
-    private ArrayList<String> membres;
+    private String ville;
+    private String zip;
+    private int dirigeant;
+    private ArrayList<Integer> membres;
     private String commentaires;
     private Date dateAjout;
     private Date dateDerniereModif;
@@ -13,7 +15,7 @@ public class Organisations {
     private int nbMissionsImpliques;
 
     /**
-     * @param nom
+     * @param nomOrga
      * @param adresse
      * @param dirigeant
      * @param membres
@@ -24,10 +26,13 @@ public class Organisations {
      * @param nbMissionsImpliques
      */
 
-     public Organisations(String nom, String adresse, String dirigeant, ArrayList<String> membres,
-     String commentaires, Date dateAjout, Date dateDerniereModif, int nbIncidentDeclare, int nbMissionsImpliques){
-         this.nom = nom;
+     public Organisations(String nomOrga, String adresse, String ville ,String zip, int dirigeant,
+     ArrayList<Integer> membres, String commentaires, Date dateAjout, Date dateDerniereModif,
+     int nbIncidentDeclare, int nbMissionsImpliques){
+         this.nomOrga = nomOrga;
          this.adresse = adresse;
+         this.ville = ville;
+         this.zip = zip;
          this.dirigeant = dirigeant;
          this.membres = membres;
          this.commentaires = commentaires;
@@ -41,8 +46,8 @@ public class Organisations {
 /**
  * @return String
  */
-public String getNom(){
-    return nom;
+public String getNomOrga(){
+    return nomOrga;
 }
 
 /**
@@ -51,18 +56,31 @@ public String getNom(){
 public String getAdresse(){
     return adresse;
 }
+/**
+ * @return String
+ */
+public String getVille(){
+    return ville;
+}
 
 /**
  * @return String
  */
-public String getDirigeant(){
+public String getZip(){
+    return zip;
+}
+
+/**
+ * @return int
+ */
+public int getDirigeant(){
     return dirigeant;
 }
 
 /**
- * @return ArrayList<String>
+ * @return ArrayList<Integer>
  */
-public ArrayList<String> getMembres(){
+public ArrayList<Integer> getMembres(){
     return membres;
 }
 
@@ -105,10 +123,10 @@ public int getNbMissionsImpliques(){
 }
 
 /**
- * @param nom
+ * @param nomOrga
  */
-public void setNom(String nom){
-    this.nom = nom;
+public void setNomOrga(String nomOrga){
+    this.nomOrga = nomOrga;
 }
 
 /**
@@ -119,16 +137,30 @@ public void setAdresse(String adresse){
 }
 
 /**
+ * @param ville
+ */
+public void setVille(String ville){
+    this.ville = ville;
+}
+
+/**
+ * @param zip
+ */
+public void setZip(String zip){
+    this.zip = zip;
+}
+
+/**
  * @param dirigeant
  */
-public void setDirigeant(String dirigeant){
+public void setDirigeant(int dirigeant){
     this.dirigeant = dirigeant;
 }
 
 /**
  * @param membres
  */
-public void setMembres(ArrayList<String> membres){
+public void setMembres(ArrayList<Integer> membres){
     this.membres = membres;
 }
 
