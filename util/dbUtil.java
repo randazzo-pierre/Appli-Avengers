@@ -17,13 +17,15 @@ public class dbUtil extends JFrame{
   //private static String dbpwd = "QeTuZ2LFJfSqtbpe" ;
   private static String dbschema = "BDD_AVENGERS_DEV" ;
 
-  // JDBC driver name and database URL
-  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-  static final String DB_URL = "jdbc:mysql://"+dbhost+":"+dbport+"/"+dbschema;
-
   //Database credentials
   static final String USER = "dbroot";
   static final String PASS = "QeTuZ2LFJfSqtbpe" ;
+
+  // JDBC driver name and database URL
+  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+  static final String DB_URL = "jdbc:mysql://"+dbhost+":"+dbport+"/"+dbschema+"?user="+USER+"&password="+PASS;
+
+  
 
 
     //Construction de la chaine de connexion BDD
@@ -35,15 +37,16 @@ public class dbUtil extends JFrame{
       Connection conn = null;
       Statement stmt = null;
       try{
-        //Class.forName("com.mysql.jdbc.Driver");
+       // Class.forName("com.mysql.jdbc.Driver");
         System.out.println("Connecting to database...");
-        conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        //conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        conn = DriverManager.getConnection(DB_URL);
        
       //here sonoo is database name, root is username and password
          stmt = conn.createStatement();
         ResultSet rs=stmt.executeQuery("select * from USER");
         while(rs.next())
-        System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+        System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
         conn.close();
       } catch(SQLException sqlException){
     	  sqlException.printStackTrace();
@@ -53,7 +56,7 @@ public class dbUtil extends JFrame{
    
     
 
-
+ 
   //Methode Create, doit retourner l'ID BDD de ce qui est créé
 
   public int dbCreate(Connection con, String query) throws SQLException {
@@ -62,13 +65,13 @@ public class dbUtil extends JFrame{
     PreparedStatement pstmt=con.prepareStatement(query) ;
     //Execution
     Boolean ex = pstmt.execute() ;
-    if(ex = true) {
+    if(ex) {
       ResultSet rs = pstmt.getResultSet() ;
       //ici on doit lire le resultat et récupérer l'ID
         ret = rs.getInt(1) ;
         return ret ;
-    }
-  }
+    }return 9999;
+  } 
 
   //Methode Read retour un objet de type ResultSet qui contient la réponse
 
@@ -122,6 +125,6 @@ if(ex = true) {
     else {return false ;
     }
     
-}
+} 
 //fermeture de la classe dbUtil
 }
