@@ -4,28 +4,62 @@ import java.sql.*;
 //import sun.security.krb5.internal.crypto.RsaMd5CksumType;
 public class dbUtil {
 
-    //Paramètres de connexion à la BDD
-    private static String dbhost = "rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com" ;
-    private static String dbport = "3306" ;
-    private static String dbuser = "dbroot" ;
-    private static String dbpwd = "QeTuZ2LFJfSqtbpe" ;
-    private static String dbschema = "BDD_AVENGERS_DEV" ;
+  //Paramètres de connexion à la BDD
+  private static String dbhost = "rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com" ;
+  private static String dbport = "3306" ;
+  //private static String dbuser = "dbroot" ;
+  //private static String dbpwd = "QeTuZ2LFJfSqtbpe" ;
+  private static String dbschema = "BDD_AVENGERS_DEV" ;
+
+  // JDBC driver name and database URL
+  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+  static final String DB_URL = "jdbc:mysql://"+dbhost+":"+dbport+"/"+dbschema;
+
+  //Database credentials
+  static final String USER = "dbroot";
+  static final String PASS = "QeTuZ2LFJfSqtbpe" ;
+
 
     //Construction de la chaine de connexion BDD
-    private static String dbDriver = "jdbc:mysql://"+dbhost+":"+dbport+"/"+dbschema ;
+   // private static String dbDriver = "jdbc:mysql://"+dbhost+":"+dbport+"/"+dbschema ;
    // Class.forName("com.mysql.jdbc.Driver");
+
   //method pour se connecter renvoi un object de session de connexion qui correspond à la connexion
     public Connection dbConnect() throws SQLException {
-       // Class.forName("com.mysql.jdbc.Driver");
-        Connection con=DriverManager.getConnection(dbDriver,dbuser,dbpwd);
+      Connection conn = null;
+      Statement stmt = null;
+      try{
+        Class.forName("com.mysql.jdbc.Driver");
+        System.out.println("Connecting to database...");
+       conn = DriverManager.getConnection(DB_URL,USER,PASS);
+       
       //here sonoo is database name, root is username and password
        // Statement stmt=con.createStatement();
        // ResultSet rs=stmt.executeQuery("select * from USER");
        // while(rs.next())
        // System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
        // con.close();
-       return con ;
-      }
+        return conn ;
+      }catch(SQLException se){
+        //Handle errors for JDBC
+        se.printStackTrace();
+     }catch(Exception e){
+        //Handle errors for Class.forName
+        e.printStackTrace();
+     }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null)
+            stmt.close();
+      }catch(SQLException se2){
+      }// nothing we can do
+      try{
+         if(conn!=null)
+            conn.close();
+      }catch(SQLException se){
+         se.printStackTrace();
+      }//end finally try
+   
     
 
 
