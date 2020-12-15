@@ -40,25 +40,9 @@ public class dbUtil {
        // System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
        // con.close();
         return conn ;
-      }catch(SQLException se){
-        //Handle errors for JDBC
-        se.printStackTrace();
-     }catch(Exception e){
-        //Handle errors for Class.forName
-        e.printStackTrace();
-     }finally{
-      //finally block used to close resources
-      try{
-         if(stmt!=null)
-            stmt.close();
-      }catch(SQLException se2){
-      }// nothing we can do
-      try{
-         if(conn!=null)
-            conn.close();
-      }catch(SQLException se){
-         se.printStackTrace();
-      }//end finally try
+      }
+    }
+  }
    
     
 
