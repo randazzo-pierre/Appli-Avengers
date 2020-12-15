@@ -2,7 +2,7 @@ package acteurs;
 import java.util.*;
 
 public class Civil {
-    private int idC;
+    protected int idC;
     private String nom;
     private String prenom;
     private String civilite;
@@ -69,7 +69,7 @@ public class Civil {
     /**
      * @return int
      */
-    public String getidC() {
+    public int getidC() {
         return idC;
     }
 

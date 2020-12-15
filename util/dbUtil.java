@@ -65,7 +65,6 @@ public class dbUtil extends JFrame{
     PreparedStatement pstmt=con.prepareStatement(query) ;
     //Execution
     Boolean ex = pstmt.execute() ;
-    //test bool implicite (si contraire if(!ex))
     if(ex) {
       ResultSet rs = pstmt.getResultSet() ;
       //ici on doit lire le resultat et récupérer l'ID
@@ -78,22 +77,22 @@ public class dbUtil extends JFrame{
 
   public ResultSet dbRead(Connection con, String query) throws SQLException  {
 //préparation de la requête
-PreparedStatement pstmt = con.prepareStatement(query) ;
+PreparedStatement pstmt=con.prepareStatement(query) ;
 //Execution
-pstmt.execute() ;
-
+Boolean ex = pstmt.execute() ;
+if(ex = true) {
   ResultSet rs = pstmt.getResultSet() ;
   //ici on doit lire le resultat et récupérer l'ID
     return rs;
-
+}
+return null;
   }
-
 
   //Methode Update retourne l'ID de ce qui sera mis à jour
 
   public int dbUpdate(Connection con, String query) throws SQLException {
 //préparation de la requête
-PreparedStatement pstmt = con.prepareStatement(query) ;
+PreparedStatement pstmt=con.prepareStatement(query) ;
 //Execution
 int ex = pstmt.executeUpdate() ;
 
@@ -105,15 +104,16 @@ int ex = pstmt.executeUpdate() ;
 
   public ResultSet dbDelete(Connection con, String query) throws SQLException {
 //préparation de la requête
-PreparedStatement pstmt = con.prepareStatement(query) ;
+PreparedStatement pstmt=con.prepareStatement(query) ;
 //Execution
-pstmt.execute() ;
-
+Boolean ex = pstmt.execute() ;
+if(ex = true) {
   ResultSet rs = pstmt.getResultSet() ;
   //ici on doit lire le resultat et récupérer l'ID
     return rs;
 }
-  
+return null;
+  }
 
 
   //Methode pour la deconnexion, tue la connexion renvoi un statusCode de la deco

@@ -36,12 +36,13 @@ public class Vilain extends Civil {
      * @param score
      * @param nbCrime
      * @param commentaireVilain
+     * @param danger 
      */
     public Vilain(int idV, String nomVilain, String nom, String prenom, String civilite, String adresse, String ville, String zip,
                   String pays, String email, int tel, Date dateNais, String nationnalite, ArrayList<String> organisation,
                   Date dateMort, String commentaireCivil, Date dateAjout, Date dateDerniereModif, int nbIncident,
-                  int nbMission, String pouvoir, String pointFaible, int score, int nbCrime, String commentaireVilain) {
-        super(nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
+                  int nbMission, String pouvoir, String pointFaible, int score, int nbCrime, String commentaireVilain, int danger) {
+        super(nbCrime, nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
                 dateMort, commentaireCivil, dateAjout, dateDerniereModif, nbIncident, nbMission);
         this.idV = idV;
         this.nomVilain = nomVilain;
@@ -54,7 +55,7 @@ public class Vilain extends Civil {
     /**
      * @return int
      */
-    public String getidV() {
+    public int getidV() {
         return idV;
     }
 
