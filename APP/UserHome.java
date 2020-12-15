@@ -50,6 +50,8 @@ public class UserHome extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        
+        
         JButton btnNewButton = new JButton("Logout");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -72,8 +74,26 @@ public class UserHome extends JFrame {
 
             }
         });
-        btnNewButton.setBounds(247, 118, 491, 114);
+        btnNewButton.setBounds(247, 100, 491, 114);
         contentPane.add(btnNewButton);
+        
+        
+        JButton button2 = new JButton("DashBoard");
+        button2.setForeground(new Color(0, 0, 0));
+        button2.setBackground(new Color(20, 150, 20));
+        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	Dashboard bo = new Dashboard(userSes);
+               // bo.setTitle();
+                bo.setVisible(true);
+                            }
+        });
+        button2.setBounds(247, 250, 491, 114);
+        contentPane.add(button2);
+        
+        
         JButton button = new JButton("Change-password\r\n");
         button.setBackground(UIManager.getColor("Button.disabledForeground"));
         button.addActionListener(new ActionListener() {
@@ -85,7 +105,7 @@ public class UserHome extends JFrame {
             }
         });
         button.setFont(new Font("Tahoma", Font.PLAIN, 35));
-        button.setBounds(247, 320, 491, 114);
+        button.setBounds(247, 400, 491, 114);
         contentPane.add(button);
     }
 }
