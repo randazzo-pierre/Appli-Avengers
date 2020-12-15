@@ -2,7 +2,8 @@ package acteurs;
 import java.util.*;
 
 public class Hero extends Civil {
-    private static int idC;
+    @SuppressWarnings("unused")
+	private int idC;
     private int idH;
     private String nomHero;
     private String pouvoir;

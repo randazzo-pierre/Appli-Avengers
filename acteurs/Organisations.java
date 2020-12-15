@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class Organisations {
-    private String idO;
+    private int idO;
     private String nomOrga;
     private String adresse;
     private String ville;
@@ -33,7 +33,7 @@ public class Organisations {
      * @param nbMissionsImpliques
      */
 
-     public Organisations(String idO, String nomOrga, String adresse, String ville ,String zip, String pays, int dirigeant,
+     public Organisations(int idO, String nomOrga, String adresse, String ville ,String zip, String pays, int dirigeant,
      ArrayList<Integer> membres, String commentaireOrga, Date dateAjout, Date dateDerniereModif,
      int nbIncidentDeclare, int nbMissionsImpliques){
          this.idO = idO;
@@ -145,11 +145,7 @@ public int getNbMissionsImpliques(){
 /**
 * @param idO
 */
-<<<<<<< HEAD
-    public void setidO(String idO){
-=======
     public void setidO(int idO){
->>>>>>> 0cbb66c1c17f2c5dbbde04c6c461640747b07722
         this.idO = idO;
     }
     
