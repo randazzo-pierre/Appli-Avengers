@@ -200,7 +200,7 @@ public class Civil {
     }
 
     /**
-     * @param int
+     * @param idC
      */
     public void setIdC(int idC) {
         this.idC = idC;

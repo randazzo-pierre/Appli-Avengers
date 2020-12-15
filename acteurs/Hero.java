@@ -14,8 +14,9 @@ public class Hero extends Civil {
                 String pays, String email, int tel, Date dateNais, String nationnalite, ArrayList<String> organisation,
                 Date dateMort, String commentaireCivil, Date dateAjout, Date dateDerniereModif, int nbIncident,
                 int nbMission, String pouvoir, String pointFaible, int score, int nbMissionEff, String commentaireHero) {
-        super(nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
+        super( idC, nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
                 dateMort, commentaireCivil, dateAjout, dateDerniereModif, nbIncident, nbMission);
+
         this.idH = idH;
         this.nomHero = nomHero;
         this.pouvoir = pouvoir;
@@ -27,9 +28,10 @@ public class Hero extends Civil {
     /**
      * @return int
      */
-    public String getidH() {
+    public int getidH() {
         return idH;
     }
+
     /**
      * @return String
      */
@@ -76,7 +78,7 @@ public class Hero extends Civil {
      * @param int
      */
     public void setIdH(int idH) {
-        this.idC = idH;
+        this.idH = idH;
     }
 
     /**
