@@ -79,12 +79,12 @@ public class dbUtil extends JFrame{
 //préparation de la requête
 PreparedStatement pstmt=con.prepareStatement(query) ;
 //Execution
-Boolean ex = pstmt.execute() ;
-if(ex = true) {
+pstmt.execute() ;
+
   ResultSet rs = pstmt.getResultSet() ;
   //ici on doit lire le resultat et récupérer l'ID
     return rs;
-}
+
   }
 
   //Methode Update retourne l'ID de ce qui sera mis à jour
@@ -105,18 +105,18 @@ int ex = pstmt.executeUpdate() ;
 //préparation de la requête
 PreparedStatement pstmt=con.prepareStatement(query) ;
 //Execution
-Boolean ex = pstmt.execute() ;
-if(ex = true) {
+pstmt.execute() ;
+
   ResultSet rs = pstmt.getResultSet() ;
   //ici on doit lire le resultat et récupérer l'ID
     return rs;
-}
+
   }
 
 
   //Methode pour la deconnexion, tue la connexion renvoi un statusCode de la deco
 
-  public boolean dbKill(Connection con) {
+  public boolean dbKill(Connection con) throws SQLException {
 
     con.close() ;
     if(con.isClosed()) {
