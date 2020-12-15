@@ -1,4 +1,4 @@
-package localhost;
+package APP;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -97,11 +97,11 @@ public class UserLogin extends JFrame {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/avengerdb",
-                        "root", "");
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                        "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                        .prepareStatement("Select username, password from user where username=? and password=?");
+                        .prepareStatement("Select username, password from USER where username=? and password=?");
 
                     st.setString(1, userName);
                     st.setString(2, password);

@@ -1,4 +1,4 @@
-package localhost;
+package APP;
 
 import java.awt.Color;
 import java.awt.EventQueue;
