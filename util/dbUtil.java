@@ -40,14 +40,14 @@ public class dbUtil extends JFrame{
        // Class.forName("com.mysql.jdbc.Driver");
         System.out.println("Connecting to database...");
         //conn = DriverManager.getConnection(DB_URL,USER,PASS);
-       Connection connection = DriverManager.getConnection("jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV,dbroot,QeTuZ2LFJfSqtbpe");
+        conn = DriverManager.getConnection(DB_URL);
        
       //here sonoo is database name, root is username and password
-         stmt = connection.createStatement();
+         stmt = conn.createStatement();
         ResultSet rs=stmt.executeQuery("select * from USER");
         while(rs.next())
         System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
-        connection.close();
+        conn.close();
       } catch(SQLException sqlException){
     	  sqlException.printStackTrace();
     }
