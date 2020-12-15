@@ -1,4 +1,4 @@
-package dashboard;
+package src.dashboard;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import Login.ChangePassword;
-import Login.UserHome;
-import Login.UserLogin;
+import src.Login.ChangePassword;
+import src.Login.UserHome;
+import src.Login.UserLogin;
 
 public class dashboard extends JFrame{
 	

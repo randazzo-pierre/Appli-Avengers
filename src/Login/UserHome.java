@@ -1,4 +1,4 @@
-package Login;
+package src.Login;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import dashboard.dashboard;
+import src.dashboard.dashboard;
 
 public class UserHome extends JFrame {
 

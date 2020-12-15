@@ -1,4 +1,4 @@
-package Login;
+package src.Login;
 
 import java.awt.Color;
 import java.awt.EventQueue;
