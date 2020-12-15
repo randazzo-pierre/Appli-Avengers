@@ -54,7 +54,7 @@ public class Organisations {
 /**
  * @return int
  */
-    public String getidO() {
+    public int getidO() {
         return idO;
     }
 /**
@@ -146,7 +146,7 @@ public int getNbMissionsImpliques(){
 * @param idO
 */
     public void setidO(int idO){
-        this.idO = ido;
+        this.idO = idO;
     }
     
 /**

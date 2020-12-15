@@ -2,6 +2,7 @@ package acteurs;
 import java.util.*;
 
 public class Vilain extends Civil {
+    private static int idC;
     private int idV;
     private String nomVilain;
     private String pouvoir;
@@ -33,6 +34,7 @@ public class Vilain extends Civil {
      * @param nbMission
      * @param pouvoir
      * @param pointFaible
+     * @param danger
      * @param score
      * @param nbCrime
      * @param commentaireVilain
@@ -40,8 +42,8 @@ public class Vilain extends Civil {
     public Vilain(int idV, String nomVilain, String nom, String prenom, String civilite, String adresse, String ville, String zip,
                   String pays, String email, int tel, Date dateNais, String nationnalite, ArrayList<String> organisation,
                   Date dateMort, String commentaireCivil, Date dateAjout, Date dateDerniereModif, int nbIncident,
-                  int nbMission, String pouvoir, String pointFaible, int score, int nbCrime, String commentaireVilain) {
-        super(nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
+                  int nbMission, String pouvoir, String pointFaible,int danger, int score, int nbCrime, String commentaireVilain) {
+        super(idC,nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
                 dateMort, commentaireCivil, dateAjout, dateDerniereModif, nbIncident, nbMission);
         this.idV = idV;
         this.nomVilain = nomVilain;
@@ -54,7 +56,7 @@ public class Vilain extends Civil {
     /**
      * @return int
      */
-    public String getidV() {
+    public int getidV() {
         return idV;
     }
 
