@@ -1,10 +1,16 @@
 package util;
 import java.sql.*;
 
-//import sun.security.krb5.internal.crypto.RsaMd5CksumType;
-public class dbUtil {
+import javax.swing.JFrame;
 
-  //Paramètres de connexion à la BDD
+//import sun.security.krb5.internal.crypto.RsaMd5CksumType;
+public class dbUtil extends JFrame{
+
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+//Paramètres de connexion à la BDD
   private static String dbhost = "rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com" ;
   private static String dbport = "3306" ;
   //private static String dbuser = "dbroot" ;
@@ -29,19 +35,20 @@ public class dbUtil {
       Connection conn = null;
       Statement stmt = null;
       try{
-        Class.forName("com.mysql.jdbc.Driver");
+        //Class.forName("com.mysql.jdbc.Driver");
         System.out.println("Connecting to database...");
-       conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        conn = DriverManager.getConnection(DB_URL,USER,PASS);
        
       //here sonoo is database name, root is username and password
-       // Statement stmt=con.createStatement();
-       // ResultSet rs=stmt.executeQuery("select * from USER");
-       // while(rs.next())
-       // System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
-       // con.close();
-        return conn ;
-      }
+         stmt = conn.createStatement();
+        ResultSet rs=stmt.executeQuery("select * from USER");
+        while(rs.next())
+        System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+        conn.close();
+      } catch(SQLException sqlException){
+    	  sqlException.printStackTrace();
     }
+	return conn;
   }
    
     
