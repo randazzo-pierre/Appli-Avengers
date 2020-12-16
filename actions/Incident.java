@@ -11,7 +11,7 @@ public class Incident {
     private int idI;
     private String declarantInci;
     private String paysInci;
-    private String zipInci;
+    private int zipInci;
     private DateFormat dateDebutInci;
     private DateFormat dateFinInci;
     private String descriptionInci;
@@ -26,7 +26,7 @@ public class Incident {
      * @param descriptionInci
      */
 
-public Incident(int idI, String declarantInci, String paysInci, String zipInci, DateFormat dateDebutInci,
+public Incident(int idI, String declarantInci, String paysInci, int zipInci, DateFormat dateDebutInci,
 DateFormat dateFinInci, String descriptionInci){
     this.idI = idI;
     this.declarantInci = declarantInci;
@@ -37,7 +37,7 @@ DateFormat dateFinInci, String descriptionInci){
     this.descriptionInci = descriptionInci;
 }
 
-public  Incident(int declarant, Country selectedCountry, String inputzip, Date debut, String inputquoi) throws SQLException {
+public  Incident(int declarant, Country selectedCountry, int inputzip, Date debut, String inputquoi) throws SQLException {
     System.out.println("Création d'un incident avec les paramètres suivant quoi : "+inputquoi+" Country : "+selectedCountry+" inputzip : "+inputzip+" créer par :"+declarant);
     //connexion bdd
    dbUtil utl = new dbUtil() ;
@@ -91,7 +91,7 @@ public String getPaysInci(){
 /**
  * @return String
  */
-public String getZipInci(){
+public int getZipInci(){
     return zipInci;
 }
 
@@ -140,7 +140,7 @@ public void setPaysInci(String paysInci){
 /**
  * @param zipInci
  */
-public void setZipInci(String zipInci){
+public void setZipInci(int zipInci){
     this.zipInci = zipInci;
 }
 

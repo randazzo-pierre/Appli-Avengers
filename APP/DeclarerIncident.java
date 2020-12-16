@@ -171,24 +171,25 @@ public class DeclarerIncident extends JFrame {
 				if(textFieldZip.getText().isEmpty() || textFieldQuoi.getText().isEmpty()){
 					//error
 					JOptionPane.showMessageDialog(btnEnvoyer, "Vous devez completer tous les champs");
-				} else {
-					String inputquoi = textFieldQuoi.getText();
-					int declarant = user.id;
-					Date debut = new Date();
-					String inputzip = textFieldZip.getText();
-					Country selectedCountry = (Country) comboCountry.getSelectedItem();
-					try {
-						Incident inc = new Incident(declarant, selectedCountry, inputzip, debut, inputquoi);
-						JOptionPane.showMessageDialog(btnEnvoyer, "Incident envoyé aux Avengers !! ça va bien se passer");
-					} catch (SQLDataException err) {
-						System.out.println(err);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-				
-					
+				}  else {
+							String inputzip = textFieldZip.getText();
+							int inputzipInt = Integer.parseInt(inputzip) ;
+							String inputquoi = textFieldQuoi.getText();
+							int declarant = user.id;
+							Date debut = new Date();
+						
+							Country selectedCountry = (Country) comboCountry.getSelectedItem();
+							try {
+								Incident inc = new Incident(declarant, selectedCountry, inputzipInt, debut, inputquoi);
+								JOptionPane.showMessageDialog(btnEnvoyer, "Incident envoyé aux Avengers !! ça va bien se passer");
+							} catch (SQLDataException err) {
+								System.out.println(err);
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+
 	            }
 	        });
 	        btnEnvoyer.setBounds(550, 392, 162, 73);
