@@ -37,7 +37,7 @@ DateFormat dateFinInci, String descriptionInci){
     this.descriptionInci = descriptionInci;
 }
 
-public  Incident(String declarant, Country selectedCountry, String inputzip, Date debut, String inputquoi) throws SQLException {
+public  Incident(int declarant, Country selectedCountry, String inputzip, Date debut, String inputquoi) throws SQLException {
     System.out.println("Création d'un incident avec les paramètres suivant quoi : "+inputquoi+" Country : "+selectedCountry+" inputzip : "+inputzip+" créer par :"+declarant);
     //connexion bdd
    dbUtil utl = new dbUtil() ;

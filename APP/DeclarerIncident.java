@@ -172,7 +172,7 @@ public class DeclarerIncident extends JFrame {
 
 				// on récupère le déclarant :
 				// User usr = new User() ;
-				String declarant = "1";
+				int declarant = user.id;
 
 				// La date de début
 				Date debut = new Date();
