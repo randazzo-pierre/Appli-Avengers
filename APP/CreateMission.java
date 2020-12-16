@@ -93,7 +93,7 @@ public class CreateMission extends JFrame {
     		contentPane.add(textFieldAuteur);
 			textFieldAuteur.setColumns(10);
 		
-			JLabel lbldatedeb = new JLabel("datedeb");
+			JLabel lbldatedeb = new JLabel("datedebut");
         	lbldatedeb.setForeground(Color.BLACK);
         	lbldatedeb.setBackground(Color.CYAN);
         	lbldatedeb.setFont(new Font("Tahoma", Font.PLAIN, 31));
@@ -119,29 +119,42 @@ public class CreateMission extends JFrame {
     		contentPane.add(textFielddatefin);
 			textFielddatefin.setColumns(10);
 
-			JLabel lblCommentaire = new JLabel("Leader");
-        	lblCommentaire.setForeground(Color.BLACK);
-        	lblCommentaire.setBackground(Color.CYAN);
-        	lblCommentaire.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblCommentaire.setBounds(100, 400, 193, 52);
-			contentPane.add(lblCommentaire);
+			JLabel lblLeader = new JLabel("Leader");
+        	lblLeader.setForeground(Color.BLACK);
+        	lblLeader.setBackground(Color.CYAN);
+        	lblLeader.setFont(new Font("Tahoma", Font.PLAIN, 31));
+        	lblLeader.setBounds(100, 400, 193, 52);
+			contentPane.add(lblLeader);
 
-			JTextField textFieldCommentaire = new JTextField();
-    		textFieldCommentaire.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldCommentaire.setBounds(310, 400, 600, 50);
-    		contentPane.add(textFieldCommentaire);
-            textFieldCommentaire.setColumns(10);
+			JTextField textFieldLeader = new JTextField();
+    		textFieldLeader.setFont(new Font("Tahoma", Font.PLAIN, 32));
+    		textFieldLeader.setBounds(310, 400, 600, 50);
+    		contentPane.add(textFieldLeader);
+            textFieldLeader.setColumns(10);
+
+            JLabel lblassigner = new JLabel("Leader");
+        	lblassigner.setForeground(Color.BLACK);
+        	lblassigner.setBackground(Color.CYAN);
+        	lblassigner.setFont(new Font("Tahoma", Font.PLAIN, 31));
+        	lblassigner.setBounds(100, 475, 193, 52);
+			contentPane.add(lblassigner);
+
+			JTextField textFieldassigner = new JTextField();
+    		textFieldassigner.setFont(new Font("Tahoma", Font.PLAIN, 32));
+    		textFieldassigner.setBounds(310, 475, 600, 50);
+    		contentPane.add(textFieldassigner);
+            textFieldassigner.setColumns(10);
             
             JLabel lblGravite = new JLabel("Gravité");
         	lblGravite.setForeground(Color.BLACK);
         	lblGravite.setBackground(Color.CYAN);
         	lblGravite.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblGravite.setBounds(100, 475, 193, 52);
+        	lblGravite.setBounds(100, 550, 193, 52);
 			contentPane.add(lblGravite);
 
 			JTextField textFieldGravite = new JTextField();
     		textFieldGravite.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldGravite.setBounds(310, 475, 600, 50);
+    		textFieldGravite.setBounds(310, 550, 600, 50);
     		contentPane.add(textFieldGravite);
             textFieldGravite.setColumns(10);
             
@@ -149,16 +162,27 @@ public class CreateMission extends JFrame {
         	lblUrgence.setForeground(Color.BLACK);
         	lblUrgence.setBackground(Color.CYAN);
         	lblUrgence.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblUrgence.setBounds(100, 550, 193, 52);
+        	lblUrgence.setBounds(100, 625, 193, 52);
 			contentPane.add(lblUrgence);
 
 			JTextField textFieldUrgence = new JTextField();
     		textFieldUrgence.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldUrgence.setBounds(310, 550, 600, 50);
+    		textFieldUrgence.setBounds(310, 625, 600, 50);
     		contentPane.add(textFieldUrgence);
 			textFieldUrgence.setColumns(10);
             
-    
+            JButton button2 = new JButton("Retour");
+        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Dashboard bo = new Dashboard(user);
+                bo.setTitle("Dashboard " + user.role);
+                bo.setVisible(true);
+            }
+        });
+        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
+        button2.setBounds(100, 700, 200, 50);
+        contentPane.add(button2);
 
 			JButton btnSumbit = new JButton("Valider");
 	        btnSumbit.setForeground(new Color(0, 0, 0));
@@ -169,7 +193,7 @@ public class CreateMission extends JFrame {
 
 	            }
 	        });
-	        btnSumbit.setBounds(250, 600, 350, 50);
+	        btnSumbit.setBounds(450, 700, 350, 50);
 			contentPane.add(btnSumbit);
 
 	    }        

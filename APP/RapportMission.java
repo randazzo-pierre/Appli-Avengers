@@ -92,7 +92,7 @@ public class RapportMission extends JFrame{
     		contentPane.add(textFieldAuteur);
 			textFieldAuteur.setColumns(10);
 		
-			JLabel lbldatedeb = new JLabel("datedeb");
+			JLabel lbldatedeb = new JLabel("datedebut");
         	lbldatedeb.setForeground(Color.BLACK);
         	lbldatedeb.setBackground(Color.CYAN);
         	lbldatedeb.setFont(new Font("Tahoma", Font.PLAIN, 31));
@@ -109,7 +109,7 @@ public class RapportMission extends JFrame{
         	lbldatefin.setForeground(Color.BLACK);
         	lbldatefin.setBackground(Color.CYAN);
         	lbldatefin.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lbldatefin.setBounds(100, 325, 193, 52);
+        	lbldatefin.setBounds(100, 310, 193, 52);
         	contentPane.add(lbldatefin);
 			
 			JTextField textFielddatefin = new JTextField();
@@ -148,12 +148,12 @@ public class RapportMission extends JFrame{
         	lblUrgence.setForeground(Color.BLACK);
         	lblUrgence.setBackground(Color.CYAN);
         	lblUrgence.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblUrgence.setBounds(100, 475, 193, 52);
+        	lblUrgence.setBounds(100, 550, 193, 52);
 			contentPane.add(lblUrgence);
 
 			JTextField textFieldUrgence = new JTextField();
     		textFieldUrgence.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldUrgence.setBounds(310, 475, 600, 50);
+    		textFieldUrgence.setBounds(310, 550, 600, 50);
     		contentPane.add(textFieldUrgence);
 			textFieldUrgence.setColumns(10);
     
