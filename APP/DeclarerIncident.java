@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.*;
 
 import javax.swing.JButton;
@@ -24,160 +27,166 @@ import util.Country;
 
 public class DeclarerIncident extends JFrame {
 
-	 private static final long serialVersionUID = 1 ;
-		private JPanel contentPane;
-		private JLabel label;
-		private JTextField textFieldQuoi;
-		private JTextField textFieldPays;
-		private JTextField textFieldZip;
+	private static final long serialVersionUID = 1;
+	private JPanel contentPane;
+	private JLabel label;
+	private JTextField textFieldQuoi;
+	private JTextField textFieldPays;
+	private JTextField textFieldZip;
 
-	    /**
-	     * Launch the application.
-		 *  @param args
-	     */
-	    public static void main(String[] args) {
-	        EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                try {
-	                    UserHome frame = new UserHome();
-	                    frame.setVisible(true);
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        });
-		}
-		
-		private Country[] createCountryList() {
-			String[] countryCodes = Locale.getISOCountries();
-			Country[] listCountry = new Country[countryCodes.length];
-		 
-			for (int i = 0; i < countryCodes.length; i++) {
-				Locale locale = new Locale("", countryCodes[i]);
-				String code = locale.getCountry();
-				String name = locale.getDisplayCountry();
-		 
-				listCountry[i] = new Country(code, name);
+	/**
+	 * Launch the application.
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UserHome frame = new UserHome();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		 
-			Arrays.sort(listCountry);
-		 
-			return listCountry;
+		});
+	}
+
+	private Country[] createCountryList() {
+		String[] countryCodes = Locale.getISOCountries();
+		Country[] listCountry = new Country[countryCodes.length];
+
+		for (int i = 0; i < countryCodes.length; i++) {
+			Locale locale = new Locale("", countryCodes[i]);
+			String code = locale.getCountry();
+			String name = locale.getDisplayCountry();
+
+			listCountry[i] = new Country(code, name);
 		}
 
+		Arrays.sort(listCountry);
 
-/**
-* Create the frame.
-* @param user
-*/
-	    
-	    public DeclarerIncident (User user) {
+		return listCountry;
+	}
 
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setBounds(450, 190, 1014, 597);
-	        setResizable(false);
-	        contentPane = new JPanel();
-	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	        setContentPane(contentPane);
-	        contentPane.setLayout(null);
-	        
-	        
-	        
-	        //============================================================================
-	        //========CIVIL & ORGANISATION & HERO ========================================
-	        //============================================================================
-		   
-			//Titre page
-			JLabel lblNewLabel = new JLabel("Déclarer un incident");
-       		lblNewLabel.setForeground(Color.BLACK);
-        	lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        	lblNewLabel.setBounds(423, 4, 273, 93);
-			contentPane.add(lblNewLabel);
+	/**
+	 * Create the frame.
+	 * 
+	 * @param user
+	 */
 
-			//libelle description
-			JLabel lblCepasseQuoi = new JLabel("Ce passe quoi ?");
-        	lblCepasseQuoi.setBackground(Color.BLACK);
-        	lblCepasseQuoi.setForeground(Color.BLACK);
-        	lblCepasseQuoi.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        	lblCepasseQuoi.setBounds(85, 100, 193, 52);
-			contentPane.add(lblCepasseQuoi);
+	public DeclarerIncident(User user) {
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(450, 190, 1014, 597);
+		setResizable(false);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
-			//zone texte ce passe quoi
-			textFieldQuoi = new JTextField();
-        	textFieldQuoi.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        	textFieldQuoi.setBounds(310, 100, 550, 50);
-        	contentPane.add(textFieldQuoi);
-			textFieldQuoi.setColumns(10);
+		// ============================================================================
+		// ========CIVIL & ORGANISATION & HERO ========================================
+		// ============================================================================
 
-			//libelle pays
-			JLabel lblPays = new JLabel("Quel pays ?");
-        	lblPays.setBackground(Color.BLACK);
-        	lblPays.setForeground(Color.BLACK);
-        	lblPays.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        	lblPays.setBounds(85, 200, 193, 52);
-			contentPane.add(lblPays);
-			
-			//liste des pays
-			/* String[] pays = {"Europe", "Afrique", "Amerique", "Russie", "Inde", "Australie"};
-			JComboBox listePays = new JComboBox(pays);			
-        	listePays.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        	listePays.setBounds(481, 170, 281, 68);
-			contentPane.add(listePays); */
-			Country[] listCountry = createCountryList();
-			JComboBox<Country> comboCountry = new JComboBox<>(listCountry);
-			comboCountry.setBounds(310, 200, 550, 50);
-			contentPane.add(comboCountry) ;
-			
-			//zone de texte pays
-			/* textFieldPays = new JTextField();
-        	textFieldPays.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        	textFieldPays.setBounds(310, 200, 550, 50);
-        	contentPane.add(textFieldPays);
-			textFieldPays.setColumns(10); */
-				
-			//libelle code zip
-			JLabel lblZip = new JLabel("C'est ou exactement ?");
-        	lblZip.setBackground(Color.BLACK);
-        	lblZip.setForeground(Color.BLACK);
-        	lblZip.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        	lblZip.setBounds(85, 300, 193, 52);
-        	contentPane.add(lblZip);
-			
-			//zone de texte code zip
-			textFieldZip = new JTextField();
-        	textFieldZip.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        	textFieldZip.setBounds(310, 300, 550, 50);
-        	contentPane.add(textFieldZip);
-			textFieldZip.setColumns(10);
-			
-			// bouton
-				        
-	        JButton btnEnvoyer = new JButton("Envoyer");
-	        btnEnvoyer.setForeground(new Color(0, 0, 0));
-	        btnEnvoyer.setBackground(UIManager.getColor("Button.disabledForeground"));
-	        btnEnvoyer.setFont(new Font("Tahoma", Font.PLAIN, 25));
-	        btnEnvoyer.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
-					//Au clique sur le boutton envoyer
-					//On récupère le texte de ce qu'il se passe :
-				String inputquoi = textFieldQuoi.getText() ;
-					//On récupère le pays
-					Country selectedCountry = (Country) comboCountry.getSelectedItem();
+		// Titre page
+		JLabel lblNewLabel = new JLabel("Déclarer un incident");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		lblNewLabel.setBounds(423, 4, 273, 93);
+		contentPane.add(lblNewLabel);
 
-					//On récupère le zipCode
-				String	inputzip = textFieldZip.getText() ;
+		// libelle description
+		JLabel lblCepasseQuoi = new JLabel("Ce passe quoi ?");
+		lblCepasseQuoi.setBackground(Color.BLACK);
+		lblCepasseQuoi.setForeground(Color.BLACK);
+		lblCepasseQuoi.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCepasseQuoi.setBounds(85, 100, 193, 52);
+		contentPane.add(lblCepasseQuoi);
 
-					//on récupère le déclarant :
-					User usr ;
-				String declarant = usr.getUsername() ;
+		// zone texte ce passe quoi
+		textFieldQuoi = new JTextField();
+		textFieldQuoi.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldQuoi.setBounds(310, 100, 550, 50);
+		contentPane.add(textFieldQuoi);
+		textFieldQuoi.setColumns(10);
 
-				//La date de début
-				Date debut = new Date.getDate() ;
-					//Maintenant on crée un objet Incident avec les propriétés qui vont bien
-					System.out.println("Quoi : "+inputquoi+" Country : "+selectedCountry+" inputzip : "+inputzip);
-				
-					Incident inc = new Incident(declarant, selectedCountry, inputzip, debut, inputquoi) ;
+		// libelle pays
+		JLabel lblPays = new JLabel("Quel pays ?");
+		lblPays.setBackground(Color.BLACK);
+		lblPays.setForeground(Color.BLACK);
+		lblPays.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPays.setBounds(85, 200, 193, 52);
+		contentPane.add(lblPays);
+
+		// liste des pays
+		/*
+		 * String[] pays = {"Europe", "Afrique", "Amerique", "Russie", "Inde",
+		 * "Australie"}; JComboBox listePays = new JComboBox(pays);
+		 * listePays.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		 * listePays.setBounds(481, 170, 281, 68); contentPane.add(listePays);
+		 */
+		Country[] listCountry = createCountryList();
+		JComboBox<Country> comboCountry = new JComboBox<>(listCountry);
+		comboCountry.setBounds(310, 200, 550, 50);
+		contentPane.add(comboCountry);
+
+		// zone de texte pays
+		/*
+		 * textFieldPays = new JTextField(); textFieldPays.setFont(new Font("Tahoma",
+		 * Font.PLAIN, 18)); textFieldPays.setBounds(310, 200, 550, 50);
+		 * contentPane.add(textFieldPays); textFieldPays.setColumns(10);
+		 */
+
+		// libelle code zip
+		JLabel lblZip = new JLabel("C'est ou exactement ?");
+		lblZip.setBackground(Color.BLACK);
+		lblZip.setForeground(Color.BLACK);
+		lblZip.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblZip.setBounds(85, 300, 193, 52);
+		contentPane.add(lblZip);
+
+		// zone de texte code zip
+		textFieldZip = new JTextField();
+		textFieldZip.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textFieldZip.setBounds(310, 300, 550, 50);
+		contentPane.add(textFieldZip);
+		textFieldZip.setColumns(10);
+
+		// bouton
+
+		JButton btnEnvoyer = new JButton("Envoyer");
+		btnEnvoyer.setForeground(new Color(0, 0, 0));
+		btnEnvoyer.setBackground(UIManager.getColor("Button.disabledForeground"));
+		btnEnvoyer.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnEnvoyer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Au clique sur le boutton envoyer
+				// On récupère le texte de ce qu'il se passe :
+				String inputquoi = textFieldQuoi.getText();
+				// On récupère le pays
+				Country selectedCountry = (Country) comboCountry.getSelectedItem();
+
+				// On récupère le zipCode
+				String inputzip = textFieldZip.getText();
+
+				// on récupère le déclarant :
+				// User usr = new User() ;
+				String declarant = "1";
+
+				// La date de début
+				Date debut = new Date();
+				// Maintenant on crée un objet Incident avec les propriétés qui vont bien
+				System.out.println("Quoi : " + inputquoi + " Country : " + selectedCountry + " inputzip : " + inputzip);
+				try {
+					Incident inc = new Incident(declarant, selectedCountry, inputzip, debut, inputquoi);
+				} catch (SQLDataException err) {
+					System.out.println(err);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+					
 	            }
 	        });
 	        btnEnvoyer.setBounds(550, 392, 162, 73);

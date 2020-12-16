@@ -96,8 +96,5 @@ public class UserRegister extends JFrame {
 
     }
 
-    public UserRegister() {
-
-    }
 
 }

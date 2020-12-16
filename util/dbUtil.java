@@ -35,7 +35,7 @@ public class dbUtil extends JFrame{
   //method pour se connecter renvoi un object de session de connexion qui correspond à la connexion
     public Connection dbConnect() throws SQLException {
       Connection conn = null;
-      Statement stmt = null;
+     // Statement stmt = null;
       try{
        // Class.forName("com.mysql.jdbc.Driver");
         System.out.println("Connecting to database...");
@@ -43,11 +43,11 @@ public class dbUtil extends JFrame{
         conn = DriverManager.getConnection(DB_URL);
        
       //here sonoo is database name, root is username and password
-         stmt = conn.createStatement();
-        ResultSet rs=stmt.executeQuery("select * from USER");
-        while(rs.next())
-        System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
-        conn.close();
+      //   stmt = conn.createStatement();
+      //  ResultSet rs=stmt.executeQuery("select * from USER");
+      //  while(rs.next())
+      //  System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+      //  conn.close();
       } catch(SQLException sqlException){
     	  sqlException.printStackTrace();
     }

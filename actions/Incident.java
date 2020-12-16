@@ -1,7 +1,10 @@
 package actions;
 
 import java.util.*;
+import java.util.Date;
 import java.sql.*;
+import java.text.DateFormat;
+
 import util.*;
 
 public class Incident {
@@ -9,8 +12,8 @@ public class Incident {
     private String declarantInci;
     private String paysInci;
     private String zipInci;
-    private Date dateDebutInci;
-    private Date dateFinInci;
+    private DateFormat dateDebutInci;
+    private DateFormat dateFinInci;
     private String descriptionInci;
 
     /**
@@ -23,8 +26,8 @@ public class Incident {
      * @param descriptionInci
      */
 
-public Incident(int idI, String declarantInci, String paysInci, String zipInci, Date dateDebutInci,
-Date dateFinInci, String descriptionInci){
+public Incident(int idI, String declarantInci, String paysInci, String zipInci, DateFormat dateDebutInci,
+DateFormat dateFinInci, String descriptionInci){
     this.idI = idI;
     this.declarantInci = declarantInci;
     this.paysInci = paysInci;
@@ -34,16 +37,33 @@ Date dateFinInci, String descriptionInci){
     this.descriptionInci = descriptionInci;
 }
 
-//le constructeur de la class
-public void __construct(String declaranInci, String paysInci, String zipInci, Date dateDebutInci, String descriptionInci) {
-
+public  Incident(String declarant, Country selectedCountry, String inputzip, Date debut, String inputquoi) throws SQLException {
+    System.out.println("Création d'un incident avec les paramètres suivant quoi : "+inputquoi+" Country : "+selectedCountry+" inputzip : "+inputzip+" créer par :"+declarant);
     //connexion bdd
    dbUtil utl = new dbUtil() ;
    Connection cnx = utl.dbConnect() ;
-   int insert = utl.dbCreate(cnx, "INSERT INTO INCIDENT VALUES('', '', "+declaranInci+", "+paysInci+", "+zipInci+", "+dateDebutInci+", '', "+descriptionInci+")") ;
+   try {
+       String request = "INSERT INTO INCIDENT VALUES(ID_I,'"+declarant+"', '"+selectedCountry+"', '"+inputzip+"', '"+debut+"', '', '"+inputquoi+"')" ;
+       System.out.println(request);
+    int insert = utl.dbCreate(cnx, request) ;
     this.setidI(insert);
-    return this.idI ;
-}
+   } catch(SQLException e){
+    System.out.println(e);
+   }
+    //return this.idI ;
+	}
+ 
+//le constructeur de la class
+// public int __construct(String declaranInci, String paysInci, String zipInci, DateFormat dateDebutInci, String descriptionInci)
+//         throws SQLException {
+//             System.out.println("Création d'un incident avec les paramètres suivant quoi : "+descriptionInci+" Country : "+paysInci+" inputzip : "+zipInci+" créer par :"+declaranInci);
+//     //connexion bdd
+//    dbUtil utl = new dbUtil() ;
+//    Connection cnx = utl.dbConnect() ;
+//    int insert = utl.dbCreate(cnx, "INSERT INTO INCIDENT VALUES('', '', "+declaranInci+", "+paysInci+", "+zipInci+", "+dateDebutInci+", '', "+descriptionInci+")") ;
+//     this.setidI(insert);
+//     return this.idI ;
+// }
 
 /**
 * @return int
@@ -76,14 +96,14 @@ public String getZipInci(){
 /**
  * @return Date
  */
-public Date getDateDebutInci(){
+public DateFormat getDateDebutInci() {
     return dateDebutInci;
 }
 
 /**
  * @return Date
  */
-public Date getDateFinInci(){
+public DateFormat getDateFinInci() {
     return dateFinInci;
 }
 
@@ -125,14 +145,14 @@ public void setZipInci(String zipInci){
 /**
  * @param dateDebutInci
  */
-public void setDateDebutInci(Date dateDebutInci){
+public void setDateDebutInci(DateFormat dateDebutInci){
     this.dateDebutInci = dateDebutInci;
 }
 
 /**
  * @param dateFinInci
  */
-public void setDateFinInci(Date dateFinInci){
+public void setDateFinInci(DateFormat dateFinInci){
     this.dateFinInci = dateFinInci;
 }
 
