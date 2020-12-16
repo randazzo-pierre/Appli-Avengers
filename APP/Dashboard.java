@@ -52,7 +52,7 @@ public class Dashboard extends JFrame {
         // ========CIVIL & ORGANISATION & HERO ========================================
         // ============================================================================
 
-        // ======== BEA ===================
+        // ======== BEA ============ FRONT => OK | BACK => DEV =======
         JButton btnNewButton = new JButton("Incident");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -67,7 +67,7 @@ public class Dashboard extends JFrame {
         btnNewButton.setBounds(50, 20, 250, 50);
         contentPane.add(btnNewButton);
 
-        // ==========THIB====================
+        // ==========THIB============= FRONT => OK | BACK => DEV =======
         // if(user.role == "CIVIL") {
         JButton button2 = new JButton("Formulaire Satisfaction");
         button2.setForeground(new Color(0, 0, 0));
@@ -85,7 +85,7 @@ public class Dashboard extends JFrame {
 
         // }
 
-        // ==========PIERRE=================
+        // ==========PIERRE======== FRONT => OK | BACK => DEV =========
         // if(user.role == "ORGA") {
         JButton button3 = new JButton("Creer mission");
         button3.setForeground(new Color(0, 0, 0));
@@ -102,7 +102,7 @@ public class Dashboard extends JFrame {
 
         // }
 
-        // ==========PIERRE====================
+        // ==========PIERRE============ FRONT => OK | BACK => DEV ========
         // if (user.role == "ORGA" || user.role == "HEROS") {
         JButton button4 = new JButton("Rapport");
         button4.setForeground(new Color(0, 0, 0));
@@ -117,7 +117,7 @@ public class Dashboard extends JFrame {
         button4.setBounds(50, 240, 850, 50);
         contentPane.add(button4);
 
-        // ==========THIBAUT====================
+        // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
         JButton button5 = new JButton("Identifier Vilain");
         button5.setForeground(new Color(0, 0, 0));
         button5.setBackground(new Color(20, 150, 20));
@@ -135,7 +135,7 @@ public class Dashboard extends JFrame {
 
         // }
 
-        // ==========NATHAN====================
+        // ==========NATHAN========FRONT => OK | BACK => DEV =======
         // if (user.role == "ORGA") {
         JButton button6 = new JButton("Satisfaction Info");
         button6.setForeground(new Color(0, 0, 0));
@@ -155,7 +155,7 @@ public class Dashboard extends JFrame {
 
         // }
 
-        // ==========NATHAN====================
+        // ==========NATHAN======== FRONT => DEV | BACK => DEV ============
         JButton button7 = new JButton("Litige");
         button7.setForeground(new Color(0, 0, 0));
         button7.setBackground(new Color(20, 150, 20));
