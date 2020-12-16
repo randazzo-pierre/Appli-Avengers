@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import util.Country;
+
 import acteurs.User;
 
 public class Alerte extends JFrame {
@@ -79,11 +81,13 @@ public class Alerte extends JFrame {
 			textFieldQuoi.setColumns(10);
 			
 			//liste des pays
-			String[] pays = {"Europe", "Afrique", "Amerique", "Russie", "Inde", "Australie"};
-			JComboBox listePays = new JComboBox(pays);			
-        	listePays.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        	listePays.setBounds(481, 170, 281, 68);
-        	contentPane.add(listePays);
+			//String[] pays = {"Europe", "Afrique", "Amerique", "Russie", "Inde", "Australie"};
+			//JComboBox listePays = new JComboBox(pays);			
+        //	listePays.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        	//listePays.setBounds(481, 170, 281, 68);
+			//contentPane.add(listePays);
+			Country[] listCountry = createCountryList();
+      		comboCountry = new JComboBox<>(listCountry);
 			//listePays.setColumns(10);
 
 			
