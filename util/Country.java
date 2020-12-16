@@ -39,21 +39,6 @@ public class Country implements Comparable<Country> {
     public int compareTo(Country anotherCountry) {
         return this.name.compareTo(anotherCountry.getName());
     }      
-    private Country[] createCountryList() {
-        String[] countryCodes = Locale.getISOCountries();
-        Country[] listCountry = new Country[countryCodes.length];
-     
-        for (int i = 0; i < countryCodes.length; i++) {
-            Locale locale = new Locale("", countryCodes[i]);
-            String code = locale.getCountry();
-            String name = locale.getDisplayCountry();
-     
-            listCountry[i] = new Country(code, name);
-        }
-     
-        Arrays.sort(listCountry);
-     
-        return listCountry;
-    }
+    
     
 }
