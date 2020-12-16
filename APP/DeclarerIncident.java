@@ -18,9 +18,11 @@ import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
 
+import actions.Incident;
+
 import util.Country;
 
-public class Alerte extends JFrame {
+public class DeclarerIncident extends JFrame {
 
 	 private static final long serialVersionUID = 1 ;
 		private JPanel contentPane;
@@ -69,7 +71,7 @@ public class Alerte extends JFrame {
 * @param user
 */
 	    
-	    public Alerte (User user) {
+	    public DeclarerIncident (User user) {
 
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setBounds(450, 190, 1014, 597);
@@ -86,7 +88,7 @@ public class Alerte extends JFrame {
 	        //============================================================================
 		   
 			//Titre page
-			JLabel lblNewLabel = new JLabel("Alerte");
+			JLabel lblNewLabel = new JLabel("Déclarer un incident");
        		lblNewLabel.setForeground(Color.BLACK);
         	lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
         	lblNewLabel.setBounds(423, 4, 273, 93);
@@ -157,7 +159,25 @@ public class Alerte extends JFrame {
 	        btnEnvoyer.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	        btnEnvoyer.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
+					//Au clique sur le boutton envoyer
+					//On récupère le texte de ce qu'il se passe :
+				String inputquoi = textFieldQuoi.getText() ;
+					//On récupère le pays
+					Country selectedCountry = (Country) comboCountry.getSelectedItem();
 
+					//On récupère le zipCode
+				String	inputzip = textFieldZip.getText() ;
+
+					//on récupère le déclarant :
+					User usr ;
+				String declarant = usr.getUsername() ;
+
+				//La date de début
+				Date debut = new Date.getDate() ;
+					//Maintenant on crée un objet Incident avec les propriétés qui vont bien
+					System.out.println("Quoi : "+inputquoi+" Country : "+selectedCountry+" inputzip : "+inputzip);
+				
+					Incident inc = new Incident(declarant, selectedCountry, inputzip, debut, inputquoi) ;
 	            }
 	        });
 	        btnEnvoyer.setBounds(550, 392, 162, 73);
