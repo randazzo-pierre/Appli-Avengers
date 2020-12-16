@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,6 +17,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
+
+import util.Country;
 
 public class Alerte extends JFrame {
 
@@ -41,7 +44,24 @@ public class Alerte extends JFrame {
 	                }
 	            }
 	        });
-	    }
+		}
+		
+		private Country[] createCountryList() {
+			String[] countryCodes = Locale.getISOCountries();
+			Country[] listCountry = new Country[countryCodes.length];
+		 
+			for (int i = 0; i < countryCodes.length; i++) {
+				Locale locale = new Locale("", countryCodes[i]);
+				String code = locale.getCountry();
+				String name = locale.getDisplayCountry();
+		 
+				listCountry[i] = new Country(code, name);
+			}
+		 
+			Arrays.sort(listCountry);
+		 
+			return listCountry;
+		}
 
 
 /**
@@ -102,7 +122,9 @@ public class Alerte extends JFrame {
         	listePays.setFont(new Font("Tahoma", Font.PLAIN, 32));
         	listePays.setBounds(481, 170, 281, 68);
 			contentPane.add(listePays); */
-			
+			Country[] listCountry = createCountryList();
+			JComboBox<Country> comboCountry = new JComboBox<>(listCountry);
+			contentPane.add(comboCountry) ;
 			//zone de texte pays
 			textFieldPays = new JTextField();
         	textFieldPays.setFont(new Font("Tahoma", Font.PLAIN, 18));
