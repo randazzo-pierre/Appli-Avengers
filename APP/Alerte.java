@@ -124,13 +124,15 @@ public class Alerte extends JFrame {
 			contentPane.add(listePays); */
 			Country[] listCountry = createCountryList();
 			JComboBox<Country> comboCountry = new JComboBox<>(listCountry);
+			comboCountry.setBounds(310, 200, 550, 50);
 			contentPane.add(comboCountry) ;
+			
 			//zone de texte pays
-			textFieldPays = new JTextField();
+			/* textFieldPays = new JTextField();
         	textFieldPays.setFont(new Font("Tahoma", Font.PLAIN, 18));
         	textFieldPays.setBounds(310, 200, 550, 50);
         	contentPane.add(textFieldPays);
-			textFieldPays.setColumns(10);
+			textFieldPays.setColumns(10); */
 				
 			//libelle code zip
 			JLabel lblZip = new JLabel("C'est ou exactement ?");
