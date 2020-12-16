@@ -80,7 +80,8 @@ public Dashboard (User user) {
     button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
     button2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-
+                    FormulaireSatisfaction formulaireSatisfaction = new FormulaireSatisfaction(user);
+                    formulaireSatisfaction.setVisible(true);
                         }
     });
     button2.setBounds(450, 20, 450, 50);
