@@ -10,22 +10,22 @@ public class Appartenir {
      * @param idO
      * @param idI
      */
-    public Appartenir(int idO, int idI) {
+    public Appartenir(int idO, int idC) {
         this.idO = idO;
         this.idC = idC;
     }
     /**
      * @return int
      */
-    public String getidO() {
+    public int getidO() {
         return idO;
     }
 
     /**
      * @return int
      */
-    public String getidI() {
-        return idI;
+    public int getidC() {
+        return idC;
     }
 
 

@@ -17,12 +17,12 @@ public class Causer {
     /**
      * @return int
      */
-    public String getidV() { return idV; }
+    public int getidV() { return idV; }
 
     /**
      * @return int
      */
-    public String getidCI() {
+    public int getidCI() {
         return idCI;
     }
 

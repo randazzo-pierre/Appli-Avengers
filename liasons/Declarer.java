@@ -10,19 +10,19 @@ public class Declarer {
      * @param idV
      * @param idI
      */
-    public Declarer(int idC, int idCI) {
+    public Declarer(int idC, int idI) {
         this.idC = idC;
         this.idI = idI;
     }
     /**
      * @return int
      */
-    public String getidC() { return idC; }
+    public int getidC() { return idC; }
 
     /**
      * @return int
      */
-    public String getidI() {
+    public int getidI() {
         return idI;
     }
 

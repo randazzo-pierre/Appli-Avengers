@@ -17,12 +17,12 @@ public class Delivrer {
     /**
      * @return int
      */
-    public String getidC() { return idC; }
+    public int getidC() { return idC; }
 
     /**
      * @return int
      */
-    public String getidI() {
+    public int getidI() {
         return idI;
     }
 

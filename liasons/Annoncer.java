@@ -12,19 +12,19 @@ public class Annoncer {
      */
     public Annoncer(int idO, int idI) {
         this.idO = idO;
-        this.idC = idI;
+        this.idI = idI;
     }
     /**
      * @return int
      */
-    public String getidO() {
+    public int getidO() {
         return idO;
     }
 
     /**
      * @return int
      */
-    public String getidI() {
+    public int getidI() {
         return idI;
     }
 
@@ -33,7 +33,7 @@ public class Annoncer {
      * @param idC
      */
     public void setIdC(int idI) {
-        this.idC = idI;
+        this.idI = idI;
     }
 
     /**

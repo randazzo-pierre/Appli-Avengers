@@ -17,14 +17,14 @@ public class Lier {
     /**
      * @return int
      */
-    public String getidV() {
+    public int getidV() {
         return idV;
     }
 
     /**
      * @return int
      */
-    public String getidCR() {
+    public int getidCR() {
         return idCR;
     }
 

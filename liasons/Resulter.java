@@ -17,12 +17,12 @@ public class Resulter {
     /**
      * @return int
      */
-    public String getidL() { return idL; }
+    public int getidL() { return idL; }
 
     /**
      * @return int
      */
-    public String getidH() {
+    public int getidH() {
         return idH;
     }
 

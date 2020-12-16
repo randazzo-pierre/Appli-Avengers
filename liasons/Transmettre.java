@@ -17,12 +17,12 @@ public class Transmettre {
     /**
      * @return int
      */
-    public String getidO() { return idO; }
+    public int getidO() { return idO; }
 
     /**
      * @return int
      */
-    public String getidR() {
+    public int getidR() {
         return idR;
     }
 

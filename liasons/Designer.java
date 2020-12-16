@@ -17,14 +17,14 @@ public class Designer {
     /**
      * @return int
      */
-    public String getidV() {
+    public int getidV() {
         return idV;
     }
 
     /**
      * @return int
      */
-    public String getidCI() {
+    public int getidCI() {
         return idCI;
     }
 

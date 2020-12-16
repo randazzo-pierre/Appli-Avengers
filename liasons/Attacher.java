@@ -17,14 +17,14 @@ public class Attacher {
     /**
      * @return int
      */
-    public String getidH() {
+    public int getidH() {
         return idH;
     }
 
     /**
      * @return int
      */
-    public String getidCI() {
+    public int getidCI() {
         return idCI;
     }
 
