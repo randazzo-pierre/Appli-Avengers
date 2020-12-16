@@ -47,6 +47,8 @@ public  Incident(String declarant, Country selectedCountry, String inputzip, Dat
        System.out.println(request);
     int insert = utl.dbCreate(cnx, request) ;
     this.setidI(insert);
+    utl.dbKill(cnx) ;
+    System.out.println("insertion ok");
    } catch(SQLException e){
     System.out.println(e);
    }
