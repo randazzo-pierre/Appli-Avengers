@@ -99,17 +99,18 @@ public class UserLogin extends JFrame {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
-                        "dbroot", "QeTuZ2LFJfSqtbpe");
+                    Connection connection = (Connection) DriverManager.getConnection(
+                            "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                            "dbroot", "QeTuZ2LFJfSqtbpe");
 
-                    PreparedStatement st = (PreparedStatement) connection
-                        .prepareStatement("Select username, password, role, create_time, id from USER where username=? and password=?");
+                    PreparedStatement st = (PreparedStatement) connection.prepareStatement(
+                            "Select username, password, role, create_time, id from USER where username=? and password=?");
 
                     st.setString(1, userName);
                     st.setString(2, password);
                     ResultSet rs = st.executeQuery();
-                    if (rs.next()) {  // while (rs.next())
-                    	User user = new User(rs.getString(1),null,rs.getString(3),null,rs.getInt(5));
+                    if (rs.next()) { // while (rs.next())
+                        User user = new User(rs.getString(1), null, rs.getString(3), null, rs.getInt(5));
                         dispose();
                         UserHome ah = new UserHome(user);
                         ah.setVisible(true);

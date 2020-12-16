@@ -1,8 +1,7 @@
 {
-    "java.project.referencedLibraries": {
-        "include": [
-            "lib/**/*.jar",
-            "d:\\AppliAvengers\\connector\\mysql-connector-java-5.1.49\\mysql-connector-java-5.1.49-bin.jar"
-        ]
-    }
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\AppliAvengers\\connector\\mysql-connector-java-5.1.49\\mysql-connector-java-5.1.49-bin.jar",
+        "c:\\Users\\Pc\\Desktop\\java Avenger\\mysql-connector-java-5.1.49\\mysql-connector-java-5.1.49-bin.jar"
+    ]
 }
