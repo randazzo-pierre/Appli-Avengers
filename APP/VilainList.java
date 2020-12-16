@@ -1,10 +1,18 @@
 package APP;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
 
 import acteurs.User;
 
@@ -45,11 +53,63 @@ public VilainList (User user) {
     
     
     //==========Content==============
+
+    JLabel lblForm = new JLabel("Identifier un vilain");
+	lblForm.setForeground(Color.BLACK);
+	lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+	lblForm.setBounds(350, 5, 500, 93);
+	contentPane.add(lblForm);
+    
+    JLabel lblCivil = new JLabel("Civil");
+    lblCivil.setForeground(Color.BLACK);
+    lblCivil.setBackground(Color.CYAN);
+    lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 31));
+    lblCivil.setBounds(125, 150, 193, 52);
+	contentPane.add(lblCivil);
+			
+	JTextField textFieldCivil = new JTextField();
+    textFieldCivil.setFont(new Font("Tahoma", Font.PLAIN, 32));
+    textFieldCivil.setBounds(330, 150, 550, 50);
+    contentPane.add(textFieldCivil);
+	textFieldCivil.setColumns(10);
+
+
+    JLabel lblVilain = new JLabel("Vilain");
+    lblVilain.setForeground(Color.BLACK);
+    lblVilain.setBackground(Color.CYAN);
+    lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 31));
+    lblVilain.setBounds(125, 250, 193, 52);
+	contentPane.add(lblVilain);
+			
+	JTextField textFieldVilain = new JTextField();
+    textFieldVilain.setFont(new Font("Tahoma", Font.PLAIN, 32));
+    textFieldVilain.setBounds(330, 250, 550, 50);
+    contentPane.add(textFieldVilain);
+    textFieldVilain.setColumns(10);
     
     
+    // BOUTONS
+
+	JButton btnReset = new JButton("Reinitialiser");
+	btnReset.setForeground(new Color(0, 0, 0));
+	btnReset.setBackground(UIManager.getColor("Button.disabledForeground"));
+	btnReset.setFont(new Font("Tahoma", Font.PLAIN, 39));
+	btnReset.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	    }
+	});
+	btnReset.setBounds(150, 400, 350, 50);
+	contentPane.add(btnReset);
+	JButton btnSumbit = new JButton("Valider");
+	btnSumbit.setForeground(new Color(0, 0, 0));
+	btnSumbit.setBackground(UIManager.getColor("Button.disabledForeground"));
+	btnSumbit.setFont(new Font("Tahoma", Font.PLAIN, 39));
+	btnSumbit.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	    }
+	});
+	btnSumbit.setBounds(550, 400, 350, 50);
+	contentPane.add(btnSumbit);
 }
-
-
-
 
 }
