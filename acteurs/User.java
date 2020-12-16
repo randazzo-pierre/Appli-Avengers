@@ -7,7 +7,7 @@ public class User {
     private String password;
     public String role;
     public String create_time;
-	protected int id;
+	public int id;
     
     public User(String username, String password, String role, String create_time, int id) {
    

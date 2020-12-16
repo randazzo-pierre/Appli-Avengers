@@ -20,6 +20,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import acteurs.User;
+
 public class UserLogin extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -101,14 +103,16 @@ public class UserLogin extends JFrame {
                         "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                        .prepareStatement("Select username, password from USER where username=? and password=?");
+                        .prepareStatement("Select * from USER where username=? and password=?");
 
                     st.setString(1, userName);
                     st.setString(2, password);
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
+                    	User user = rs.getObject(0, User.class);
+                    	
                         dispose();
-                        UserHome ah = new UserHome(userName);
+                        UserHome ah = new UserHome(user);
                         ah.setTitle("Bienvenue");
                         ah.setVisible(true);
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");

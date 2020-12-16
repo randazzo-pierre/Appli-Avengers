@@ -57,8 +57,8 @@ public Dashboard (User user) {
     //========CIVIL & ORGANISATION & HERO ========================================
     //============================================================================
     
-    
-    JButton btnNewButton = new JButton("Alerte");
+    if (user.role == "CIVIL") {
+    	JButton btnNewButton = new JButton("Alerte");
     btnNewButton.setForeground(new Color(0, 0, 0));
     btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
     btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -71,6 +71,8 @@ public Dashboard (User user) {
     });
     btnNewButton.setBounds(50, 20, 250, 50);
     contentPane.add(btnNewButton);
+    }
+    
     
     
     JButton button2 = new JButton("Formulaire Satisfaction");
@@ -167,5 +169,11 @@ public Dashboard (User user) {
     });
     button7.setBounds(50, 480, 850, 50);
     contentPane.add(button7);
+}
+
+
+private void println(User user) {
+	// TODO Auto-generated method stub
+	
 }
 }

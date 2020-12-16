@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import acteurs.User;
+
 public class UserHome extends JFrame {
 
     private static final long serialVersionUID = 1 ;
@@ -41,8 +43,8 @@ public class UserHome extends JFrame {
     /**
      * Create the frame.
      */
-    public UserHome(String userSes) {
-
+    public UserHome(User user) {
+    	System.out.println(user);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -80,7 +82,7 @@ public class UserHome extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	Dashboard bo = new Dashboard(null);
+            	Dashboard bo = new Dashboard(user);
                 bo.setTitle("Dashboard");
                 bo.setVisible(true);
             }
