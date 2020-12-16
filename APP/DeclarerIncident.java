@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -163,34 +164,48 @@ public class DeclarerIncident extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Au clique sur le boutton envoyer
 				// On récupère le texte de ce qu'il se passe :
-				String inputquoi = textFieldQuoi.getText();
+				
 				// On récupère le pays
-				Country selectedCountry = (Country) comboCountry.getSelectedItem();
-
+				
 				// On récupère le zipCode
-				String inputzip = textFieldZip.getText();
-
-				// on récupère le déclarant :
-				// User usr = new User() ;
-				int declarant = user.id;
-
-				// La date de début
-				Date debut = new Date();
-				// Maintenant on crée un objet Incident avec les propriétés qui vont bien
-				System.out.println("Quoi : " + inputquoi + " Country : " + selectedCountry + " inputzip : " + inputzip);
-				try {
-					Incident inc = new Incident(declarant, selectedCountry, inputzip, debut, inputquoi);
-				} catch (SQLDataException err) {
-					System.out.println(err);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(textFieldZip.getText().isEmpty() || textFieldQuoi.getText().isEmpty()){
+					//error
+					JOptionPane.showMessageDialog(btnEnvoyer, "Vous devez completer tous les champs");
+				} else {
+					String inputquoi = textFieldQuoi.getText();
+					int declarant = user.id;
+					Date debut = new Date();
+					String inputzip = textFieldZip.getText();
+					Country selectedCountry = (Country) comboCountry.getSelectedItem();
+					try {
+						Incident inc = new Incident(declarant, selectedCountry, inputzip, debut, inputquoi);
+						JOptionPane.showMessageDialog(btnEnvoyer, "Incident envoyé aux Avengers !! ça va bien se passer");
+					} catch (SQLDataException err) {
+						System.out.println(err);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
+				
 					
 	            }
 	        });
 	        btnEnvoyer.setBounds(550, 392, 162, 73);
 			contentPane.add(btnEnvoyer);
+
+			JButton button2 = new JButton("Retour");
+        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Dashboard bo = new Dashboard(user);
+                bo.setTitle("Dashboard " + user.role);
+                bo.setVisible(true);
+            }
+        });
+        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
+        button2.setBounds(100, 400, 200, 100);
+        contentPane.add(button2);
 			
 			label = new JLabel("");
         	label.setBounds(0, 0, 1008, 562);
