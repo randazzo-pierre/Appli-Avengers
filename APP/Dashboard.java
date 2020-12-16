@@ -124,7 +124,7 @@ public Dashboard (User user) {
     contentPane.add(button4);
     
     
-  //==========NATHAN====================
+  //==========THIBAUT====================
     JButton button5 = new JButton("Identifier Vilain");
     button5.setForeground(new Color(0, 0, 0));
     button5.setBackground(new Color(20, 150, 20));

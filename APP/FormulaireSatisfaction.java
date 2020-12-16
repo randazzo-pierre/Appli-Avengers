@@ -128,7 +128,7 @@ public class FormulaireSatisfaction extends JFrame{
 
 			JTextField textFieldScore = new JTextField();
     		textFieldScore.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldScore.setBounds(250, 375, 250, 50);
+    		textFieldScore.setBounds(250, 375, 550, 50);
     		contentPane.add(textFieldScore);
 			textFieldScore.setColumns(10);
 
