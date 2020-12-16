@@ -58,15 +58,15 @@ public Dashboard (User user) {
     //============================================================================
     
     // ======== BEA ===================
-    	JButton btnNewButton = new JButton("Alerte");
+    	JButton btnNewButton = new JButton("Incident");
     btnNewButton.setForeground(new Color(0, 0, 0));
     btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
     btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
     btnNewButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-        		Alerte alert = new Alerte(user);
+        		DeclarerIncident incident = new DeclarerIncident(user);
         		//alert.setTitle();
-        		alert.setVisible(true);
+        		incident.setVisible(true);
         }
     });
     btnNewButton.setBounds(50, 20, 250, 50);

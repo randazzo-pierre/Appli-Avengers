@@ -20,7 +20,7 @@ import acteurs.User;
 
 import util.Country;
 
-public class Alerte extends JFrame {
+public class DeclarerIncident extends JFrame {
 
 	 private static final long serialVersionUID = 1 ;
 		private JPanel contentPane;
@@ -69,7 +69,7 @@ public class Alerte extends JFrame {
 * @param user
 */
 	    
-	    public Alerte (User user) {
+	    public DeclarerIncident (User user) {
 
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setBounds(450, 190, 1014, 597);
@@ -86,7 +86,7 @@ public class Alerte extends JFrame {
 	        //============================================================================
 		   
 			//Titre page
-			JLabel lblNewLabel = new JLabel("Alerte");
+			JLabel lblNewLabel = new JLabel("Déclarer un Incident");
        		lblNewLabel.setForeground(Color.BLACK);
         	lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
         	lblNewLabel.setBounds(423, 4, 273, 93);
