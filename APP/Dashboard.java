@@ -100,7 +100,9 @@ public Dashboard (User user) {
     button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
     button3.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-
+        	CreateMission CreateMission = new CreateMission(user);
+        	CreateMission.setTitle("Mission");
+        	CreateMission.setVisible(true);
                         }
     });
     button3.setBounds(50, 160, 850, 50);
@@ -117,6 +119,9 @@ public Dashboard (User user) {
     button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
     button4.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+        	RapportMission RapportMission = new RapportMission(user);
+        	RapportMission.setTitle("Rapport");
+        	RapportMission.setVisible(true);
 
                         }
     });
