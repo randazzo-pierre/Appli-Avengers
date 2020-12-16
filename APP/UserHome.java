@@ -8,10 +8,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import acteurs.User;
 
 public class UserHome extends JFrame {
 
@@ -41,7 +46,7 @@ public class UserHome extends JFrame {
     /**
      * Create the frame.
      */
-    public UserHome(String userSes) {
+    public UserHome(User user) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -50,6 +55,14 @@ public class UserHome extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        
+        
+        JLabel textHome = new JLabel("Bievenue "+ user.username + " sur l'application Avengers, ton role actuel est :  " + user.role);
+        textHome.setForeground(new Color(0, 0, 0));
+        textHome.setBounds(247, 20, 491, 20);
+        contentPane.add(textHome);
+        
+        
         JButton btnNewButton = new JButton("Logout");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -80,8 +93,8 @@ public class UserHome extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	Dashboard bo = new Dashboard(null);
-                bo.setTitle("Dashboard");
+            	Dashboard bo = new Dashboard(user);
+                bo.setTitle(user.role);
                 bo.setVisible(true);
             }
         });

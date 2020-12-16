@@ -3,7 +3,7 @@ package acteurs;
 public class User {
 
     
-    public static String username;
+    public String username;
     private String password;
     public String role;
     public String create_time;
@@ -11,7 +11,7 @@ public class User {
     
     public User(String username, String password, String role, String create_time, int id) {
    
-   User.username = username;
+   this.username = username;
    this.password = password;
    this.role = role;
    this.create_time = create_time;

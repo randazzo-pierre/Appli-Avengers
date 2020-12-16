@@ -57,8 +57,8 @@ public Dashboard (User user) {
     //========CIVIL & ORGANISATION & HERO ========================================
     //============================================================================
     
-    if (user.role == "CIVIL") {
-    	JButton btnNewButton = new JButton("Alerte");
+
+    	JButton btnNewButton = new JButton(user.role);
     btnNewButton.setForeground(new Color(0, 0, 0));
     btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
     btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -71,10 +71,10 @@ public Dashboard (User user) {
     });
     btnNewButton.setBounds(50, 20, 250, 50);
     contentPane.add(btnNewButton);
-    }
     
     
     
+    //if(user.role == "CIVIL") {
     JButton button2 = new JButton("Formulaire Satisfaction");
     button2.setForeground(new Color(0, 0, 0));
     button2.setBackground(new Color(20, 150, 20));
@@ -89,10 +89,10 @@ public Dashboard (User user) {
     button2.setBounds(450, 20, 450, 50);
     contentPane.add(button2);
     
-    
-    
-    //============================================================================
-    
+   // }
+
+
+    //if(user.role == "ORGA") {
     
     JButton button3 = new JButton("Creer mission");
     button3.setForeground(new Color(0, 0, 0));
@@ -107,11 +107,10 @@ public Dashboard (User user) {
     button3.setBounds(50, 160, 850, 50);
     contentPane.add(button3);
     
-    
-    //============================================================================   
-    
+    //}
     
     
+   // if (user.role == "ORGA" || user.role == "HEROS") {
     JButton button4 = new JButton("Rapport");
     button4.setForeground(new Color(0, 0, 0));
     button4.setBackground(new Color(20, 150, 20));
@@ -140,8 +139,10 @@ public Dashboard (User user) {
     button5.setBounds(50, 320, 850, 50);
     contentPane.add(button5);
     
+    //}
     
     
+    //if (user.role == "ORGA") {
     JButton button6 = new JButton("Satisfaction Info");
     button6.setForeground(new Color(0, 0, 0));
     button6.setBackground(new Color(20, 150, 20));
@@ -154,6 +155,8 @@ public Dashboard (User user) {
     });
     button6.setBounds(50, 400, 850, 50);
     contentPane.add(button6);
+    
+    //}
     
     
     
@@ -169,11 +172,8 @@ public Dashboard (User user) {
     });
     button7.setBounds(50, 480, 850, 50);
     contentPane.add(button7);
+
 }
 
 
-private void println(User user) {
-	// TODO Auto-generated method stub
-	
-}
 }
