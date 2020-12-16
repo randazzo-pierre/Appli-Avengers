@@ -1,6 +1,8 @@
 package actions;
 
 import java.util.*;
+import java.sql.*;
+import util.*;
 
 public class Incident {
     private int idI;
@@ -30,6 +32,17 @@ Date dateFinInci, String descriptionInci){
     this.dateDebutInci = dateDebutInci;
     this.dateFinInci = dateFinInci;
     this.descriptionInci = descriptionInci;
+}
+
+//le constructeur de la class
+public void __construct(String declaranInci, String paysInci, String zipInci, Date dateDebutInci, String descriptionInci) {
+
+    //connexion bdd
+   dbUtil utl = new dbUtil() ;
+   Connection cnx = utl.dbConnect() ;
+   int insert = utl.dbCreate(cnx, "INSERT INTO INCIDENT VALUES('', '', "+declaranInci+", "+paysInci+", "+zipInci+", "+dateDebutInci+", '', "+descriptionInci+")") ;
+    this.setidI(insert);
+    return this.idI ;
 }
 
 /**
