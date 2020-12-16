@@ -57,8 +57,8 @@ public Dashboard (User user) {
     //========CIVIL & ORGANISATION & HERO ========================================
     //============================================================================
     
-
-    	JButton btnNewButton = new JButton(user.role);
+    // ======== BEA ===================
+    	JButton btnNewButton = new JButton("Alerte");
     btnNewButton.setForeground(new Color(0, 0, 0));
     btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
     btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -73,7 +73,7 @@ public Dashboard (User user) {
     contentPane.add(btnNewButton);
     
     
-    
+    //==========THIB====================
     //if(user.role == "CIVIL") {
     JButton button2 = new JButton("Formulaire Satisfaction");
     button2.setForeground(new Color(0, 0, 0));
@@ -91,9 +91,8 @@ public Dashboard (User user) {
     
    // }
 
-
+    //==========PIERRE=================
     //if(user.role == "ORGA") {
-    
     JButton button3 = new JButton("Creer mission");
     button3.setForeground(new Color(0, 0, 0));
     button3.setBackground(new Color(20, 150, 20));
@@ -109,7 +108,7 @@ public Dashboard (User user) {
     
     //}
     
-    
+  //==========PIERRE====================
    // if (user.role == "ORGA" || user.role == "HEROS") {
     JButton button4 = new JButton("Rapport");
     button4.setForeground(new Color(0, 0, 0));
@@ -125,7 +124,7 @@ public Dashboard (User user) {
     contentPane.add(button4);
     
     
-    
+  //==========NATHAN====================
     JButton button5 = new JButton("Identifier Vilain");
     button5.setForeground(new Color(0, 0, 0));
     button5.setBackground(new Color(20, 150, 20));
@@ -133,7 +132,9 @@ public Dashboard (User user) {
     button5.setFont(new Font("Tahoma", Font.PLAIN, 39));
     button5.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-
+        	VilainList vilain = new VilainList(user);
+    		vilain.setTitle("Identifier un Vilain");
+        	vilain.setVisible(true);
                         }
     });
     button5.setBounds(50, 320, 850, 50);
@@ -141,7 +142,7 @@ public Dashboard (User user) {
     
     //}
     
-    
+    //==========NATHAN====================
     //if (user.role == "ORGA") {
     JButton button6 = new JButton("Satisfaction Info");
     button6.setForeground(new Color(0, 0, 0));
@@ -150,6 +151,9 @@ public Dashboard (User user) {
     button6.setFont(new Font("Tahoma", Font.PLAIN, 39));
     button6.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+        	SatisfactionList list = new SatisfactionList(user);
+    		list.setTitle("Liste des Satisfactions");
+        	list.setVisible(true);
 
                         }
     });
@@ -159,7 +163,7 @@ public Dashboard (User user) {
     //}
     
     
-    
+    //==========NATHAN====================
     JButton button7 = new JButton("Litige");
     button7.setForeground(new Color(0, 0, 0));
     button7.setBackground(new Color(20, 150, 20));
@@ -167,6 +171,9 @@ public Dashboard (User user) {
     button7.setFont(new Font("Tahoma", Font.PLAIN, 39));
     button7.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
+        	Litige litige = new Litige(user);
+        	litige.setTitle("Creer un Litige");
+        	litige.setVisible(true);
 
                         }
     });
