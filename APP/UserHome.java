@@ -102,7 +102,7 @@ public class UserHome extends JFrame {
         button.setBackground(UIManager.getColor("Button.disabledForeground"));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ChangePassword bo = new ChangePassword();
+                ChangePassword bo = new ChangePassword(user);
                 bo.setTitle("Change Password");
                 bo.setVisible(true);
 

@@ -45,7 +45,7 @@ public class ChangePassword extends JFrame {
     /**
      * Create the frame.
      */
-    public ChangePassword() {
+    public ChangePassword(User user) {
         setBounds(450, 360, 1024, 234);
         setResizable(false);
 
@@ -66,17 +66,18 @@ public class ChangePassword extends JFrame {
 
                 String pstr = textField.getText();
                 try {
-                    System.out.println("update password name " + User.username);
+                    System.out.println("update password name " + user.username);
                     System.out.println("update password");
 
-                    Connection con =  DriverManager.getConnection("jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                    Connection con = DriverManager.getConnection(
+                            "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) con
-                        .prepareStatement("Update USER set password=? where username=?");
+                            .prepareStatement("Update USER set password=? where username=?");
 
                     st.setString(1, pstr);
-                    st.setString(2, User.username);
+                    st.setString(2, user.username);
                     st.executeUpdate();
                     JOptionPane.showMessageDialog(btnSearch, "Password has been successfully changed");
 
