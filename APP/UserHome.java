@@ -50,8 +50,6 @@ public class UserHome extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        
-        
         JButton btnNewButton = new JButton("Logout");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -78,27 +76,26 @@ public class UserHome extends JFrame {
         contentPane.add(btnNewButton);
         
         
-        JButton button2 = new JButton("DashBoard");
-        button2.setForeground(new Color(0, 0, 0));
-        button2.setBackground(new Color(20, 150, 20));
+        JButton button2 = new JButton("Dashboard");
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	Dashboard bo = new Dashboard(userSes);
-               // bo.setTitle();
+            	Dashboard bo = new Dashboard(null);
+                bo.setTitle("Dashboard");
                 bo.setVisible(true);
-                            }
+            }
         });
+        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
         button2.setBounds(247, 250, 491, 114);
         contentPane.add(button2);
+        
         
         
         JButton button = new JButton("Change-password\r\n");
         button.setBackground(UIManager.getColor("Button.disabledForeground"));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ChangePassword bo = new ChangePassword(userSes);
+                ChangePassword bo = new ChangePassword();
                 bo.setTitle("Change Password");
                 bo.setVisible(true);
 

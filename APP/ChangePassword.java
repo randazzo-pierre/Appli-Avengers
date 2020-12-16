@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import acteurs.User;
+
 public class ChangePassword extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +45,7 @@ public class ChangePassword extends JFrame {
     /**
      * Create the frame.
      */
-    public ChangePassword(String name) {
+    public ChangePassword() {
         setBounds(450, 360, 1024, 234);
         setResizable(false);
 
@@ -64,17 +66,17 @@ public class ChangePassword extends JFrame {
 
                 String pstr = textField.getText();
                 try {
-                    System.out.println("update password name " + name);
+                    System.out.println("update password name " + User.username);
                     System.out.println("update password");
 
                     Connection con =  DriverManager.getConnection("jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) con
-                        .prepareStatement("Update student set password=? where name=?");
+                        .prepareStatement("Update USER set password=? where username=?");
 
                     st.setString(1, pstr);
-                    st.setString(2, name);
+                    st.setString(2, User.username);
                     st.executeUpdate();
                     JOptionPane.showMessageDialog(btnSearch, "Password has been successfully changed");
 

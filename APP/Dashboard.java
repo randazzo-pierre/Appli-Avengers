@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import acteurs.User;
+
 public class Dashboard extends JFrame {
 
 		
@@ -39,7 +41,7 @@ public class Dashboard extends JFrame {
 /**
  * Create the frame.
  */
-public Dashboard (String userSes) {
+public Dashboard (User user) {
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(450, 190, 1014, 597);
@@ -50,7 +52,13 @@ public Dashboard (String userSes) {
     contentPane.setLayout(null);
     
     
-    JButton btnNewButton = new JButton("X1");
+    
+    //============================================================================
+    //========CIVIL & ORGANISATION & HERO ========================================
+    //============================================================================
+    
+    
+    JButton btnNewButton = new JButton("Alerte");
     btnNewButton.setForeground(new Color(0, 0, 0));
     btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
     btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -60,11 +68,11 @@ public Dashboard (String userSes) {
 
         }
     });
-    btnNewButton.setBounds(247, 100, 491, 114);
+    btnNewButton.setBounds(50, 20, 250, 50);
     contentPane.add(btnNewButton);
     
     
-    JButton button2 = new JButton("X2");
+    JButton button2 = new JButton("Formulaire Satisfaction");
     button2.setForeground(new Color(0, 0, 0));
     button2.setBackground(new Color(20, 150, 20));
     button2.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -74,9 +82,88 @@ public Dashboard (String userSes) {
 
                         }
     });
-    button2.setBounds(247, 250, 491, 114);
+    button2.setBounds(450, 20, 450, 50);
     contentPane.add(button2);
     
     
+    
+    //============================================================================
+    
+    
+    JButton button3 = new JButton("Creer mission");
+    button3.setForeground(new Color(0, 0, 0));
+    button3.setBackground(new Color(20, 150, 20));
+    button3.setBackground(UIManager.getColor("Button.disabledForeground"));
+    button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
+    button3.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+
+                        }
+    });
+    button3.setBounds(50, 160, 850, 50);
+    contentPane.add(button3);
+    
+    
+    //============================================================================   
+    
+    
+    
+    JButton button4 = new JButton("Rapport");
+    button4.setForeground(new Color(0, 0, 0));
+    button4.setBackground(new Color(20, 150, 20));
+    button4.setBackground(UIManager.getColor("Button.disabledForeground"));
+    button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
+    button4.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+
+                        }
+    });
+    button4.setBounds(50, 240, 850, 50);
+    contentPane.add(button4);
+    
+    
+    
+    JButton button5 = new JButton("Identifier Vilain");
+    button5.setForeground(new Color(0, 0, 0));
+    button5.setBackground(new Color(20, 150, 20));
+    button5.setBackground(UIManager.getColor("Button.disabledForeground"));
+    button5.setFont(new Font("Tahoma", Font.PLAIN, 39));
+    button5.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+
+                        }
+    });
+    button5.setBounds(50, 320, 850, 50);
+    contentPane.add(button5);
+    
+    
+    
+    JButton button6 = new JButton("Satisfaction Info");
+    button6.setForeground(new Color(0, 0, 0));
+    button6.setBackground(new Color(20, 150, 20));
+    button6.setBackground(UIManager.getColor("Button.disabledForeground"));
+    button6.setFont(new Font("Tahoma", Font.PLAIN, 39));
+    button6.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+
+                        }
+    });
+    button6.setBounds(50, 400, 850, 50);
+    contentPane.add(button6);
+    
+    
+    
+    JButton button7 = new JButton("Litige");
+    button7.setForeground(new Color(0, 0, 0));
+    button7.setBackground(new Color(20, 150, 20));
+    button7.setBackground(UIManager.getColor("Button.disabledForeground"));
+    button7.setFont(new Font("Tahoma", Font.PLAIN, 39));
+    button7.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+
+                        }
+    });
+    button7.setBounds(50, 480, 850, 50);
+    contentPane.add(button7);
 }
 }
