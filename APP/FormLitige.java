@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
 
-public class FormulaireSatisfaction extends JFrame{
+public class FormLitige extends JFrame{
 
 	 private static final long serialVersionUID = 1 ;
 	    private JPanel contentPane;
@@ -41,7 +41,7 @@ public class FormulaireSatisfaction extends JFrame{
 		 * Create the frame.
 		 * @param user
 		 */
-	    public FormulaireSatisfaction (User user) {
+	    public FormLitige (User user) {
 
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setBounds(450, 190, 1014, 597);
@@ -54,7 +54,7 @@ public class FormulaireSatisfaction extends JFrame{
 	        
 	        
 	        //============================================================================
-	        //======== FORMULAIRE SATISFACTION ===========================================
+	        //======== FORMULAIRE litige ===========================================
 	        //============================================================================
 			
 			JLabel lblAuteur = new JLabel("Auteur");
