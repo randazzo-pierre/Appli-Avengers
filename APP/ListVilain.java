@@ -10,8 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,10 +20,8 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JFrame;
 
 import acteurs.User;
-import acteurs.Vilain;
 
 public class ListVilain extends JFrame {
     private static final long serialVersionUID = 1;
