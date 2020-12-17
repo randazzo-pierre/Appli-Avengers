@@ -22,6 +22,7 @@ import util.Country;
 import java.sql.*;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.* ;
 
 import util.*;
 
@@ -64,7 +65,7 @@ public class CreateMission extends JFrame {
 
 		return listCountry;
 	}
-
+	
 	/**
 	 * Create the frame.
 	 * 
@@ -110,12 +111,17 @@ public class CreateMission extends JFrame {
 			ResultSet rs0 = utl.dbRead(cnx, "SELECT * FROM INCIDENT WHERE STATUTI='NEW'") ;
 			JComboBox jc2 = new JComboBox() ;
 			while (rs0.next()) {  
-				String nomIncident = rs0.getString("DESCRIPTIONI") ;
+				int id=rs0.getInt("ID_I");
+				String nomIncident = rs0.getString("DESCRIPTIONI")+"-"+id ;
+			//	Object[] itemData = new Object[] {id, nomIncident};
 				jc2.addItem(nomIncident);  
+			//	jc2.setText((String)itemData[1]);
 			}
 			jc2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
+					int index = jc2.getSelectedIndex() ;
+					System.out.println(index);
 				//	String titre=(String) jc.getSelectedItem();
 					}
 			});
@@ -295,6 +301,19 @@ public class CreateMission extends JFrame {
 					JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
 				}  else {
 					String inputTitre = jc2.getSelectedItem().toString();
+					Pattern p = Pattern.compile("\\d+");
+					Matcher m = p.matcher(inputTitre) ;
+					while(m.find()) {
+						System.out.println(m.group());
+						String idi = m.group() ;
+						try {
+							dbUtil utl = new dbUtil() ;
+							Connection con = utl.dbConnect() ;
+						int inc = utl.dbUpdate(con, "UPDATE INCIDENT SET STATUTI='INPROGRESS' WHERE ID_I="+idi) ;
+						} catch (SQLException e4) {
+							e4.printStackTrace();
+						}
+					}
 					String inputDescript = textFieldDescript.getText();
 					Country selectedCountry = (Country) comboCountry.getSelectedItem();
 					String inputZip = textFieldZip.getText();
@@ -307,6 +326,7 @@ public class CreateMission extends JFrame {
 					System.out.println(inputTitre+" "+inputDescript+" "+selectedCountry+" "+inputzipInt+" "+hero+" "+coequipier+" "+gravite+" "+urgence);
 
 					try {
+						
 						Mission miss = new Mission(inputTitre, inputDescript, coequipier, hero, gravite, urgence, selectedCountry, inputzipInt);
 						JOptionPane.showMessageDialog(btnSumbit, "Mission créée !! En avant toute !");
 
