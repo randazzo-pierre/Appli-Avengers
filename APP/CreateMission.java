@@ -294,7 +294,7 @@ public class CreateMission extends JFrame {
 
 					try {
 						Mission miss = new Mission(inputTitre, inputDescript, coequipier, hero, gravite, urgence, selectedCountry, inputzipInt);
-						JOptionPane.showMessageDialog(btnSumbit, "Formulaire envoyé, merci de votre coopération !!");
+						JOptionPane.showMessageDialog(btnSumbit, "Mission créée !! En avant toute !");
 
 					} catch (SQLDataException err) {
 						System.out.println(err);
