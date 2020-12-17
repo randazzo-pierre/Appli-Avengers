@@ -131,20 +131,20 @@ public class CreateMission extends JFrame {
 		//choix du héros
 		try{
 			Connection cnx = utl.dbConnect() ;
-			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM MISSION") ;
+			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM HEROS") ;
 			JComboBox jc = new JComboBox() ;
 			while (rs.next()) {  
-				//int id=rs.getInt("ID_M") ;
-				String titreMission = rs.getString("TITREM") ;
-				//Object[] itemData = new Object[] {id, titreMission};
-				jc.addItem(titreMission);  
+				String nomHero = rs.getString("TITREH") ;
+				jc.addItem(nomHero);  
 			}
-
-		JTextField textFieldLeader = new JTextField();
-		textFieldLeader.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textFieldLeader.setBounds(310, 225, 600, 35);
-		contentPane.add(textFieldLeader);
-		textFieldLeader.setColumns(10);
+			jc.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					e.getSource();
+				//	String titre=(String) jc.getSelectedItem();
+					}
+			});
+			jc.setBounds(310, 225, 550, 35);
+				contentPane.add(jc) ;
 
 		//libelle coéquipier
 

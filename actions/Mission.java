@@ -6,6 +6,8 @@ import java.util.Date;
 import java.sql.*;
 import util.*;
 
+import util.dbUtil;
+
 public class Mission {
     private int idM;
     private String nature;
@@ -83,8 +85,8 @@ public class Mission {
     /**
      * @return String
      */
-    public String getTitre() {
-        return titre;
+    public String getTitreM() {
+        return titreM;
     }
 
     /**
@@ -153,8 +155,8 @@ public class Mission {
     /**
      * @param titre
      */
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitreM(String titre) {
+        this.titreM = titre;
     }
 
     /**
