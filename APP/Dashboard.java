@@ -203,7 +203,7 @@ public class Dashboard extends JFrame {
         button7.setFont(new Font("Tahoma", Font.PLAIN, 39));
         button7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Litige litige = new Litige(user);
+                Litige litige = new Litige(user, dbUtil);
                 litige.setTitle("Creer un Litige");
                 litige.setVisible(true);
 
