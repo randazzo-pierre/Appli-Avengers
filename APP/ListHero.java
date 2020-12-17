@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 
 import acteurs.User;
 import util.dbUtil;
+import java.sql.*;
+import java.util.*;
 
 public class ListHero extends JFrame {
     private static final long serialVersionUID = 1;
@@ -73,7 +75,23 @@ public class ListHero extends JFrame {
 	    btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
         btnActualiser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Connection connection = (Connection) DriverManager.getConnection(
+                            "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                            "dbroot", "QeTuZ2LFJfSqtbpe");
 
+                    PreparedStatement st = (PreparedStatement) connection
+                            .prepareStatement("SELECT ID_H, TITREH, POUVOIRH, FAIBLESSEH, NBMISSION FROM HEROS");
+                    ResultSet rs = st.executeQuery();
+                    List<User> listUser = new ArrayList<>();
+                    while (rs.next()) { // while (rs.next())
+                        User user = new User(rs.getString(1), rs.getString(2), null, rs.getString(4), rs.getInt(5));
+                        listUser.add(user);
+                        System.out.println(user.username);
+                    }
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
             }
         });
 	    btnActualiser.setBounds(550, 400, 350, 50);
