@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -106,7 +107,7 @@ public class UserRegister extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String userName = textField.getText();
                 String password = passwordField.getText();
-                String debut = "18-12-2020";
+                Date debut = new Date();
                 String role = "CIVIL";
                 int id = 0;
 
@@ -115,7 +116,6 @@ public class UserRegister extends JFrame {
                     newUser = new User(userName, password, role, debut, id);
                     System.out.println(newUser);
                 } catch (SQLException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
 
