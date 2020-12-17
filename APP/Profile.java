@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -85,7 +84,9 @@ public class Profile extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // a faire ========
+                EditProfil edit = new EditProfil(user, dbUtil);
+                edit.setTitle("Modifier profile");
+                edit.setVisible(true);
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
