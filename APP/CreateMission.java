@@ -92,7 +92,7 @@ public class CreateMission extends JFrame {
 		contentPane.add(lblForm);
 
 		// libelle titre mission
-		JLabel lblTitre = new JLabel("Titre");
+		JLabel lblTitre = new JLabel("Incident source");
 		lblTitre.setForeground(Color.BLACK);
 		lblTitre.setBackground(Color.CYAN);
 		lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -100,12 +100,27 @@ public class CreateMission extends JFrame {
 		contentPane.add(lblTitre);
 
 		//zone de texte titre mission
-		JTextField textFieldTitre = new JTextField();
+		/* JTextField textFieldTitre = new JTextField();
 		textFieldTitre.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textFieldTitre.setBounds(310, 75, 550, 35);
 		contentPane.add(textFieldTitre);
-		textFieldTitre.setColumns(10);
-
+		textFieldTitre.setColumns(10); */
+		try{
+			Connection cnx = utl.dbConnect() ;
+			ResultSet rs0 = utl.dbRead(cnx, "SELECT * FROM INCIDENT WHERE STATUTI='NEW'") ;
+			JComboBox jc2 = new JComboBox() ;
+			while (rs0.next()) {  
+				String nomIncident = rs0.getString("DESCRIPTIONI") ;
+				jc2.addItem(nomIncident);  
+			}
+			jc2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					e.getSource();
+				//	String titre=(String) jc.getSelectedItem();
+					}
+			});
+			jc2.setBounds(310, 75, 550, 35);
+				contentPane.add(jc2) ;
 		// libelle description
 		JLabel lblDescript = new JLabel("Description");
 		lblDescript.setForeground(Color.BLACK);
@@ -164,8 +179,8 @@ public class CreateMission extends JFrame {
 
 		//ici récup liste des héros
 		//choix du héros
-		try{
-			Connection cnx = utl.dbConnect() ;
+	
+		//	Connection cnx = utl.dbConnect() ;
 			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM HEROS") ;
 			JComboBox jc = new JComboBox() ;
 			while (rs.next()) {  
@@ -180,7 +195,6 @@ public class CreateMission extends JFrame {
 			});
 			jc.setBounds(310, 275, 550, 35);
 				contentPane.add(jc) ;
-
 		//libelle coéquipier
 
 		JLabel lblassigner = new JLabel("Coéquipier");
@@ -276,11 +290,11 @@ public class CreateMission extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				//quand clic sur valider
-				if(textFieldTitre.getText().isEmpty() || textFieldDescript.getText().isEmpty() || 
+				if(textFieldDescript.getText().isEmpty() || 
 				textFieldZip.getText().isEmpty()){
 					JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
 				}  else {
-					String inputTitre = textFieldTitre.getText();
+					String inputTitre = jc2.getSelectedItem().toString();
 					String inputDescript = textFieldDescript.getText();
 					Country selectedCountry = (Country) comboCountry.getSelectedItem();
 					String inputZip = textFieldZip.getText();

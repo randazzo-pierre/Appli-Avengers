@@ -35,7 +35,6 @@ public class Dashboard extends JFrame {
             }
         });
     }
-
     /**
      * Create the frame.
      */
