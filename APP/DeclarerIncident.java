@@ -94,7 +94,7 @@ public class DeclarerIncident extends JFrame {
 		JLabel lblNewLabel = new JLabel("Déclarer un incident");
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-		lblNewLabel.setBounds(423, 4, 273, 93);
+		lblNewLabel.setBounds(250, 4, 500, 93);
 		contentPane.add(lblNewLabel);
 
 		// libelle description
