@@ -1,31 +1,25 @@
 package APP;
 
 import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
 
 import acteurs.User;
+import actions.Mission;
 import util.dbUtil;
+import java.sql.*;
+import java.util.*;
 
-public class Litige extends JFrame {
-
+public class ListeMission extends JFrame {
     private static final long serialVersionUID = 1;
     private JPanel contentPane;
 
@@ -45,8 +39,11 @@ public class Litige extends JFrame {
         });
     }
 
-    public Litige(User user, dbUtil dbUtil) {
+    /**
+     * Create the frame.
+     */
 
+    public ListeMission(User user, dbUtil utl) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -55,12 +52,9 @@ public class Litige extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        // Titre page
-        JLabel lblForm = new JLabel("Liste des litiges");
-        lblForm.setForeground(Color.BLACK);
-        lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        lblForm.setBounds(375, 4, 500, 93);
-        contentPane.add(lblForm);
+        // ============================================================================
+        // ========CIVIL & ORGANISATION & HERO ========================================
+        // ============================================================================
 
         JButton btnRetour = new JButton("Retour");
         btnRetour.setForeground(new Color(0, 0, 0));
@@ -73,13 +67,13 @@ public class Litige extends JFrame {
                 bo.setVisible(true);
             }
         });
-	    btnRetour.setBounds(125, 450, 350, 50);
+	    btnRetour.setBounds(150, 400, 350, 50);
         contentPane.add(btnRetour);
-
+        
         JButton btnActualiser = new JButton("Actualiser");
-        btnActualiser.setForeground(new Color(0, 0, 0));
-        btnActualiser.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
+	    btnActualiser.setForeground(new Color(0, 0, 0));
+	    btnActualiser.setBackground(UIManager.getColor("Button.disabledForeground"));
+	    btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
         btnActualiser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -88,41 +82,23 @@ public class Litige extends JFrame {
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("SELECT * FROM LITIGE");
+                            .prepareStatement("SELECT * FROM MISSION");
                     ResultSet rs = st.executeQuery();
-                    int i = 0;
-                    String column[]={"idL","Titre","Description","Cible","Cout","Preuve","Victime"};
-                    String data[][] = new String[7][20];
+                    List<Mission> ListeMission = new ArrayList<>();
                     while (rs.next()) { // while (rs.next())
-                        data[i][0] = rs.getString(1);
-                        data[i][1] = rs.getString(2);
-                        data[i][2] = rs.getString(3);
-                        data[i][3] = rs.getString(4);
-                        data[i][4] = rs.getString(5);
-                        data[i][5] = rs.getString(6);
-                        data[i][6] = rs.getString(7);
-                        i++;
+                        Mission Mission = new Mission(rs.getString(1));
+                        ListeMission.add(Mission);
+                        System.out.println(Mission.getTitreM());
                     }
-                    DefaultTableModel model = new DefaultTableModel(data, column);
-                    JTable table = new JTable(model);
-                    table.setShowGrid(true);
-                    table.setShowVerticalLines(true);
-                    JScrollPane pane = new JScrollPane(table);
-	                pane.setBounds(100, 100, 800, 300);
-                    contentPane.add(pane);
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                 }
-
             }
         });
-	    btnActualiser.setBounds(525, 450, 350, 50);
+	    btnActualiser.setBounds(550, 400, 350, 50);
         contentPane.add(btnActualiser);
-
-    }
-
-    public Litige() {
-
     }
 
 }
+
+        
