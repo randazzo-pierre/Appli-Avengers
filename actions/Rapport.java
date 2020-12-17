@@ -2,7 +2,8 @@ package actions;
 
 import java.util.*;
 import java.util.Date;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.sql.*;
 import util.*;
 
@@ -14,6 +15,7 @@ public class Rapport {
     private ArrayList<String> criseR;
     private String missionR;
     private String statutR;
+    public String idIncident;
 
     /**
      * @param inputCommentaire
@@ -35,9 +37,20 @@ public class Rapport {
         this.auteurR = heros;
         this.descriptionR = inputCommentaire;
         this.statutR = status;
+        // changement du status MISSION
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                    "dbroot", "QeTuZ2LFJfSqtbpe");
 
-        String mot = "mot";
-        String idInc = mot.charAt(mot.length() - 1);
+            PreparedStatement st = (PreparedStatement) con
+                    .prepareStatement("UPDATE MISSION set STATUSM=? where TITREM=?");
+            st.setString(1, statutR);
+            st.setString(2, titreR);
+            st.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
 
         // connexion bdd
         dbUtil utl = new dbUtil();
@@ -53,31 +66,25 @@ public class Rapport {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        // changement du status MISSION
-        try {
-            Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
-                    "dbroot", "QeTuZ2LFJfSqtbpe");
-
-            PreparedStatement st = (PreparedStatement) con
-                    .prepareStatement("Update MISSION set STATUS=? where TITREM=" + titreR + "");
-            st.setString(1, statutR);
-            st.setString(2, titreR);
-            st.executeUpdate();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
 
         // changement du status INCIDENT
+
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(titreR);
+        if (m.find()) {
+            System.out.println(m.group());
+            idIncident = m.group();
+        }
+
         try {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
                     "dbroot", "QeTuZ2LFJfSqtbpe");
 
             PreparedStatement st = (PreparedStatement) con
-                    .prepareStatement("Update INCIDENT set STATUS=? where ID_I=" + titreR + "");
+                    .prepareStatement("Update INCIDENT set STATUTI=? where ID_I=?");
             st.setString(1, statutR);
-            st.setString(2, titreR);
+            st.setString(2, idIncident);
             st.executeUpdate();
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
