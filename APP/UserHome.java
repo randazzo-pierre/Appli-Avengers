@@ -54,11 +54,11 @@ public class UserHome extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel textHome = new JLabel(
-                "Bievenue " + user.username + " sur l'application Avengers, ton role actuel est :  " + user.role);
-        textHome.setForeground(new Color(0, 0, 0));
-        textHome.setBounds(247, 20, 491, 20);
-        contentPane.add(textHome);
+        JLabel lblNewLabel = new JLabel("Bievenue " + user.role + " " + user.username + " sur l'application Avengers.");
+        lblNewLabel.setForeground(Color.BLACK);
+        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+        lblNewLabel.setBounds(50, 13, 873, 93);
+        contentPane.add(lblNewLabel);
 
         JButton btnNewButton = new JButton("Logout");
         btnNewButton.setForeground(new Color(0, 0, 0));

@@ -104,6 +104,25 @@ public class Dashboard extends JFrame {
 
         // }
 
+        // ==========........======== FRONT => DEV | BACK => DEV =========
+        // if(user.role == "ORGA") {
+        JButton button9 = new JButton("Liste Vilain");
+        button9.setForeground(new Color(0, 0, 0));
+        button9.setBackground(new Color(20, 150, 20));
+        button9.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button9.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        button9.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ListVilain list = new ListVilain();
+                list.setTitle("List Vilain");
+                list.setVisible(true);
+            }
+        });
+        button9.setBounds(50, 80, 850, 50);
+        contentPane.add(button9);
+
+        // }
+
         // ==========PIERRE============ FRONT => OK | BACK => DEV ========
         // if (user.role == "ORGA" || user.role == "HEROS") {
         JButton button4 = new JButton("Rapport");
