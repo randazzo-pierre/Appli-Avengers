@@ -69,115 +69,115 @@ public class Dashboard extends JFrame {
         contentPane.add(btnNewButton);
 
         // ==========THIB============= FRONT => OK | BACK => DEV =======
-        // if(user.role == "CIVIL") {
-        JButton button2 = new JButton("Formulaire Satisfaction");
-        button2.setForeground(new Color(0, 0, 0));
-        button2.setBackground(new Color(20, 150, 20));
-        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        button2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                FormulaireSatisfaction formulaireSatisfaction = new FormulaireSatisfaction(user, dbUtil);
-                formulaireSatisfaction.setVisible(true);
-            }
-        });
-        button2.setBounds(450, 20, 450, 50);
-        contentPane.add(button2);
+        if ("CIVIL".equals(user.role)) {
+            JButton button2 = new JButton("Formulaire Satisfaction");
+            button2.setForeground(new Color(0, 0, 0));
+            button2.setBackground(new Color(20, 150, 20));
+            button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button2.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    FormulaireSatisfaction formulaireSatisfaction = new FormulaireSatisfaction(user, dbUtil);
+                    formulaireSatisfaction.setVisible(true);
+                }
+            });
+            button2.setBounds(450, 20, 450, 50);
+            contentPane.add(button2);
 
-        // }
+        }
 
         // ==========PIERRE======== FRONT => OK | BACK => DEV =========
-        // if(user.role == "ORGA") {
-        JButton button3 = new JButton("Creer mission");
-        button3.setForeground(new Color(0, 0, 0));
-        button3.setBackground(new Color(20, 150, 20));
-        button3.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        button3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //CreateMission CreateMission = new CreateMission(user);
-                //CreateMission.setTitle("Mission");
-                //CreateMission.setVisible(true);
-            }
-        });
-        button3.setBounds(50, 160, 850, 50);
-        contentPane.add(button3);
+        if ("ORGA".equals(user.role)) {
+            JButton button3 = new JButton("Creer mission");
+            button3.setForeground(new Color(0, 0, 0));
+            button3.setBackground(new Color(20, 150, 20));
+            button3.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button3.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // CreateMission CreateMission = new CreateMission(user);
+                    // CreateMission.setTitle("Mission");
+                    // CreateMission.setVisible(true);
+                }
+            });
+            button3.setBounds(50, 160, 850, 50);
+            contentPane.add(button3);
 
-        // }
+        }
 
         // ==========........======== FRONT => DEV | BACK => DEV =========
-        // if(user.role == "ORGA") {
-        JButton button9 = new JButton("Liste Vilain");
-        button9.setForeground(new Color(0, 0, 0));
-        button9.setBackground(new Color(20, 150, 20));
-        button9.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button9.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        button9.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ListVilain list = new ListVilain(user);
-                list.setTitle("List Vilain");
-                list.setVisible(true);
-            }
-        });
-        button9.setBounds(50, 80, 850, 50);
-        contentPane.add(button9);
+        if ("ORGA".equals(user.role)) {
+            JButton button9 = new JButton("Liste Vilain");
+            button9.setForeground(new Color(0, 0, 0));
+            button9.setBackground(new Color(20, 150, 20));
+            button9.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button9.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button9.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    ListVilain list = new ListVilain(user);
+                    list.setTitle("List Vilain");
+                    list.setVisible(true);
+                }
+            });
+            button9.setBounds(50, 80, 850, 50);
+            contentPane.add(button9);
 
-        // }
+        }
 
         // ==========PIERRE============ FRONT => OK | BACK => DEV ========
-        // if (user.role == "ORGA" || user.role == "HEROS") {
-        JButton button4 = new JButton("Rapport");
-        button4.setForeground(new Color(0, 0, 0));
-        button4.setBackground(new Color(20, 150, 20));
-        button4.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        button4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //RapportMission RapportMission = new RapportMission(user);
-                //RapportMission.setTitle("Rapport");
-                //RapportMission.setVisible(true);
-            }
-        });
-        button4.setBounds(50, 240, 850, 50);
-        contentPane.add(button4);
+        if ("HEROS".equals(user.role) || "ORGA".equals(user.role)) {
+            JButton button4 = new JButton("Rapport");
+            button4.setForeground(new Color(0, 0, 0));
+            button4.setBackground(new Color(20, 150, 20));
+            button4.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button4.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // RapportMission RapportMission = new RapportMission(user);
+                    // RapportMission.setTitle("Rapport");
+                    // RapportMission.setVisible(true);
+                }
+            });
+            button4.setBounds(50, 240, 850, 50);
+            contentPane.add(button4);
 
-        // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
-        JButton button5 = new JButton("Identifier Vilain");
-        button5.setForeground(new Color(0, 0, 0));
-        button5.setBackground(new Color(20, 150, 20));
-        button5.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button5.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        button5.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                VilainList vilain = new VilainList(user, dbUtil);
-                vilain.setTitle("Identifier un Vilain");
-                vilain.setVisible(true);
-            }
-        });
-        button5.setBounds(50, 320, 850, 50);
-        contentPane.add(button5);
+            // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
+            JButton button5 = new JButton("Identifier Vilain");
+            button5.setForeground(new Color(0, 0, 0));
+            button5.setBackground(new Color(20, 150, 20));
+            button5.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button5.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button5.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    VilainList vilain = new VilainList(user, dbUtil);
+                    vilain.setTitle("Identifier un Vilain");
+                    vilain.setVisible(true);
+                }
+            });
+            button5.setBounds(50, 320, 850, 50);
+            contentPane.add(button5);
 
-        // }
+        }
 
         // ==========NATHAN========FRONT => OK | BACK => DEV =======
-        // if (user.role == "ORGA") {
-        JButton button6 = new JButton("Satisfaction Info");
-        button6.setForeground(new Color(0, 0, 0));
-        button6.setBackground(new Color(20, 150, 20));
-        button6.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button6.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        button6.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                SatisfactionList list = new SatisfactionList(user);
-                list.setTitle("Liste des Satisfactions");
-                list.setVisible(true);
+        if ("ORGA".equals(user.role)) {
+            JButton button6 = new JButton("Satisfaction Info");
+            button6.setForeground(new Color(0, 0, 0));
+            button6.setBackground(new Color(20, 150, 20));
+            button6.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button6.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button6.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    SatisfactionList list = new SatisfactionList(user);
+                    list.setTitle("Liste des Satisfactions");
+                    list.setVisible(true);
 
-            }
-        });
-        button6.setBounds(50, 400, 850, 50);
-        contentPane.add(button6);
+                }
+            });
+            button6.setBounds(50, 400, 850, 50);
+            contentPane.add(button6);
 
-        // }
+        }
 
         // ==========NATHAN======== FRONT => DEV | BACK => DEV ============
         JButton button7 = new JButton("Litige");

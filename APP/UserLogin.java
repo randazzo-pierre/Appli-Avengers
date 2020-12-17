@@ -40,7 +40,7 @@ public class UserLogin extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                   dbUtil utl = new dbUtil() ;
+                    dbUtil utl = new dbUtil();
                     UserLogin frame = new UserLogin(utl);
                     frame.setVisible(true);
                 } catch (Exception e) {
