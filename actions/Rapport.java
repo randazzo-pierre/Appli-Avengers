@@ -1,6 +1,10 @@
 package actions;
 
 import java.util.*;
+import java.util.Date;
+
+import java.sql.*;
+import util.*;
 
 public class Rapport {
     private int idR;
@@ -30,6 +34,25 @@ public class Rapport {
         this.mission = mission;
         this.statut = statut;
     }
+
+
+    public  Rapport( String titre, Date description, ArrayList<String> crise, String Mission,String Statut) throws SQLException {
+        System.out.println("Création d'un rapport de mission avec les paramètres suivant Titre : "+titre+" Nature : "+description+" début : "+crise+" Urgence : "+mission);
+        //connexion bdd
+       dbUtil utl = new dbUtil() ;
+       Connection cnx = utl.dbConnect() ;
+       try {
+           String request = "INSERT INTO INCIDENT VALUES(ID_R,'"+titre+"', '"+description+"', '"+crise+"', '"+mission+"', '"+statut+"')" ;
+           System.out.println(request);
+        int insert = utl.dbCreate(cnx, request) ;
+        this.setIdR(insert);
+        utl.dbKill(cnx) ;
+        System.out.println("insertion ok");
+       } catch(SQLException e){
+        System.out.println(e);
+       }
+        //return this.idI ;
+        }
 
     /**
      * @return int
