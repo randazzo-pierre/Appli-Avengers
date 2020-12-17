@@ -26,7 +26,7 @@ public class ListVilain extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ListVilain frame = new ListVilain();
+                    UserHome frame = new UserHome();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -64,7 +64,19 @@ public class ListVilain extends JFrame {
 	        }
         });
 	    btnRetour.setBounds(150, 400, 350, 50);
-	    contentPane.add(btnRetour);
+        contentPane.add(btnRetour);
+        
+        JButton btnActualiser = new JButton("Actualiser");
+	    btnActualiser.setForeground(new Color(0, 0, 0));
+	    btnActualiser.setBackground(UIManager.getColor("Button.disabledForeground"));
+	    btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnActualiser.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+	    btnActualiser.setBounds(550, 400, 350, 50);
+        contentPane.add(btnActualiser);
     }
 
 }
