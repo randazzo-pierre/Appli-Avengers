@@ -5,7 +5,7 @@ package actions;
 import java.sql.*;
 
 
-import util.dbUtil;
+import util.*;
 
 public class Mission {
     private int idM;
@@ -43,13 +43,13 @@ public class Mission {
     }
 
 
-    public  Mission(String TitreM, String DescriptionM, String AssigneM, String LeaderM, String GraviteM,String UrgenceM,String PaysM,String ZipM) throws SQLException {
-        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+TitreM+" Description : "+DescriptionM+" début : "+AssigneM+" fin:"+LeaderM+" Gravité : "+GraviteM+" Urgence : "+UrgenceM+" Pays : "+PaysM+" Zip : "+ZipM);
+    public  Mission(String inputTitre, String inputDescript, String coequipier, String hero, String gravite, String urgence, Country selectedCountry, int inputZip) throws SQLException {
+        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+inputTitre+" Description : "+inputDescript+" début : "+coequipier+" fin:"+hero+" Gravité : "+gravite+" Urgence : "+urgence+" Pays : "+selectedCountry+" Zip : "+inputZip);
         //connexion bdd
        dbUtil utl = new dbUtil() ;
        Connection cnx = utl.dbConnect() ;
        try {
-           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+TitreM+"', '"+DescriptionM+"', '"+AssigneM+"', '"+LeaderM+"', '', '"+GraviteM+"', '"+UrgenceM+"', '"+PaysM+", '"+ZipM+")" ;
+           String request = "INSERT INTO MISSION VALUES(ID_M,'"+inputTitre+"', '"+inputDescript+"', '"+coequipier+"', '"+hero+"', '"+gravite+"', '"+urgence+"', '"+selectedCountry+"', '"+inputZip+"')" ;
            System.out.println(request);
         int insert = utl.dbCreate(cnx, request) ;
         this.setIdM(insert);
