@@ -67,7 +67,36 @@ public class Dashboard extends JFrame {
         });
         btnNewButton.setBounds(50, 20, 250, 50);
         contentPane.add(btnNewButton);
+        
+        JButton btnListRapport = new JButton("Rapport list");
+        btnListRapport.setForeground(new Color(0, 0, 0));
+        btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnListRapport.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnListRapport.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ListeRapport listeRapport = new ListeRapport(user, dbUtil);
+                listeRapport.setTitle("Liste des rapports");
+                listeRapport.setVisible(true);
+            }
+        });
 
+        btnListRapport.setBounds(350, 20, 250, 50);
+        contentPane.add(btnListRapport);
+
+        JButton btnListMission = new JButton("Mission List");
+        btnListMission.setForeground(new Color(0, 0, 0));
+        btnListMission.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnListMission.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnListMission.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ListeMission listeMission = new ListeMission(user, dbUtil);
+                listeMission.setTitle("Liste des rapports");
+                listeMission.setVisible(true);
+            }
+        });
+        btnListMission.setBounds(650, 20, 250, 50);
+        contentPane.add(btnListMission);
+        
         // ==========THIB============= FRONT => OK | BACK => DEV =======
         if ("CIVIL".equals(user.role)) {
             JButton button2 = new JButton("Formulaire Satisfaction");
@@ -212,6 +241,8 @@ public class Dashboard extends JFrame {
         button7.setBounds(50, 480, 850, 50);
         contentPane.add(button7);
 
+
+        
     }
 
 }
