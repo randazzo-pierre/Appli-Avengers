@@ -8,15 +8,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import acteurs.User;
-import actions.Rapport;
 import util.dbUtil;
 import java.sql.*;
-import java.util.*;
 
 public class ListeRapport extends JFrame {
     private static final long serialVersionUID = 1;
@@ -55,6 +57,14 @@ public class ListeRapport extends JFrame {
         // ========CIVIL & ORGANISATION & HERO ========================================
         // ============================================================================
 
+        // Titre page
+		JLabel lblForm = new JLabel("Liste des rapports");
+		lblForm.setForeground(Color.BLACK);
+		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		lblForm.setBounds(375, 4, 500, 93);
+		contentPane.add(lblForm);
+
+
         JButton btnRetour = new JButton("Retour");
         btnRetour.setForeground(new Color(0, 0, 0));
         btnRetour.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -66,7 +76,7 @@ public class ListeRapport extends JFrame {
                 bo.setVisible(true);
             }
         });
-	    btnRetour.setBounds(150, 400, 350, 50);
+	    btnRetour.setBounds(125, 450, 350, 50);
         contentPane.add(btnRetour);
         
         JButton btnActualiser = new JButton("Actualiser");
@@ -81,20 +91,34 @@ public class ListeRapport extends JFrame {
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("SELECT * FROM RAPPORT");
+                        .prepareStatement("SELECT * FROM RAPPORT");
                     ResultSet rs = st.executeQuery();
-                    List<Rapport> ListeRapport = new ArrayList<>();
+                    int i = 0;
+                    String column[]={"ID","Titre","Auteur","Description","Crise","Mission","Statut"};
+                    String data[][] = new String[9][20];
                     while (rs.next()) { // while (rs.next())
-                        Rapport Rapport = new Rapport(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getString(9));
-                        ListeRapport.add(Rapport);
-                        System.out.println(Rapport.getTitreR());
+                        data[i][0] = rs.getString(1);
+                        data[i][1] = rs.getString(2);
+                        data[i][2] = rs.getString(3);
+                        data[i][3] = rs.getString(4);
+                        data[i][4] = rs.getString(5);
+                        data[i][5] = rs.getString(6);
+                        data[i][6] = rs.getString(7);
+                        i++;
                     }
+                    DefaultTableModel model = new DefaultTableModel(data, column);
+                    JTable table = new JTable(model);
+                    table.setShowGrid(true);
+                    table.setShowVerticalLines(true);
+                    JScrollPane pane = new JScrollPane(table);
+	                pane.setBounds(100, 100, 800, 300);
+                    contentPane.add(pane);
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                 }
             }
         });
-	    btnActualiser.setBounds(550, 400, 350, 50);
+	    btnActualiser.setBounds(525, 450, 350, 50);
         contentPane.add(btnActualiser);
     }
 
