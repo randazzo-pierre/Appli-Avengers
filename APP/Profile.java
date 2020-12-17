@@ -77,21 +77,44 @@ public class Profile extends JFrame {
 
             }
         });
-        btnNewButton.setBounds(247, 100, 491, 114);
+        btnNewButton.setBounds(247, 100, 491, 75);
         contentPane.add(btnNewButton);
 
-        JButton button2 = new JButton("Modifier Profile");
-        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                EditProfil edit = new EditProfil(user, dbUtil);
-                edit.setTitle("Modifier profile");
-                edit.setVisible(true);
-            }
-        });
-        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
-        button2.setBounds(247, 250, 491, 114);
-        contentPane.add(button2);
+        // devenir un super heros
+
+        if ("CIVIL".equals(user.role)) {
+
+            JButton button2 = new JButton("DEVENIR UN HEROS");
+            button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button2.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    NewHero edit = new NewHero(user, dbUtil);
+                    edit.setTitle("Modifier profile");
+                    edit.setVisible(true);
+                }
+            });
+            button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
+            button2.setBounds(247, 200, 491, 75);
+            contentPane.add(button2);
+        }
+
+        // devenir un super vilain
+
+        if ("CIVIL".equals(user.role)) {
+
+            JButton button2 = new JButton("DEVENIR UN VILAIN");
+            button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button2.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    NewVilain edit = new NewVilain(user, dbUtil);
+                    edit.setTitle("Modifier profile");
+                    edit.setVisible(true);
+                }
+            });
+            button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
+            button2.setBounds(247, 300, 491, 75);
+            contentPane.add(button2);
+        }
 
         JButton button = new JButton("Change-password\r\n");
         button.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -104,7 +127,7 @@ public class Profile extends JFrame {
             }
         });
         button.setFont(new Font("Tahoma", Font.PLAIN, 35));
-        button.setBounds(247, 400, 491, 114);
+        button.setBounds(247, 400, 491, 75);
         contentPane.add(button);
     }
 }
