@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -48,7 +49,7 @@ public class UserRegister extends JFrame {
         });
     }
 
-    public UserRegister() {
+    public UserRegister(String userName, String password, String role, Date debut) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -112,16 +113,19 @@ public class UserRegister extends JFrame {
                 String password = passwordField.getText();
                 Date debut = new Date();
                 String role = "CIVIL";
-                try {
-                    User newUser = new UserRegister(userName, password, role, debut);
-                } catch (SQLDataException err) {
-                    System.out.println(err);
-                }
+                // try {
+                // // User newUser = new User(userName, password, role, debut);
+                // } catch (SQLDataException err) {
+                // System.out.println(err);
+                // }
             }
         });
 
         contentPane.add(btnNewButton);
 
+    }
+
+    public UserRegister() {
     }
 
 }

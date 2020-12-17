@@ -1,9 +1,5 @@
 package acteurs;
 
-import java.sql.Connection;
-
-import util.dbUtil;
-
 public class User {
 
    public String username;
