@@ -5,18 +5,11 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -50,7 +43,7 @@ public class UserRegister extends JFrame {
         });
     }
 
-    public UserRegister(String userName, String password, String role, Date debut) {
+    public UserRegister() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -95,7 +88,7 @@ public class UserRegister extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dbUtil utl = new dbUtil() ;
+                dbUtil utl = new dbUtil();
                 UserLogin bo = new UserLogin(utl);
                 bo.setTitle("Login ");
                 bo.setVisible(true);
@@ -113,21 +106,24 @@ public class UserRegister extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String userName = textField.getText();
                 String password = passwordField.getText();
-                Date debut = new Date();
+                String debut = "18-12-2020";
                 String role = "CIVIL";
-                // try {
-                // // User newUser = new User(userName, password, role, debut);
-                // } catch (SQLDataException err) {
-                // System.out.println(err);
-                // }
+                int id = 0;
+
+                User newUser;
+                try {
+                    newUser = new User(userName, password, role, debut, id);
+                    System.out.println(newUser);
+                } catch (SQLException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+
             }
         });
 
         contentPane.add(btnNewButton);
 
-    }
-
-    public UserRegister() {
     }
 
 }
