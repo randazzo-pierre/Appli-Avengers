@@ -1,41 +1,45 @@
 package acteurs;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Date;
+
+import util.dbUtil;
+
 public class User {
 
    public String username;
    private String password;
    public String role;
-   public String create_time;
+   public Date create_time;
    public int id;
 
-   public User(String username, String password, String role, String create_time, int id) {
+   public User(String username, String password, String role, Date create_time, int id) throws SQLException {
 
       this.username = username;
       this.password = password;
       this.role = role;
       this.create_time = create_time;
       this.id = id;
-
+      // connexion bdd
+      dbUtil utl = new dbUtil();
+      Connection cnx = utl.dbConnect();
+      try {
+         String request = "INSERT INTO USER( username, password, role, create_time) VALUES('" + username + "', '"
+               + password + "', '" + role + "', '" + create_time + "')";
+         System.out.println(request);
+         int insert = utl.dbCreate(cnx, request);
+         this.setidI(insert);
+         utl.dbKill(cnx);
+         System.out.println("insertion ok");
+      } catch (SQLException e) {
+         System.out.println(e);
+      }
+      return;
    }
 
-   // public UserRegister(""+ String userName, String password, + "CIVIL," + String
-   // debut + ", id"){
-   // //connexion bdd
-   // dbUtil utl = new dbUtil() ;
-   // Connection cnx = utl.dbConnect() ;
-   // try {
-   // String request = "INSERT INTO USER VALUES('"+userName+"', '"+password+"',
-   // 'CIVIL', '"+debut+"', 'id')" ;
-   // System.out.println(request);
-   // int insert = utl.dbCreate(cnx, request) ;
-   // this.setidI(insert);
-   // utl.dbKill(cnx) ;
-   // System.out.println("insertion ok");
-   // } catch(SQLException e){
-   // System.out.println(e);
-   // }
-   // //return this.idI ;
-   // }
+   private void setidI(int insert) {
+   }
 
    /**
     * @return String
@@ -61,7 +65,7 @@ public class User {
    /**
     * @return String
     */
-   public String getDate() {
+   public Date getDate() {
       return create_time;
    }
 

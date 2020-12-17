@@ -55,10 +55,10 @@ public class UserHome extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Bievenue " + user.role + " " + user.username + " sur l'application Avengers.");
+        JLabel lblNewLabel = new JLabel("Bievenue : " + user.role + " " + user.username);
         lblNewLabel.setForeground(Color.BLACK);
         lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        lblNewLabel.setBounds(50, 13, 873, 93);
+        lblNewLabel.setBounds(250, 13, 673, 93);
         contentPane.add(lblNewLabel);
 
         JButton btnNewButton = new JButton("Logout");
@@ -71,13 +71,13 @@ public class UserHome extends JFrame {
                 // JOptionPane.setRootFrame(null);
                 if (a == JOptionPane.YES_OPTION) {
                     dispose();
-                    dbUtil utl = new dbUtil() ;
+                    dbUtil utl = new dbUtil();
                     UserLogin obj = new UserLogin(utl);
                     obj.setTitle("Student-Login");
                     obj.setVisible(true);
                 }
                 dispose();
-                dbUtil utl = new dbUtil() ;
+                dbUtil utl = new dbUtil();
                 UserLogin obj = new UserLogin(utl);
 
                 obj.setTitle("Student-Login");
