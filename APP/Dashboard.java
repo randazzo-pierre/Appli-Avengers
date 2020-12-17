@@ -36,6 +36,7 @@ public class Dashboard extends JFrame {
             }
         });
     }
+
     /**
      * Create the frame.
      */
@@ -54,36 +55,34 @@ public class Dashboard extends JFrame {
         // ============================================================================
 
         JLabel lblMission = new JLabel("Mission");
-		lblMission.setForeground(Color.BLACK);
-		lblMission.setFont(new Font("Tahoma", Font.PLAIN, 39));
-		lblMission.setBounds(150, 15, 400, 93);
+        lblMission.setForeground(Color.BLACK);
+        lblMission.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        lblMission.setBounds(150, 15, 400, 93);
         contentPane.add(lblMission);
-        
 
         JLabel lblHero = new JLabel("Heros");
-		lblHero.setForeground(Color.BLACK);
-		lblHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
-		lblHero.setBounds(750, 25, 400, 93);
+        lblHero.setForeground(Color.BLACK);
+        lblHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        lblHero.setBounds(750, 25, 400, 93);
         contentPane.add(lblHero);
-        
+
         JLabel lblVilain = new JLabel("Vilains");
-		lblVilain.setForeground(Color.BLACK);
-		lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
-		lblVilain.setBounds(750, 175, 400, 93);
+        lblVilain.setForeground(Color.BLACK);
+        lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        lblVilain.setBounds(750, 175, 400, 93);
         contentPane.add(lblVilain);
-        
-        
+
         JLabel lblCivil = new JLabel("Civil");
-		lblCivil.setForeground(Color.BLACK);
-		lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 39));
-		lblCivil.setBounds(175, 250, 400, 90);
+        lblCivil.setForeground(Color.BLACK);
+        lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        lblCivil.setBounds(175, 250, 400, 90);
         contentPane.add(lblCivil);
-        
+
         JLabel lblProbleme = new JLabel("Probleme");
-		lblProbleme.setForeground(Color.BLACK);
-		lblProbleme.setFont(new Font("Tahoma", Font.PLAIN, 39));
-		lblProbleme.setBounds(150, 375, 400, 90);
-		contentPane.add(lblProbleme);
+        lblProbleme.setForeground(Color.BLACK);
+        lblProbleme.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        lblProbleme.setBounds(150, 375, 400, 90);
+        contentPane.add(lblProbleme);
 
         // ======== BEA ============ FRONT => OK | BACK => DEV =======
         JButton btnNewButton = new JButton("Incident");
@@ -99,7 +98,7 @@ public class Dashboard extends JFrame {
         });
         btnNewButton.setBounds(50, 120, 200, 40);
         contentPane.add(btnNewButton);
-        
+
         JButton btnListRapport = new JButton("Rapport liste");
         btnListRapport.setForeground(new Color(0, 0, 0));
         btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -128,7 +127,7 @@ public class Dashboard extends JFrame {
         });
         btnListMission.setBounds(250, 120, 200, 40);
         contentPane.add(btnListMission);
-        
+
         // ==========THIB============= FRONT => OK | BACK => DEV =======
         if ("CIVIL".equals(user.role)) {
             JButton button2 = new JButton("Formulaire Satisfaction");
@@ -194,12 +193,12 @@ public class Dashboard extends JFrame {
             button4.setFont(new Font("Tahoma", Font.PLAIN, 25));
             button4.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    RapportMission RapportMission = new RapportMission(user,dbUtil);
+                    RapportMission RapportMission = new RapportMission(user, dbUtil);
                     RapportMission.setTitle("Rapport");
                     RapportMission.setVisible(true);
                 }
             });
-            button4.setBounds(150, 175, 250, 40);
+            button4.setBounds(100, 220, 250, 40);
             contentPane.add(button4);
 
             // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
@@ -272,7 +271,7 @@ public class Dashboard extends JFrame {
         });
         button7.setBounds(125, 480, 200, 40);
         contentPane.add(button7);
-        
+
     }
 
 }

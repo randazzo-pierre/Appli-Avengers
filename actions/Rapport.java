@@ -36,6 +36,9 @@ public class Rapport {
         this.descriptionR = inputCommentaire;
         this.statutR = status;
 
+        String mot = "mot";
+        String idInc = mot.charAt(mot.length() - 1);
+
         // connexion bdd
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
@@ -50,6 +53,36 @@ public class Rapport {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        // changement du status MISSION
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                    "dbroot", "QeTuZ2LFJfSqtbpe");
+
+            PreparedStatement st = (PreparedStatement) con
+                    .prepareStatement("Update MISSION set STATUS=? where TITREM=" + titreR + "");
+            st.setString(1, statutR);
+            st.setString(2, titreR);
+            st.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+
+        // changement du status INCIDENT
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                    "dbroot", "QeTuZ2LFJfSqtbpe");
+
+            PreparedStatement st = (PreparedStatement) con
+                    .prepareStatement("Update INCIDENT set STATUS=? where ID_I=" + titreR + "");
+            st.setString(1, statutR);
+            st.setString(2, titreR);
+            st.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+
         // return this.idI ;
     }
 
