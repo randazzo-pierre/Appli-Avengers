@@ -1,59 +1,55 @@
 package actions;
 
-import java.util.*;
-import java.util.Date;
+
 
 import java.sql.*;
-import util.*;
+
 
 import util.dbUtil;
 
 public class Mission {
     private int idM;
-    private String nature;
-    private String titreM;
-    private Date datedeb;
-    private Date datefin;
-    private ArrayList<String> itineraire;
-    private String gravite;
-    private String urgence;
-    private ArrayList<String> assignes;
-    private String leader;
+    private String TitreM;
+    private String DescriptionM;
+    private String AssigneM;
+    private String LeaderM;
+    private String GraviteM;
+    private String UrgenceM;
+    private String PaysM;
+    private int ZipM;
 
     /**
      * @param idM
-     * @param nature
-     * @param titreM
-     * @param datedeb
-     * @param datfin
-     * @param Itineraire
-     * @param gravite
-     * @param urgence
-     * @param assignes
-     * @param leader
+     * @param TitreM
+     * @param DescriptionM
+     * @param AssigneM
+     * @param LeaderM
+     * @param GraviteM
+     * @param UrgenceM
+     * @param PaysM
+     * @param ZipM
      */
-    public Mission(int idM, String nature, String titreM, Date datedeb, Date datfin, ArrayList<String> Itineraire, String gravite,
-                   String urgence, ArrayList<String> assignes, String leader) {
+    public Mission(int idM, String TitreM, String DescriptionM, String AssigneM, String LeaderM, String GraviteM, String UrgenceM,
+                   String PaysM, int ZipM) {
         this.idM = idM;
-        this.nature = nature;
-        this.titreM =  titreM;
-        this.datedeb = datedeb;
-        this.datefin = datefin;
-        this.itineraire = itineraire;
-        this.nature = gravite;
-        this.nature = urgence;
-        this.assignes = assignes;
-        this.leader = leader;
+        this.TitreM = TitreM;
+        this.DescriptionM =  DescriptionM;
+        this.AssigneM = AssigneM;
+        this.LeaderM = LeaderM;
+        this.GraviteM = GraviteM;
+        this.UrgenceM = UrgenceM;
+        this.PaysM = PaysM;
+        this.ZipM = ZipM;
     }
 
 
-    public  Mission(String nature, String titre, Date debut, Date fin, String Gravite,String Urgence,String Assigne,String Leader) throws SQLException {
-        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+titre+" Nature : "+nature+" début : "+debut+" fin:"+fin+" Gravité : "+Gravite+" Urgence : "+Urgence);
+    public  Mission(String TitreM, String DescriptionM, String AssigneM, String LeaderM, String GraviteM,String UrgenceM,String PaysM,String ZipM) throws SQLException {
+        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+TitreM+" Description : "+DescriptionM+" début : "+AssigneM+" fin:"+LeaderM+" Gravité : "+GraviteM+" Urgence : "+UrgenceM+" Pays : "+PaysM+" Zip : "+ZipM);
         //connexion bdd
        dbUtil utl = new dbUtil() ;
        Connection cnx = utl.dbConnect() ;
        try {
-           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+nature+"', '"+titreM+"', '"+debut+"', '"+fin+"', '', '"+Gravite+"', '"+Urgence+"')" ;
+           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+TitreM+"', '"+DescriptionM+"', '"+AssigneM+"', '"+LeaderM+"', '', '"+GraviteM+"', '"+UrgenceM+"', '"+PaysM+", '"+ZipM+")" ;
            System.out.println(request);
         int insert = utl.dbCreate(cnx, request) ;
         this.setIdM(insert);
@@ -78,64 +74,58 @@ public class Mission {
     /**
      * @return String
      */
-    public String getNature() {
-        return nature;
-    }
-
-    /**
-     * @return String
-     */
     public String getTitreM() {
-        return titreM;
-    }
-
-    /**
-     * @return Date
-     */
-    public Date getDatedeb() {
-        return datedeb;
-    }
-
-    /**
-     * @return Date
-     */
-    public Date getDatefin() {
-        return datefin;
-    }
-
-    /**
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getItineraire() {
-        return itineraire;
+        return TitreM;
     }
 
     /**
      * @return String
      */
-    public String getGravite() {
-        return gravite;
+    public String getDescriptionM() {
+        return DescriptionM;
     }
 
     /**
      * @return String
      */
-    public String getUrgence() {
-        return urgence;
-    }
-
-    /**
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getAssignes() {
-        return assignes;
+    public String getAssigneM() {
+        return AssigneM;
     }
 
     /**
      * @return String
      */
-    public String getLeader() {
-        return leader;
+    public String getLeaderM() {
+        return LeaderM;
+    }
+
+    /**
+     * @return String
+     */
+    public String getGraviteM() {
+        return GraviteM;
+    }
+
+
+    /**
+     * @return String
+     */
+    public String getUrgenceM() {
+        return UrgenceM;
+    }
+
+    /**
+     * @return String
+     */
+    public String getPaysM() {
+        return PaysM;
+    }
+
+    /**
+     * @return String ZipM
+     */
+    public int getZipM() {
+        return ZipM;
     }
 
     /**
@@ -146,65 +136,59 @@ public class Mission {
     }
 
     /**
-     * @param nature
+     * @param TitreM
      */
-    public void setNature(String nature) {
-        this.nature = nature;
+    public void setTitreM(String TitreM) {
+        this.TitreM = TitreM;
+    }
+
+
+    /**
+     * @param Description
+     */
+    public void setDescriptionM(String DescriptionM) {
+        this.DescriptionM = DescriptionM;
     }
 
     /**
-     * @param titre
+     * @param AssigneM
      */
-    public void setTitreM(String titre) {
-        this.titreM = titre;
+    public void setAssigneM(String AssigneM) {
+        this.AssigneM = AssigneM;
     }
 
     /**
-     * @param datedeb
+     * @param LeaderM
      */
-    public void setDatedeb(Date datedeb) {
-        this.datedeb = datedeb;
+    public void setLeaderM(String LeaderM) {
+        this.LeaderM = LeaderM;
     }
 
     /**
-     * @param datefin
+     * @param GraviteM
      */
-    public void setDatefin(Date datefin) {
-        this.datefin = datefin;
+    public void setGraviteM(String GraviteM) {
+        this.GraviteM = GraviteM;
     }
 
     /**
-     * @param itineraire
+     * @param UrgenceM
      */
-    public void setItineraire(ArrayList<String> itineraire) {
-        this.itineraire = itineraire;
+    public void setUrgenceM(String UrgenceM) {
+        this.UrgenceM = UrgenceM;
     }
 
     /**
-     * @param gravite
+     * @param PaysM
      */
-    public void setGravite(String gravite) {
-        this.gravite = gravite;
+    public void setPaysM(String PaysM) {
+        this.PaysM = PaysM;
     }
 
     /**
-     * @param urgence
+     * @param ZipM
      */
-    public void setUrgence(String urgence) {
-        this.urgence = urgence;
-    }
-
-    /**
-     * @param assignes
-     */
-    public void setAssignes(ArrayList<String> assignes) {
-        this.assignes = assignes;
-    }
-
-    /**
-     * @param leader
-     */
-    public void setLeader(String leader) {
-        this.leader = leader;
+    public void setZipM(int ZipM) {
+        this.ZipM = ZipM;
     }
 }
