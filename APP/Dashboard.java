@@ -95,7 +95,7 @@ public class Dashboard extends JFrame {
             button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
             button3.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    CreateMission CreateMission = new CreateMission(user);
+                    CreateMission CreateMission = new CreateMission(user, dbUtil);
                     CreateMission.setTitle("Mission");
                     CreateMission.setVisible(true);
                 }
