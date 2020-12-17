@@ -68,26 +68,22 @@ public class VilainList extends JFrame {
         contentPane.add(lblCivil);
 
 
-        //Choix de :
-			try{
-				Connection cnx = utl.dbConnect() ;
-				ResultSet rs = utl.dbRead(cnx, "SELECT * FROM CIVIL") ;
-				JComboBox jc = new JComboBox() ;
-				while (rs.next()) {  
-
-					jc.addItem(rs.getString("ID_I"));  
-				}
-				
-				jc.setBounds(100, 75, 193, 52);
-				contentPane.add(jc) ;
-			} catch (SQLException e) {
-				System.out.println(e);
+        //Choix du civil:
+		try{
+			Connection cnx = utl.dbConnect() ;
+			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM CIVIL") ;
+			JComboBox jcCivil = new JComboBox() ;
+			while (rs.next()) {  
+				jcCivil.addItem(rs.getString("IDENTIFIANT"));  
 			}
-        //JTextField textFieldCivil = new JTextField();
-        //textFieldCivil.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        //textFieldCivil.setBounds(330, 150, 550, 50);
-        //contentPane.add(textFieldCivil);
-        //textFieldCivil.setColumns(10);
+			
+            jcCivil.setBounds(330, 150, 550, 50);
+            jcCivil.setFont(new Font("Tahoma", Font.PLAIN, 31));
+            
+			contentPane.add(jcCivil) ;
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
 
         JLabel lblVilain = new JLabel("Vilain");
         lblVilain.setForeground(Color.BLACK);
@@ -96,11 +92,28 @@ public class VilainList extends JFrame {
         lblVilain.setBounds(125, 250, 193, 52);
         contentPane.add(lblVilain);
 
-        JTextField textFieldVilain = new JTextField();
+        //Choix du vilain :
+        try{
+            Connection cnx = utl.dbConnect() ;
+            ResultSet rs = utl.dbRead(cnx, "SELECT * FROM VILAIN") ;
+            JComboBox jcVilain = new JComboBox() ;
+            while (rs.next()) {  
+                jcVilain.addItem(rs.getString("TITREV"));  
+            }
+
+            jcVilain.setBounds(330, 250, 550, 50);
+            jcVilain.setFont(new Font("Tahoma", Font.PLAIN, 31));
+
+            contentPane.add(jcVilain) ;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        /*JTextField textFieldVilain = new JTextField();
         textFieldVilain.setFont(new Font("Tahoma", Font.PLAIN, 32));
         textFieldVilain.setBounds(330, 250, 550, 50);
         contentPane.add(textFieldVilain);
-        textFieldVilain.setColumns(10);
+        textFieldVilain.setColumns(10);*/
 
         // BOUTONS
 
