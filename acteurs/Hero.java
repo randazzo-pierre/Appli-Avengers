@@ -1,124 +1,126 @@
 package acteurs;
 import java.util.*;
 
-public class Hero extends Civil {
-    @SuppressWarnings("unused")
-	private int idC;
+public class Hero {
     private int idH;
-    private String nomHero;
-    private String pouvoir;
-    private String pointFaible;
-    private int score;
+	private int idC;
+    private String titreh;
+    private String pouvoirh;
+    private String pointFaibleh;
+    private String identiteC;
+    private int scoreh;
     private int nbMissionEff;
     private String commentaireHero;
 
-    public Hero(int idH, String nomHero, String nom, String prenom, String civilite, String adresse, String ville, String zip,
-                String pays, String email, int tel, Date dateNais, String nationnalite, ArrayList<String> organisation,
-                Date dateMort, String commentaireCivil, Date dateAjout, Date dateDerniereModif, int nbIncident,
-                int nbMission, String pouvoir, String pointFaible, int score, int nbMissionEff, String commentaireHero, int idC) {
-        super( idC, nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
-                dateMort, commentaireCivil, dateAjout, dateDerniereModif, nbIncident, nbMission);
-
+    /**
+     * 
+     * @param idH
+     * @param idC
+     * @param titreh
+     * @param pouvoirh
+     * @param pointFaibleh
+     * @param identiteC
+     * @param scoreh
+     * @param nbMissionEff
+     * @param commentaireHero
+     */
+    public Hero(int idH, int idC, String titreh, String pouvoirh, String pointFaibleh, String identiteC, int scoreh, int nbMissionEff, String commentaireHero) {
         this.idH = idH;
-        this.nomHero = nomHero;
-        this.pouvoir = pouvoir;
-        this.pointFaible = pointFaible;
-        this.score = score;
+        this.idC = idC;
+        this.titreh = titreh;
+        this.pouvoirh = pouvoirh;
+        this.pointFaibleh = pointFaibleh;
+        this.identiteC = identiteC;
+        this.scoreh = scoreh;
         this.nbMissionEff = nbMissionEff;
         this.commentaireHero = commentaireHero;
     }
-    /**
-     * @return int
-     */
-    public int getidH() {
+
+    public int getIdH() {
         return idH;
     }
-
-    /**
-     * @return String
-     */
-    public String getNomHero() {
-        return nomHero;
+    public int getIdC() {
+        return idC;
     }
-
-    /**
-     * @return String
-     */
-    public String getPouvoir() {
-        return pouvoir;
+    public String getTitreh() {
+        return titreh;
     }
-
-    /**
-     * @return String
-     */
-    public String getPointFaible() {
-        return pointFaible;
+    public String getPouvoirh() {
+        return pouvoirh;
     }
-
-    /**
-     * @return int
-     */
-    public int getScore() {
-        return score;
+    public String getPointFaibleh() {
+        return pointFaibleh;
     }
-
-    /**
-     * @return int
-     */
+    public String getIdentiteC() {
+        return identiteC;
+    }
+    public int getScoreh() {
+        return scoreh;
+    }
     public int getNbMissionEff() {
         return nbMissionEff;
     }
-
-    /**
-     * @return String
-     */
     public String getCommentaireHero() {
         return commentaireHero;
     }
-
     /**
-     * @param int
-     */
+    * 
+    * @param idH
+    */
     public void setIdH(int idH) {
         this.idH = idH;
     }
-
     /**
-     * @param nomHero
+     * 
+     * @param idC
      */
-    public void setNomHero(String nomHero) {
-        this.nomHero = nomHero;
+    public void setIdC(int idC) {
+        this.idC = idC;
     }
-
     /**
-     * @param pouvoir
+     * 
+     * @param titreh
      */
-    public void setPouvoir(String pouvoir) {
-        this.pouvoir = pouvoir;
+    public void setTitreh(String titreh) {
+        this.titreh = titreh;
     }
-
     /**
-     * @param pointFaible
+     * 
+     * @param pouvoirh
      */
-    public void setPointFaible(String pointFaible) {
-        this.pointFaible = pointFaible;
+    public void setPouvoirh(String pouvoirh) {
+        this.pouvoirh = pouvoirh;
     }
-
     /**
-     * @param score
+     * 
+     * @param pointFaibleh
      */
-    public void setScore(int score) {
-        this.score = score;
+    public void setPointFaibleh(String pointFaibleh) {
+        this.pointFaibleh = pointFaibleh;
     }
-
     /**
+     * 
+     * @param identiteC
+     */
+    public void setIdentiteC(String identiteC) {
+        this.identiteC = identiteC;
+    }
+    /**
+     * 
+     * @param scoreh
+     */
+    public void setScoreh(int scoreh) {
+        this.scoreh = scoreh;
+    }
+    /**
+     * 
      * @param nbMissionEff
      */
     public void setNbMissionEff(int nbMissionEff) {
         this.nbMissionEff = nbMissionEff;
     }
-
     /**
+     * 
      * @param commentaireHero
      */
     public void setCommentaireHero(String commentaireHero) {

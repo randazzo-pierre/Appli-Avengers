@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JFrame;
 
 import acteurs.User;
+import acteurs.Hero;
 import util.dbUtil;
 import java.sql.*;
 import java.util.*;
@@ -81,13 +82,13 @@ public class ListHero extends JFrame {
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("SELECT ID_H, TITREH, POUVOIRH, FAIBLESSEH, NBMISSION FROM HEROS");
+                            .prepareStatement("SELECT * FROM HEROS");
                     ResultSet rs = st.executeQuery();
-                    List<User> listUser = new ArrayList<>();
+                    List<Hero> listHero = new ArrayList<>();
                     while (rs.next()) { // while (rs.next())
-                        User user = new User(rs.getString(1), rs.getString(2), null, rs.getString(4), rs.getInt(5));
-                        listUser.add(user);
-                        System.out.println(user.username);
+                        Hero hero = new Hero(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getString(9));
+                        listHero.add(hero);
+                        System.out.println(hero.getTitreh());
                     }
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
