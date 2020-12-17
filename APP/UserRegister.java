@@ -16,8 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-
-import acteurs.User;
+import acteurs.UserAdd;
 import util.dbUtil;
 
 public class UserRegister extends JFrame {
@@ -111,9 +110,8 @@ public class UserRegister extends JFrame {
                 String role = "CIVIL";
                 int id = 0;
 
-                User newUser;
                 try {
-                    newUser = new User(userName, password, role, debut, id);
+                    UserAdd newUser = new UserAdd(userName, password, role, debut, id);
                     System.out.println(newUser);
                 } catch (SQLException e1) {
                     e1.printStackTrace();

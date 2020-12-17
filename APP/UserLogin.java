@@ -93,18 +93,18 @@ public class UserLogin extends JFrame {
         lblPassword.setBounds(250, 286, 193, 52);
         contentPane.add(lblPassword);
 
-        JButton button2 = new JButton("Register");
-        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button2.addActionListener(new ActionListener() {
+        JButton button5 = new JButton("Register");
+        button5.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 UserRegister bo = new UserRegister();
                 bo.setTitle("Register");
                 bo.setVisible(true);
             }
         });
-        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
-        button2.setBounds(245, 392, 162, 73);
-        contentPane.add(button2);
+        button5.setFont(new Font("Tahoma", Font.PLAIN, 35));
+        button5.setBounds(245, 392, 162, 73);
+        contentPane.add(button5);
 
         btnNewButton = new JButton("Login");
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));

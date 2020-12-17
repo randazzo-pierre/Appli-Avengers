@@ -17,21 +17,22 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
 import acteurs.User;
+import actions.Satisfaction;
 import java.sql.*;
 import util.* ;
 
 public class FormulaireSatisfaction extends JFrame {
 
-	 private static final long serialVersionUID = 1 ;
-		private JPanel contentPane;
-		private String titre;
-		private String auteur;
-		private String agent;
-		private String score;
-		private JComboBox<String> jc ;
-		private JComboBox<String> jc1 ;
-		private JComboBox<String> jc2 ;
-		private JComboBox<String> jc3 ;
+	public static final long serialVersionUID = 1 ;
+		public JPanel contentPane;
+		public String titre;
+		public String auteur;
+		public String agent;
+		public String score;
+		public JComboBox<String> jc ;
+		public JComboBox<String> jc1 ;
+		public JComboBox<String> jc2 ;
+		public JComboBox<String> jc3 ;
 		
 
 		/**
@@ -92,7 +93,7 @@ public class FormulaireSatisfaction extends JFrame {
 			try{
 				Connection cnx = utl.dbConnect() ;
 				ResultSet rs = utl.dbRead(cnx, "SELECT * FROM MISSION") ;
-				JComboBox<String> jc = new JComboBox() ;
+				JComboBox jc = new JComboBox() ;
 				while (rs.next()) {  
 					//int id=rs.getInt("ID_M") ;
 					String titreMission = rs.getString("TITREM") ;
@@ -103,7 +104,7 @@ public class FormulaireSatisfaction extends JFrame {
 				//	Connection cnx = utl.dbConnect() ;
 				//L'AUTEUR
 					ResultSet rs1 = utl.dbRead(cnx, "SELECT * FROM CIVIL WHERE type!=1") ;
-					JComboBox<String> jc1 = new JComboBox() ;
+					JComboBox jc1 = new JComboBox() ;
 					while (rs1.next()) {  
 						//int id=rs.getInt("ID_M") ;
 						String identifiantCivil = rs1.getString("IDENTIFIANT") ;
@@ -114,7 +115,7 @@ public class FormulaireSatisfaction extends JFrame {
 					//L'AGENT
 				//	Connection cnx = utl.dbConnect() ;
 				ResultSet rs2 = utl.dbRead(cnx, "SELECT * FROM CIVIL WHERE type=1") ;
-				JComboBox<String> jc2 = new JComboBox() ;
+				JComboBox jc2 = new JComboBox() ;
 				while (rs2.next()) {  
 					//int id=rs.getInt("ID_M") ;
 					String identifiantAgent = rs2.getString("IDENTIFIANT") ;
@@ -122,16 +123,11 @@ public class FormulaireSatisfaction extends JFrame {
 					jc2.addItem(identifiantAgent);  
 				//	utl.dbKill(cnx) ;
 				}
-
-				
 				jc2.setBounds(310, 225, 550, 50);
 				contentPane.add(jc2) ;
-	
-					
+			
 					jc1.setBounds(310, 150, 550, 50);
 					contentPane.add(jc1) ;
-				
-
 				
 				jc.setBounds(310, 75, 550, 50);
 				contentPane.add(jc) ;
@@ -150,8 +146,6 @@ public class FormulaireSatisfaction extends JFrame {
 						}
 				});
 
-			
-
 				jc2.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						e.getSource();
@@ -159,9 +153,6 @@ public class FormulaireSatisfaction extends JFrame {
 						}
 				});
 
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
 
 			//nom auteur
 			JLabel lblAuteur = new JLabel("Auteur");
@@ -220,7 +211,7 @@ public class FormulaireSatisfaction extends JFrame {
 
 	
 				Object[] elements = new Object[]{"1", "2", "3", "4", "5"};  ;
-				JComboBox<String> jc3 = new JComboBox(elements) ;
+				JComboBox jc3 = new JComboBox(elements) ;
 				jc3.setBounds(250, 375, 550, 50);
 				contentPane.add(jc3) ;
 		
@@ -268,20 +259,35 @@ public class FormulaireSatisfaction extends JFrame {
 					//error
 					JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
 				}  else {
-
 					
-					String titre=(String) jc.getSelectedItem();
-					String auteur=(String) jc1.getSelectedItem();
-					String agent=(String) jc2.getSelectedItem();
-					String score=(String) jc3.getSelectedItem();
+					String titre = jc.getSelectedItem().toString();
+					String auteur = jc1.getSelectedItem().toString();
+					String agent = jc2.getSelectedItem().toString();
+					String score = jc3.getSelectedItem().toString();
 					String inputCommentaire = textFieldCommentaire.getText();
+
 					System.out.println(titre+" "+auteur+" "+agent+" "+score+" "+inputCommentaire);
-					//String inputAuteur = textFieldAuteur.getText();
+					
+					try {
+						Satisfaction satis = new Satisfaction(titre,auteur, agent, score, inputCommentaire);
+						JOptionPane.showMessageDialog(btnSumbit, "Formulaire envoyé, merci de votre coopération !!");
+
+					} catch (SQLDataException err) {
+						System.out.println(err);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 
 	            }
-			}});
+			}
+		});
 	        btnSumbit.setBounds(550, 460, 350, 50);
 			contentPane.add(btnSumbit);
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
 
 	    }
 }
