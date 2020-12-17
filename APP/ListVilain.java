@@ -58,7 +58,7 @@ public class ListVilain extends JFrame {
         btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 39));
         btnRetour.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user);
+                Dashboard bo = new Dashboard(user, null);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
             }
