@@ -1,10 +1,7 @@
 package acteurs;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
-
-import util.dbUtil;
 
 public class User {
 
@@ -21,25 +18,26 @@ public class User {
       this.role = role;
       this.create_time = create_time;
       this.id = id;
-      // connexion bdd
-      dbUtil utl = new dbUtil();
-      Connection cnx = utl.dbConnect();
-      try {
-         String request = "INSERT INTO USER( username, password, role, create_time) VALUES('" + username + "', '"
-               + password + "', '" + role + "', '" + create_time + "')";
-         System.out.println(request);
-         int insert = utl.dbCreate(cnx, request);
-         this.setidI(insert);
-         utl.dbKill(cnx);
-         System.out.println("insertion ok");
-      } catch (SQLException e) {
-         System.out.println(e);
-      }
+      // // connexion bdd
+      // dbUtil utl = new dbUtil();
+      // Connection cnx = utl.dbConnect();
+      // try {
+      // String request = "INSERT INTO USER( username, password, role, create_time)
+      // VALUES('" + username + "', '"
+      // + password + "', '" + role + "', '" + create_time + "')";
+      // System.out.println(request);
+      // int insert = utl.dbCreate(cnx, request);
+      // this.setidI(insert);
+      // utl.dbKill(cnx);
+      // System.out.println("insertion ok");
+      // } catch (SQLException e) {
+      // System.out.println(e);
+      // }
       return;
    }
 
-   private void setidI(int insert) {
-   }
+   // private void setidI(int insert) {
+   // }
 
    /**
     * @return String
