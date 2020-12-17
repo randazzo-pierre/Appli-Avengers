@@ -159,6 +159,22 @@ public class Dashboard extends JFrame {
 
         }
 
+        // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
+        JButton buttonListHero = new JButton("Liste Heros");
+        buttonListHero.setForeground(new Color(0, 0, 0));
+        buttonListHero.setBackground(new Color(20, 150, 20));
+        buttonListHero.setBackground(UIManager.getColor("Button.disabledForeground"));
+        buttonListHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        buttonListHero.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ListHero vilain = new ListHero(user, dbUtil);
+                vilain.setTitle("Liste Heros");
+                vilain.setVisible(true);
+            }
+        });
+        buttonListHero.setBounds(50, 360, 850, 50);
+        contentPane.add(buttonListHero);
+
         // ==========NATHAN========FRONT => OK | BACK => DEV =======
         if ("ORGA".equals(user.role)) {
             JButton button6 = new JButton("Satisfaction Info");
@@ -195,6 +211,8 @@ public class Dashboard extends JFrame {
         });
         button7.setBounds(50, 480, 850, 50);
         contentPane.add(button7);
+
+
 
     }
 
