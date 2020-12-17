@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
+import util.dbUtil;
 
 public class SatisfactionList extends JFrame {
 
@@ -52,7 +53,8 @@ public class SatisfactionList extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user);
+                dbUtil utl = new dbUtil() ;
+                Dashboard bo = new Dashboard(user, utl);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
             }

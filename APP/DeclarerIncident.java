@@ -23,8 +23,8 @@ import javax.swing.border.EmptyBorder;
 import acteurs.User;
 
 import actions.Incident;
-
 import util.Country;
+import util.dbUtil;
 
 public class DeclarerIncident extends JFrame {
 
@@ -199,7 +199,8 @@ public class DeclarerIncident extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user);
+				dbUtil utl = new dbUtil() ;
+                Dashboard bo = new Dashboard(user, utl);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
             }

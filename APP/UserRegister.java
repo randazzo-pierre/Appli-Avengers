@@ -22,6 +22,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
+import util.dbUtil;
 
 public class UserRegister extends JFrame {
 
@@ -92,7 +93,8 @@ public class UserRegister extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                UserLogin bo = new UserLogin();
+                dbUtil utl = new dbUtil() ;
+                UserLogin bo = new UserLogin(utl);
                 bo.setTitle("Login ");
                 bo.setVisible(true);
             }
@@ -124,7 +126,8 @@ public class UserRegister extends JFrame {
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) { // while (rs.next())
                         dispose();
-                        UserLogin ah = new UserLogin();
+                        dbUtil utl = new dbUtil() ;
+                        UserLogin ah = new UserLogin(utl);
                         ah.setVisible(true);
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
                     } else {
