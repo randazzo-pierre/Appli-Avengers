@@ -17,8 +17,7 @@ import javax.swing.border.EmptyBorder;
 import acteurs.User;
 import util.dbUtil;
 
-public class UserHome extends JFrame {
-
+public class Profile extends JFrame {
     private static final long serialVersionUID = 1;
     private JPanel contentPane;
 
@@ -29,7 +28,7 @@ public class UserHome extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    UserHome frame = new UserHome();
+                    Profile frame = new Profile();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -38,14 +37,14 @@ public class UserHome extends JFrame {
         });
     }
 
-    public UserHome() {
+    public Profile() {
 
     }
 
     /**
      * Create the frame.
      */
-    public UserHome(User user, dbUtil dbUtil) {
+    public Profile(User user, dbUtil dbUtil) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -55,58 +54,50 @@ public class UserHome extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Bievenue : " + user.role + " " + user.username);
-        lblNewLabel.setForeground(Color.BLACK);
-        lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        lblNewLabel.setBounds(250, 13, 673, 93);
-        contentPane.add(lblNewLabel);
+        JButton btnNewButton = new JButton("Logout");
+        btnNewButton.setForeground(new Color(0, 0, 0));
+        btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int a = JOptionPane.showConfirmDialog(btnNewButton, "Are you sure?");
+                // JOptionPane.setRootFrame(null);
+                if (a == JOptionPane.YES_OPTION) {
+                    dispose();
+                    dbUtil utl = new dbUtil();
+                    UserLogin obj = new UserLogin(utl);
+                    obj.setTitle("Student-Login");
+                    obj.setVisible(true);
+                }
+                dispose();
+                dbUtil utl = new dbUtil();
+                UserLogin obj = new UserLogin(utl);
 
-        // JButton btnNewButton = new JButton("Logout");
-        // btnNewButton.setForeground(new Color(0, 0, 0));
-        // btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
-        // btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        // btnNewButton.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent e) {
-        // int a = JOptionPane.showConfirmDialog(btnNewButton, "Are you sure?");
-        // // JOptionPane.setRootFrame(null);
-        // if (a == JOptionPane.YES_OPTION) {
-        // dispose();
-        // dbUtil utl = new dbUtil();
-        // UserLogin obj = new UserLogin(utl);
-        // obj.setTitle("Student-Login");
-        // obj.setVisible(true);
-        // }
-        // dispose();
-        // dbUtil utl = new dbUtil();
-        // UserLogin obj = new UserLogin(utl);
+                obj.setTitle("Student-Login");
+                obj.setVisible(true);
 
-        // obj.setTitle("Student-Login");
-        // obj.setVisible(true);
+            }
+        });
+        btnNewButton.setBounds(247, 100, 491, 114);
+        contentPane.add(btnNewButton);
 
-        // }
-        // });
-        // btnNewButton.setBounds(247, 100, 491, 114);
-        // contentPane.add(btnNewButton);
-
-        JButton button2 = new JButton("Dashboard");
+        JButton button2 = new JButton("Modifier Profile");
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user, dbUtil);
-                bo.setTitle("Dashboard " + user.role);
-                bo.setVisible(true);
+                // a faire ========
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
         button2.setBounds(247, 250, 491, 114);
         contentPane.add(button2);
 
-        JButton button = new JButton("Profile");
+        JButton button = new JButton("Change-password\r\n");
         button.setBackground(UIManager.getColor("Button.disabledForeground"));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Profile bo = new Profile(user, dbUtil);
-                bo.setTitle("Profile");
+                ChangePassword bo = new ChangePassword(user);
+                bo.setTitle("Change Password");
                 bo.setVisible(true);
 
             }
