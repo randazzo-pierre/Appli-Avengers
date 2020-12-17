@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
@@ -35,7 +36,6 @@ public class Dashboard extends JFrame {
             }
         });
     }
-
     /**
      * Create the frame.
      */
@@ -53,11 +53,43 @@ public class Dashboard extends JFrame {
         // ========CIVIL & ORGANISATION & HERO ========================================
         // ============================================================================
 
+        JLabel lblMission = new JLabel("Mission");
+		lblMission.setForeground(Color.BLACK);
+		lblMission.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		lblMission.setBounds(150, 15, 400, 93);
+        contentPane.add(lblMission);
+        
+
+        JLabel lblHero = new JLabel("Heros");
+		lblHero.setForeground(Color.BLACK);
+		lblHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		lblHero.setBounds(750, 25, 400, 93);
+        contentPane.add(lblHero);
+        
+        JLabel lblVilain = new JLabel("Vilains");
+		lblVilain.setForeground(Color.BLACK);
+		lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		lblVilain.setBounds(750, 175, 400, 93);
+        contentPane.add(lblVilain);
+        
+        
+        JLabel lblCivil = new JLabel("Civil");
+		lblCivil.setForeground(Color.BLACK);
+		lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		lblCivil.setBounds(175, 250, 400, 90);
+        contentPane.add(lblCivil);
+        
+        JLabel lblProbleme = new JLabel("Probleme");
+		lblProbleme.setForeground(Color.BLACK);
+		lblProbleme.setFont(new Font("Tahoma", Font.PLAIN, 39));
+		lblProbleme.setBounds(150, 375, 400, 90);
+		contentPane.add(lblProbleme);
+
         // ======== BEA ============ FRONT => OK | BACK => DEV =======
         JButton btnNewButton = new JButton("Incident");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 DeclarerIncident incident = new DeclarerIncident(user);
@@ -65,13 +97,13 @@ public class Dashboard extends JFrame {
                 incident.setVisible(true);
             }
         });
-        btnNewButton.setBounds(50, 20, 250, 50);
+        btnNewButton.setBounds(50, 120, 200, 40);
         contentPane.add(btnNewButton);
-
-        JButton btnListRapport = new JButton("Rapport list");
+        
+        JButton btnListRapport = new JButton("Rapport liste");
         btnListRapport.setForeground(new Color(0, 0, 0));
         btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnListRapport.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnListRapport.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnListRapport.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ListeRapport listeRapport = new ListeRapport(user, dbUtil);
@@ -80,23 +112,23 @@ public class Dashboard extends JFrame {
             }
         });
 
-        btnListRapport.setBounds(350, 20, 250, 50);
+        btnListRapport.setBounds(250, 175, 200, 40);
         contentPane.add(btnListRapport);
 
-        JButton btnListMission = new JButton("Mission List");
+        JButton btnListMission = new JButton("Mission Liste");
         btnListMission.setForeground(new Color(0, 0, 0));
         btnListMission.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnListMission.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnListMission.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnListMission.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ListeMission listeMission = new ListeMission(user, dbUtil);
-                listeMission.setTitle("Liste des rapports");
+                listeMission.setTitle("Mission Liste");
                 listeMission.setVisible(true);
             }
         });
-        btnListMission.setBounds(650, 20, 250, 50);
+        btnListMission.setBounds(250, 120, 200, 40);
         contentPane.add(btnListMission);
-
+        
         // ==========THIB============= FRONT => OK | BACK => DEV =======
         if ("CIVIL".equals(user.role)) {
             JButton button2 = new JButton("Formulaire Satisfaction");
@@ -110,7 +142,7 @@ public class Dashboard extends JFrame {
                     formulaireSatisfaction.setVisible(true);
                 }
             });
-            button2.setBounds(450, 20, 450, 50);
+            button2.setBounds(450, 275, 200, 50);
             contentPane.add(button2);
 
         }
@@ -121,7 +153,7 @@ public class Dashboard extends JFrame {
             button3.setForeground(new Color(0, 0, 0));
             button3.setBackground(new Color(20, 150, 20));
             button3.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button3.setFont(new Font("Tahoma", Font.PLAIN, 25));
             button3.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     CreateMission CreateMission = new CreateMission(user, dbUtil);
@@ -129,7 +161,7 @@ public class Dashboard extends JFrame {
                     CreateMission.setVisible(true);
                 }
             });
-            button3.setBounds(50, 160, 850, 50);
+            button3.setBounds(50, 175, 200, 40);
             contentPane.add(button3);
 
         }
@@ -140,7 +172,7 @@ public class Dashboard extends JFrame {
             button9.setForeground(new Color(0, 0, 0));
             button9.setBackground(new Color(20, 150, 20));
             button9.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button9.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button9.setFont(new Font("Tahoma", Font.PLAIN, 25));
             button9.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     ListVilain list = new ListVilain(user);
@@ -148,7 +180,7 @@ public class Dashboard extends JFrame {
                     list.setVisible(true);
                 }
             });
-            button9.setBounds(50, 80, 850, 50);
+            button9.setBounds(700, 250, 200, 40);
             contentPane.add(button9);
 
         }
@@ -159,15 +191,15 @@ public class Dashboard extends JFrame {
             button4.setForeground(new Color(0, 0, 0));
             button4.setBackground(new Color(20, 150, 20));
             button4.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button4.setFont(new Font("Tahoma", Font.PLAIN, 25));
             button4.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    RapportMission RapportMission = new RapportMission(user, dbUtil);
+                    RapportMission RapportMission = new RapportMission(user,dbUtil);
                     RapportMission.setTitle("Rapport");
                     RapportMission.setVisible(true);
                 }
             });
-            button4.setBounds(50, 240, 850, 50);
+            button4.setBounds(150, 175, 250, 40);
             contentPane.add(button4);
 
             // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
@@ -175,7 +207,7 @@ public class Dashboard extends JFrame {
             button5.setForeground(new Color(0, 0, 0));
             button5.setBackground(new Color(20, 150, 20));
             button5.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button5.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button5.setFont(new Font("Tahoma", Font.PLAIN, 25));
             button5.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     VilainList vilain = new VilainList(user, dbUtil);
@@ -183,7 +215,7 @@ public class Dashboard extends JFrame {
                     vilain.setVisible(true);
                 }
             });
-            button5.setBounds(50, 320, 850, 50);
+            button5.setBounds(700, 320, 200, 40);
             contentPane.add(button5);
 
         }
@@ -193,7 +225,7 @@ public class Dashboard extends JFrame {
         buttonListHero.setForeground(new Color(0, 0, 0));
         buttonListHero.setBackground(new Color(20, 150, 20));
         buttonListHero.setBackground(UIManager.getColor("Button.disabledForeground"));
-        buttonListHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        buttonListHero.setFont(new Font("Tahoma", Font.PLAIN, 25));
         buttonListHero.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ListHero vilain = new ListHero(user, dbUtil);
@@ -201,7 +233,7 @@ public class Dashboard extends JFrame {
                 vilain.setVisible(true);
             }
         });
-        buttonListHero.setBounds(50, 360, 850, 50);
+        buttonListHero.setBounds(700, 100, 200, 40);
         contentPane.add(buttonListHero);
 
         // ==========NATHAN========FRONT => OK | BACK => DEV =======
@@ -210,7 +242,7 @@ public class Dashboard extends JFrame {
             button6.setForeground(new Color(0, 0, 0));
             button6.setBackground(new Color(20, 150, 20));
             button6.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button6.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button6.setFont(new Font("Tahoma", Font.PLAIN, 25));
             button6.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     SatisfactionList list = new SatisfactionList(user);
@@ -219,7 +251,7 @@ public class Dashboard extends JFrame {
 
                 }
             });
-            button6.setBounds(50, 400, 850, 50);
+            button6.setBounds(125, 325, 200, 40);
             contentPane.add(button6);
 
         }
@@ -229,7 +261,7 @@ public class Dashboard extends JFrame {
         button7.setForeground(new Color(0, 0, 0));
         button7.setBackground(new Color(20, 150, 20));
         button7.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button7.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        button7.setFont(new Font("Tahoma", Font.PLAIN, 25));
         button7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Litige litige = new Litige(user, dbUtil);
@@ -238,9 +270,9 @@ public class Dashboard extends JFrame {
 
             }
         });
-        button7.setBounds(50, 480, 850, 50);
+        button7.setBounds(125, 480, 200, 40);
         contentPane.add(button7);
-
+        
     }
 
 }
