@@ -13,6 +13,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JFrame;
 
+import acteurs.User;
+
 public class ListVilain extends JFrame {
     private static final long serialVersionUID = 1;
     private JPanel contentPane;
@@ -37,7 +39,7 @@ public class ListVilain extends JFrame {
      * Create the frame.
      */
 
-    public ListVilain() {
+    public ListVilain(User user) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -50,6 +52,19 @@ public class ListVilain extends JFrame {
         // ========CIVIL & ORGANISATION & HERO ========================================
         // ============================================================================
 
+        JButton btnRetour = new JButton("Retour");
+	    btnRetour.setForeground(new Color(0, 0, 0));
+	    btnRetour.setBackground(UIManager.getColor("Button.disabledForeground"));
+	    btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 39));
+	    btnRetour.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+                Dashboard bo = new Dashboard(user);
+                bo.setTitle("Dashboard " + user.role);
+                bo.setVisible(true);
+	        }
+        });
+	    btnRetour.setBounds(150, 400, 350, 50);
+	    contentPane.add(btnRetour);
     }
 
 }

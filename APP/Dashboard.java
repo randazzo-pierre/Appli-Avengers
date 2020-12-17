@@ -113,7 +113,7 @@ public class Dashboard extends JFrame {
         button9.setFont(new Font("Tahoma", Font.PLAIN, 39));
         button9.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ListVilain list = new ListVilain();
+                ListVilain list = new ListVilain(user);
                 list.setTitle("List Vilain");
                 list.setVisible(true);
             }
