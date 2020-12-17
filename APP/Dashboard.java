@@ -35,6 +35,7 @@ public class Dashboard extends JFrame {
             }
         });
     }
+
     /**
      * Create the frame.
      */
@@ -66,7 +67,7 @@ public class Dashboard extends JFrame {
         });
         btnNewButton.setBounds(50, 20, 250, 50);
         contentPane.add(btnNewButton);
-        
+
         JButton btnListRapport = new JButton("Rapport list");
         btnListRapport.setForeground(new Color(0, 0, 0));
         btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -95,7 +96,7 @@ public class Dashboard extends JFrame {
         });
         btnListMission.setBounds(650, 20, 250, 50);
         contentPane.add(btnListMission);
-        
+
         // ==========THIB============= FRONT => OK | BACK => DEV =======
         if ("CIVIL".equals(user.role)) {
             JButton button2 = new JButton("Formulaire Satisfaction");
@@ -161,7 +162,7 @@ public class Dashboard extends JFrame {
             button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
             button4.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    RapportMission RapportMission = new RapportMission(user);
+                    RapportMission RapportMission = new RapportMission(user, dbUtil);
                     RapportMission.setTitle("Rapport");
                     RapportMission.setVisible(true);
                 }
@@ -240,8 +241,6 @@ public class Dashboard extends JFrame {
         button7.setBounds(50, 480, 850, 50);
         contentPane.add(button7);
 
-
-        
     }
 
 }

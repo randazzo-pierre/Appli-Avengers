@@ -16,6 +16,10 @@ public class Rapport {
     private String statutR;
 
     /**
+     * @param inputCommentaire
+     * @param score
+     * @param auteur
+     * @param titre
      * @param idR
      * @param titreR
      * @param auteurR
@@ -23,36 +27,31 @@ public class Rapport {
      * @param criseR
      * @param missionR
      * @param statutR
+     * @throws SQLException
      */
-    public Rapport(int idR, String titreR, String auteurR, String descriptionR, ArrayList<String> criseR, String missionR,
-                   String statutR) {
+    public Rapport(int idR, String titre, String heros, String status, String inputCommentaire) throws SQLException {
         this.idR = idR;
-        this.titreR = titreR;
-        this.auteurR = auteurR;
-        this.descriptionR = descriptionR;
-        this.criseR = criseR;
-        this.missionR = missionR;
-        this.statutR = statutR;
-    }
+        this.titreR = titre;
+        this.auteurR = heros;
+        this.descriptionR = inputCommentaire;
+        this.statutR = status;
 
-
-    public  Rapport( String titreR, Date descriptionR, ArrayList<String> criseR, String MissionR,String StatutR) throws SQLException {
-        System.out.println("Création d'un rapport de mission avec les paramètres suivant Titre : "+titreR+" Nature : "+descriptionR+" début : "+criseR+" Urgence : "+missionR);
-        //connexion bdd
-       dbUtil utl = new dbUtil() ;
-       Connection cnx = utl.dbConnect() ;
-       try {
-           String request = "INSERT INTO INCIDENT VALUES(ID_R,'"+titreR+"', '"+descriptionR+"', '"+criseR+"', '"+missionR+"', '"+statutR+"')" ;
-           System.out.println(request);
-        int insert = utl.dbCreate(cnx, request) ;
-        this.setIdR(insert);
-        utl.dbKill(cnx) ;
-        System.out.println("insertion ok");
-       } catch(SQLException e){
-        System.out.println(e);
-       }
-        //return this.idI ;
+        // connexion bdd
+        dbUtil utl = new dbUtil();
+        Connection cnx = utl.dbConnect();
+        try {
+            String request = "INSERT INTO RAPPORT(TITRE_R, AUTEURR, DESCRIPTIONR, STATUTR) VALUES('" + titreR + "', '"
+                    + auteurR + "', '" + descriptionR + "', '" + statutR + "')";
+            System.out.println(request);
+            int insert = utl.dbCreate(cnx, request);
+            this.setIdR(insert);
+            utl.dbKill(cnx);
+            System.out.println("insertion ok");
+        } catch (SQLException e) {
+            System.out.println(e);
         }
+        // return this.idI ;
+    }
 
     /**
      * @return int

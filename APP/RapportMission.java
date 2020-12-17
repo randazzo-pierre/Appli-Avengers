@@ -1,174 +1,235 @@
 package APP;
 
-import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import acteurs.User;
+import actions.Rapport;
+import actions.Satisfaction;
+import util.dbUtil;
+import java.sql.*;
+import java.util.*;
 
-public class RapportMission extends JFrame{
+public class RapportMission extends JFrame {
 
-	 private static final long serialVersionUID = 1 ;
-		private JPanel contentPane;
-		
+	private static final long serialVersionUID = 1;
+	private JPanel contentPane;
 
-		/**
-		 * Launch the application.
-		 * @param args
-		 */
-	    public static void main(String[] args) {
-	        EventQueue.invokeLater(new Runnable() {
-	            public void run() {
-	                try {
-	                    UserHome frame = new UserHome();
-	                    frame.setVisible(true);
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        });
-	    }
+	/**
+	 * Launch the application.
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UserHome frame = new UserHome();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-	    /**
-		 * Create the frame.
-		 * @param user
-		 */
-	    public RapportMission (User user) {
+	/**
+	 * Create the frame.
+	 * 
+	 * @param user
+	 */
+	public RapportMission(User user, dbUtil utl) {
 
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setBounds(550, 300, 1280, 1080);
-	        setResizable(false);
-	        contentPane = new JPanel();
-	        contentPane.setBorder(new EmptyBorder(6, 6, 6, 6));
-	        setContentPane(contentPane);
-	        contentPane.setLayout(null);
-	        
-	        
-	        
-	        //============================================================================
-	        //======== RAPPORT MISSION ===========================================
-	        //============================================================================
-			
-			JLabel lblForm = new JLabel("RAPPORT DE MISSION");
-			lblForm.setForeground(Color.BLACK);
-			lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-			lblForm.setBounds(250, 5, 500, 93);
-			contentPane.add(lblForm);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(450, 190, 1014, 597);
+		setResizable(false);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(6, 6, 6, 6));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
+		// ============================================================================
+		// ======== RAPPORT MISSION ===========================================
+		// ============================================================================
 
-			JLabel lblTitre = new JLabel("Titre");
-        	lblTitre.setForeground(Color.BLACK);
-        	lblTitre.setBackground(Color.CYAN);
-        	lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblTitre.setBounds(100, 75, 193, 52);
-			contentPane.add(lblTitre);
+		JLabel lblForm = new JLabel("RAPPORT DE MISSION");
+		lblForm.setForeground(Color.BLACK);
+		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		lblForm.setBounds(250, 5, 500, 93);
+		contentPane.add(lblForm);
 
-			JTextField textFieldTitre = new JTextField();
-    		textFieldTitre.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldTitre.setBounds(310, 75, 550, 50);
-    		contentPane.add(textFieldTitre);
-			textFieldTitre.setColumns(10);
+		// titre satisfaction
+		JLabel lblTitre = new JLabel("Intitulé de la mission");
+		lblTitre.setForeground(Color.BLACK);
+		lblTitre.setBackground(Color.CYAN);
+		lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitre.setBounds(100, 75, 193, 52);
+		contentPane.add(lblTitre);
 
-			JLabel lblAuteur = new JLabel("Auteur");
-        	lblAuteur.setForeground(Color.BLACK);
-        	lblAuteur.setBackground(Color.CYAN);
-        	lblAuteur.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblAuteur.setBounds(100, 150, 193, 52);
+		// Choix de la mission :
+		try {
+			Connection cnx = utl.dbConnect();
+			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM MISSION");
+			JComboBox jc = new JComboBox();
+			while (rs.next()) {
+				// int id=rs.getInt("ID_M") ;
+				String titreMission = rs.getString("TITREM");
+				// Object[] itemData = new Object[] {id, titreMission};
+				jc.addItem(titreMission);
+			}
+			// utl.dbKill(cnx) ;
+			// Connection cnx = utl.dbConnect() ;
+			// Le Heros :
+			ResultSet rs1 = utl.dbRead(cnx, "SELECT * FROM HEROS");
+			JComboBox jc1 = new JComboBox();
+			while (rs1.next()) {
+				// int id=rs.getInt("ID_M") ;
+				String identifiantCivil = rs1.getString("TITREH");
+				// Object[] itemData = new Object[] {id, titreMission};
+				jc1.addItem(identifiantCivil);
+				// utl.dbKill(cnx) ;
+			}
+
+			jc1.setBounds(310, 150, 550, 50);
+			contentPane.add(jc1);
+
+			jc.setBounds(310, 75, 550, 50);
+			contentPane.add(jc);
+
+			jc.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					e.getSource();
+					// String titre=(String) jc.getSelectedItem();
+				}
+			});
+
+			jc1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					e.getSource();
+					// String auteur=(String) jc1.getSelectedItem();
+				}
+			});
+
+			// nom auteur
+			JLabel lblAuteur = new JLabel("Heros :");
+			lblAuteur.setForeground(Color.BLACK);
+			lblAuteur.setBackground(Color.CYAN);
+			lblAuteur.setFont(new Font("Tahoma", Font.PLAIN, 31));
+			lblAuteur.setBounds(100, 150, 193, 52);
 			contentPane.add(lblAuteur);
-			
-			JTextField textFieldAuteur = new JTextField();
-    		textFieldAuteur.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldAuteur.setBounds(310, 150, 550, 50);
-    		contentPane.add(textFieldAuteur);
-			textFieldAuteur.setColumns(10);
-		
-			JLabel lbldatedeb = new JLabel("datedebut");
-        	lbldatedeb.setForeground(Color.BLACK);
-        	lbldatedeb.setBackground(Color.CYAN);
-        	lbldatedeb.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lbldatedeb.setBounds(100, 225, 193, 52);
-        	contentPane.add(lbldatedeb);
-			
-			JTextField textFielddatedeb = new JTextField();
-    		textFielddatedeb.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFielddatedeb.setBounds(310, 225, 550, 50);
-    		contentPane.add(textFielddatedeb);
-            textFielddatedeb.setColumns(10);
-            
-            JLabel lbldatefin = new JLabel("datefin");
-        	lbldatefin.setForeground(Color.BLACK);
-        	lbldatefin.setBackground(Color.CYAN);
-        	lbldatefin.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lbldatefin.setBounds(100, 310, 193, 52);
-        	contentPane.add(lbldatefin);
-			
-			JTextField textFielddatefin = new JTextField();
-    		textFielddatefin.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFielddatefin.setBounds(310, 310, 550, 50);
-    		contentPane.add(textFielddatefin);
-			textFielddatefin.setColumns(10);
 
-			JLabel lblCommentaire = new JLabel("Commentaire");
-        	lblCommentaire.setForeground(Color.BLACK);
-        	lblCommentaire.setBackground(Color.CYAN);
-        	lblCommentaire.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblCommentaire.setBounds(100, 400, 193, 52);
+			// libelle commentaire
+			JLabel lblCommentaire = new JLabel("Description :");
+			lblCommentaire.setForeground(Color.BLACK);
+			lblCommentaire.setBackground(Color.CYAN);
+			lblCommentaire.setFont(new Font("Tahoma", Font.PLAIN, 31));
+			lblCommentaire.setBounds(100, 215, 193, 52);
 			contentPane.add(lblCommentaire);
 
+			// zone de texte commentaire
 			JTextField textFieldCommentaire = new JTextField();
-    		textFieldCommentaire.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldCommentaire.setBounds(310, 400, 600, 50);
-    		contentPane.add(textFieldCommentaire);
-            textFieldCommentaire.setColumns(10);
-            
-            JLabel lblGravite = new JLabel("Gravité");
-        	lblGravite.setForeground(Color.BLACK);
-        	lblGravite.setBackground(Color.CYAN);
-        	lblGravite.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblGravite.setBounds(100, 475, 193, 52);
-			contentPane.add(lblGravite);
+			textFieldCommentaire.setFont(new Font("Tahoma", Font.PLAIN, 32));
+			textFieldCommentaire.setBounds(310, 215, 550, 50);
+			contentPane.add(textFieldCommentaire);
+			textFieldCommentaire.setColumns(10);
 
-			JTextField textFieldGravite = new JTextField();
-    		textFieldGravite.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldGravite.setBounds(310, 475, 600, 50);
-    		contentPane.add(textFieldGravite);
-			textFieldGravite.setColumns(10);
-			
-			JLabel lblUrgence = new JLabel("Urgence");
-        	lblUrgence.setForeground(Color.BLACK);
-        	lblUrgence.setBackground(Color.CYAN);
-        	lblUrgence.setFont(new Font("Tahoma", Font.PLAIN, 31));
-        	lblUrgence.setBounds(100, 550, 193, 52);
-			contentPane.add(lblUrgence);
+			// lieblle score
+			JLabel lblScore = new JLabel("Status :");
+			lblScore.setForeground(Color.BLACK);
+			lblScore.setBackground(Color.CYAN);
+			lblScore.setFont(new Font("Tahoma", Font.PLAIN, 31));
+			lblScore.setBounds(100, 280, 193, 52);
+			contentPane.add(lblScore);
 
-			JTextField textFieldUrgence = new JTextField();
-    		textFieldUrgence.setFont(new Font("Tahoma", Font.PLAIN, 32));
-    		textFieldUrgence.setBounds(310, 550, 600, 50);
-    		contentPane.add(textFieldUrgence);
-			textFieldUrgence.setColumns(10);
-    
+			// zone de texte score
+			/*
+			 * JTextField textFieldScore = new JTextField(); textFieldScore.setFont(new
+			 * Font("Tahoma", Font.PLAIN, 32)); textFieldScore.setBounds(250, 375, 550, 50);
+			 * contentPane.add(textFieldScore); textFieldScore.setColumns(10);
+			 */
+
+			// - 2) --- définir les élément de la liste
+
+			Object[] elements = new Object[] { "ERROR", "SUCCESS", "IN-PROGRESS" };
+			;
+			JComboBox jc3 = new JComboBox(elements);
+			jc3.setBounds(310, 280, 550, 50);
+			contentPane.add(jc3);
+
+			jc3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					e.getSource();
+					// String score=(String) jc3.getSelectedItem();
+				}
+			});
+
+			JButton button2 = new JButton("Retour");
+			button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+			button2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dbUtil utl = new dbUtil();
+					Dashboard bo = new Dashboard(user, utl);
+					bo.setTitle("Dashboard " + user.role);
+					bo.setVisible(true);
+				}
+			});
+			button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
+			button2.setBounds(150, 460, 350, 50);
+			contentPane.add(button2);
 
 			JButton btnSumbit = new JButton("Valider");
-	        btnSumbit.setForeground(new Color(0, 0, 0));
-	        btnSumbit.setBackground(UIManager.getColor("Button.disabledForeground"));
-	        btnSumbit.setFont(new Font("Tahoma", Font.PLAIN, 39));
-	        btnSumbit.addActionListener(new ActionListener() {
-	            public void actionPerformed(ActionEvent e) {
+			btnSumbit.setForeground(new Color(0, 0, 0));
+			btnSumbit.setBackground(UIManager.getColor("Button.disabledForeground"));
+			btnSumbit.setFont(new Font("Tahoma", Font.PLAIN, 39));
+			btnSumbit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 
-	            }
-	        });
-	        btnSumbit.setBounds(250, 600, 350, 50);
+					if (textFieldCommentaire.getText().isEmpty()) {
+						// error
+						JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
+					} else {
+
+						String titre = jc.getSelectedItem().toString();
+						String hero = jc1.getSelectedItem().toString();
+						String status = jc3.getSelectedItem().toString();
+						String inputCommentaire = textFieldCommentaire.getText();
+
+						System.out.println(titre + " " + hero + " " + status + " " + inputCommentaire);
+						int id = 0;
+						try {
+							Rapport satis = new Rapport(id, titre, hero, status, inputCommentaire);
+							JOptionPane.showMessageDialog(btnSumbit,
+									"Formulaire envoyé, merci de votre coopération !!");
+
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
+
+					}
+				}
+			});
+			btnSumbit.setBounds(550, 460, 350, 50);
 			contentPane.add(btnSumbit);
 
-	    }        
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+
+	}
 }
