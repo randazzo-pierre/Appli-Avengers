@@ -46,13 +46,13 @@ public class Mission {
     }
 
 
-    public  Mission(String nature, String titre, Date debut, Date fin, String Gravité,String Urgence,String Assigné,String Leader) throws SQLException {
-        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+titre+" Nature : "+nature+" début : "+debut+" fin:"+fin+" Gravité : "+Gravité+" Urgence : "+Urgence);
+    public  Mission(String nature, String titre, Date debut, Date fin, String Gravite,String Urgence,String Assigne,String Leader) throws SQLException {
+        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+titre+" Nature : "+nature+" début : "+debut+" fin:"+fin+" Gravité : "+Gravite+" Urgence : "+Urgence);
         //connexion bdd
        dbUtil utl = new dbUtil() ;
        Connection cnx = utl.dbConnect() ;
        try {
-           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+nature+"', '"+titre+"', '"+debut+"', '"+fin+"', '', '"+Gravité+"', '"+Urgence+"')" ;
+           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+nature+"', '"+titre+"', '"+debut+"', '"+fin+"', '', '"+Gravite+"', '"+Urgence+"')" ;
            System.out.println(request);
         int insert = utl.dbCreate(cnx, request) ;
         this.setIdM(insert);
