@@ -1,20 +1,23 @@
 package APP;
 
-import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JFrame;
 
 import acteurs.User;
+import actions.Satisfaction;
 import util.dbUtil;
+import java.sql.*;
+import java.util.*;
 
 public class SatisfactionList extends JFrame {
 
@@ -49,35 +52,47 @@ public class SatisfactionList extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JButton button2 = new JButton("Retour");
-        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button2.addActionListener(new ActionListener() {
+        JButton btnRetour = new JButton("Retour");
+        btnRetour.setForeground(new Color(0, 0, 0));
+        btnRetour.setBackground(UIManager.getColor("Button.disabledForeground"));
+        btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnRetour.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dbUtil utl = new dbUtil() ;
-                Dashboard bo = new Dashboard(user, utl);
+                Dashboard bo = new Dashboard(user, null);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
             }
         });
-        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
-        button2.setBounds(100, 400, 200, 100);
-        contentPane.add(button2);
-
-        btnNewButton = new JButton("Actualiser");
-        btnNewButton.setForeground(new Color(50, 140, 180));
-        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
-        btnNewButton.setBounds(525, 400, 350, 100);
-        btnNewButton.addActionListener(new ActionListener() {
+	    btnRetour.setBounds(150, 400, 350, 50);
+        contentPane.add(btnRetour);
+        
+        JButton btnActualiser = new JButton("Actualiser");
+	    btnActualiser.setForeground(new Color(0, 0, 0));
+	    btnActualiser.setBackground(UIManager.getColor("Button.disabledForeground"));
+	    btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        btnActualiser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Connection connection = (Connection) DriverManager.getConnection(
+                            "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                            "dbroot", "QeTuZ2LFJfSqtbpe");
 
+                    PreparedStatement st = (PreparedStatement) connection
+                            .prepareStatement("SELECT * FROM SATISFACTION");
+                    ResultSet rs = st.executeQuery();
+                    List<Satisfaction> listSatisfaction = new ArrayList<Satisfaction>();
+                    while (rs.next()) { // while (rs.next())
+                        Satisfaction satisfaction = new Satisfaction(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
+                        listSatisfaction.add(satisfaction);
+                        System.out.println(satisfaction.getTitreSat());
+                    }
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
             }
         });
-
-        contentPane.add(btnNewButton);
-
-    }
-
-    public SatisfactionList() {
+	    btnActualiser.setBounds(550, 400, 350, 50);
+        contentPane.add(btnActualiser);
     }
 
 }

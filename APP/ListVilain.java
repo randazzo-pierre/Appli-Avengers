@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JFrame;
 
 import acteurs.User;
+import acteurs.Vilain;
 
 public class ListVilain extends JFrame {
     private static final long serialVersionUID = 1;
@@ -85,13 +86,13 @@ public class ListVilain extends JFrame {
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("SELECT id, username, password, role, create_time FROM USER");
+                            .prepareStatement("SELECT * FROM VILAIN");
                     ResultSet rs = st.executeQuery();
-                    List<User> listUser = new ArrayList<>();
+                    List<Vilain> listVilain = new ArrayList<Vilain>();
                     while (rs.next()) { // while (rs.next())
-                        User user = new User(rs.getString(1), rs.getString(2), null, rs.getString(4), rs.getInt(5));
-                        listUser.add(user);
-                        System.out.println(user.username);
+                        Vilain vilain = new Vilain(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getString(9));
+                        listVilain.add(vilain);
+                        System.out.println(vilain.getTitrev());
                     }
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();

@@ -1,150 +1,115 @@
 package acteurs;
 import java.util.*;
 
-public class Vilain extends Civil {
-    private static int idC;
+public class Vilain{
 	private int idV;
-    private String nomVilain;
-    private String pouvoir;
-    private String pointFaible;
-    private int danger;
-    private int nbCrime;
+    private int idC;
+    private String titrev;
+    private String pouvoirv;
+    private String pointFaiblev;
+    private String identiteCivile;
+    private int dangerv;
+    private int nbCrimev;
     private String commentaireVilain;
 
-    /**
-     * @param idV
-     * @param nomVilain
-     * @param nom
-     * @param prenom
-     * @param civilite
-     * @param adresse
-     * @param ville
-     * @param zip
-     * @param pays
-     * @param email
-     * @param tel
-     * @param dateNais
-     * @param nationnalite
-     * @param organisation
-     * @param dateMort
-     * @param commentaireCivil
-     * @param dateAjout
-     * @param dateDerniereModif
-     * @param nbIncident
-     * @param nbMission
-     * @param pouvoir
-     * @param pointFaible
-     * @param score
-     * @param nbCrime
-     * @param commentaireVilain
-     * @param danger 
-     */
-    public Vilain(int idV, String nomVilain, String nom, String prenom, String civilite, String adresse, String ville, String zip,
-                  String pays, String email, int tel, Date dateNais, String nationnalite, ArrayList<String> organisation,
-                  Date dateMort, String commentaireCivil, Date dateAjout, Date dateDerniereModif, int nbIncident,
-                  int nbMission, String pouvoir, String pointFaible, int score, int nbCrime, String commentaireVilain, int danger) {
-        super(idC, nom, prenom, civilite, adresse, ville, zip, pays, email, tel, dateNais, nationnalite, organisation,
-                dateMort, commentaireCivil, dateAjout, dateDerniereModif, nbIncident, nbMission);
+ 
+    public Vilain(int idV, int idC, String titrev, String pouvoirv, String pointFaiblev, String identiteCivile, int dangerv, int nbCrimev, String commentaireVilain){
         this.idV = idV;
-        this.nomVilain = nomVilain;
-        this.pouvoir = pouvoir;
-        this.pointFaible = pointFaible;
-        this.danger = danger;
-        this.nbCrime = nbCrime;
+        this.idC = idC;
+        this.titrev = titrev;
+        this.pouvoirv = pouvoirv;
+        this.pointFaiblev = pointFaiblev;
+        this.identiteCivile = identiteCivile;
+        this.dangerv = dangerv;
+        this.nbCrimev = nbCrimev;
         this.commentaireVilain = commentaireVilain;
     }
-    /**
-     * @return int
-     */
-    public int getidV() {
+   
+    public int getIdV() {
         return idV;
     }
-
-    /**
-     * @return String
-     */
-    public String getNomVilain() {
-        return nomVilain;
+    public int getIdC() {
+        return idC;
     }
-
-    /**
-     * @return String
-     */
-    public String getPouvoir() {
-        return pouvoir;
+    public String getTitrev() {
+        return titrev;
     }
-
-    /**
-     * @return String
-     */
-    public String getPointFaible() {
-        return pointFaible;
+    public String getPouvoirv() {
+        return pouvoirv;
     }
-
-    /**
-     * @return int
-     */
-    public int getDanger() {
-        return danger;
+    public String getPointFaiblev() {
+        return pointFaiblev;
     }
-
-    /**
-     * @return int
-     */
-    public int getNbCrime() {
-        return nbCrime;
+    public String getIdentiteCivile() {
+        return identiteCivile;
     }
-
-    /**
-     * @return String
-     */
+    public int getDangerv() {
+        return dangerv;
+    }
+    public int getNbCrimev() {
+        return nbCrimev;
+    }
     public String getCommentaireVilain() {
         return commentaireVilain;
     }
-
     /**
+     * 
      * @param idV
      */
     public void setIdV(int idV) {
         this.idV = idV;
     }
-
     /**
-     * @param nomVilain
+     * 
+     * @param idC
      */
-    public void setNomVilain(String nomVilain) {
-        this.nomVilain = nomVilain;
+    public void setIdC(int idC) {
+        this.idC = idC;
     }
-
     /**
-     * @param pouvoir
+     * 
+     * @param titrev
      */
-    public void setPouvoir(String pouvoir) {
-        this.pouvoir = pouvoir;
+    public void setTitrev(String titrev) {
+        this.titrev = titrev;
     }
-
     /**
-     * @param pointFaible
+     * 
+     * @param pouvoirv
      */
-    public void setPointFaible(String pointFaible) {
-        this.pointFaible = pointFaible;
+    public void setPouvoirv(String pouvoirv) {
+        this.pouvoirv = pouvoirv;
     }
-
     /**
-     * @param danger
+     * 
+     * @param pointFaiblev
      */
-    public void setDanger(int danger) {
-        this.danger = danger;
+    public void setPointFaiblev(String pointFaiblev) {
+        this.pointFaiblev = pointFaiblev;
     }
-
     /**
-     * @param nbCrime
+     * 
+     * @param identiteCivile
      */
-    public void setNbCrime(int nbCrime) {
-        this.nbCrime = nbCrime;
+    public void setIdentiteCivile(String identiteCivile) {
+        this.identiteCivile = identiteCivile;
     }
-
     /**
+     * 
+     * @param dangerv
+     */
+    public void setDangerv(int dangerv) {
+        this.dangerv = dangerv;
+    }
+    /**
+     * 
+     * @param nbCrimev
+     */
+    public void setNbCrimev(int nbCrimev) {
+        this.nbCrimev = nbCrimev;
+    }
+    /**
+     * 
      * @param commentaireVilain
      */
     public void setCommentaireVilain(String commentaireVilain) {

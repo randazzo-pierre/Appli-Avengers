@@ -4,32 +4,23 @@ import java.util.*;
 
 public class Satisfaction {
     private int idS;
+    private int idC;
+    private String titreSat;
     private String auteurSat;
     private String agentSat;
-    private String titreSat;
     private String commentaireSat;
-    private String fichierSat;
     private int noteSat;
+    private String fichierSat;
 
-    /**
-     * @param idS
-     * @param auteurSat
-     * @param agentSat
-     * @param titreSat
-     * @param commentaireSat
-     * @param fichierSat
-     * @param noteSat
-     */
-
-     public Satisfaction(int idS, String auteurSat, String agentSat, String titreSat, String commentaireSat,
-     String fichierSat, int noteSat){
+     public Satisfaction(int idS, int idC, String titreSat, String auteurSat, String agentSat, String commentaireSat, int noteSat, String fichierSat){
          this.idS = idS;
+         this.idC = idC;
+         this.titreSat = titreSat;
          this.auteurSat = auteurSat;
          this.agentSat = agentSat;
-         this.titreSat = titreSat;
          this.commentaireSat = commentaireSat;
-         this.fichierSat = fichierSat;
          this.noteSat = noteSat;
+         this.fichierSat = fichierSat;
      }
 
     /**
@@ -37,6 +28,13 @@ public class Satisfaction {
      */
     public int getIdS(){
         return idS;
+    }
+/**
+ * 
+ * @return
+ */
+    public int getIdC() {
+        return idC;
     }
 
 /**
@@ -83,7 +81,13 @@ public int getNoteSat(){
 public void setIdS(int idS){
         this.idS = idS;
     }
-
+/**
+ * 
+ * @param idC
+ */
+    public void setIdC(int idC) {
+        this.idC = idC;
+    }
 /**
  * @param auteurSat
  */
