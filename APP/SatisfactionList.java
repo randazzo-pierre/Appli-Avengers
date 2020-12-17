@@ -60,7 +60,7 @@ public class SatisfactionList extends JFrame {
 		JLabel lblForm = new JLabel("Liste des satisfactions");
 		lblForm.setForeground(Color.BLACK);
 		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-		lblForm.setBounds(370, 4, 500, 93);
+		lblForm.setBounds(340, 4, 500, 93);
 		contentPane.add(lblForm);
         
         JButton btnRetour = new JButton("Retour");
