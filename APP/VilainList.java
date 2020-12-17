@@ -13,8 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.UIManager;
-
+import javax.swing.JComboBox;
 import acteurs.User;
+import java.sql.*;
+import util.* ;
 
 public class VilainList extends JFrame {
 
@@ -40,7 +42,7 @@ public class VilainList extends JFrame {
     /**
      * Create the frame.
      */
-    public VilainList(User user) {
+    public VilainList(User user, dbUtil utl) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -65,11 +67,27 @@ public class VilainList extends JFrame {
         lblCivil.setBounds(125, 150, 193, 52);
         contentPane.add(lblCivil);
 
-        JTextField textFieldCivil = new JTextField();
-        textFieldCivil.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        textFieldCivil.setBounds(330, 150, 550, 50);
-        contentPane.add(textFieldCivil);
-        textFieldCivil.setColumns(10);
+
+        //Choix de :
+			try{
+				Connection cnx = utl.dbConnect() ;
+				ResultSet rs = utl.dbRead(cnx, "SELECT * FROM CIVIL") ;
+				JComboBox jc = new JComboBox() ;
+				while (rs.next()) {  
+
+					jc.addItem(rs.getString("ID_I"));  
+				}
+				
+				jc.setBounds(100, 75, 193, 52);
+				contentPane.add(jc) ;
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+        //JTextField textFieldCivil = new JTextField();
+        //textFieldCivil.setFont(new Font("Tahoma", Font.PLAIN, 32));
+        //textFieldCivil.setBounds(330, 150, 550, 50);
+        //contentPane.add(textFieldCivil);
+        //textFieldCivil.setColumns(10);
 
         JLabel lblVilain = new JLabel("Vilain");
         lblVilain.setForeground(Color.BLACK);
