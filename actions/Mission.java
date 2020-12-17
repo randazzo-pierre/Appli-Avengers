@@ -1,6 +1,10 @@
 package actions;
 
 import java.util.*;
+import java.util.Date;
+
+import java.sql.*;
+import util.*;
 
 public class Mission {
     private int idM;
@@ -30,9 +34,8 @@ public class Mission {
     public Mission(int idM, String nature, String titre, Date datedeb, Date datfin, ArrayList<String> Itineraire, String gravite,
                    String urgence, ArrayList<String> assignes, String leader) {
         this.idM = idM;
-        this.countMission ++;
         this.nature = nature;
-        this.titre = "Mission " + countMission + " - " + nature + " : " + titre;
+        this.titre =  titre;
         this.datedeb = datedeb;
         this.datefin = datefin;
         this.itineraire = itineraire;
@@ -41,6 +44,26 @@ public class Mission {
         this.assignes = assignes;
         this.leader = leader;
     }
+
+
+    public  Mission(String nature, String titre, Date debut, Date fin, String Gravité,String Urgence,String Assigné,String Leader) throws SQLException {
+        System.out.println("Création d'une mission avec les paramètres suivant Titre : "+titre+" Nature : "+nature+" début : "+debut+" fin:"+fin+" Gravité : "+Gravité+" Urgence : "+Urgence);
+        //connexion bdd
+       dbUtil utl = new dbUtil() ;
+       Connection cnx = utl.dbConnect() ;
+       try {
+           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+nature+"', '"+titre+"', '"+debut+"', '"+fin+"', '', '"+Gravité+"', '"+Urgence+"')" ;
+           System.out.println(request);
+        int insert = utl.dbCreate(cnx, request) ;
+        this.setIdM(insert);
+        utl.dbKill(cnx) ;
+        System.out.println("insertion ok");
+       } catch(SQLException e){
+        System.out.println(e);
+       }
+        //return this.idI ;
+        }
+     
 
     /**
      * @return int

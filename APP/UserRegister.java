@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -49,7 +50,7 @@ public class UserRegister extends JFrame {
         });
     }
 
-    public UserRegister() {
+    public UserRegister(String userName, String password, String role, Date debut) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -114,6 +115,7 @@ public class UserRegister extends JFrame {
                 String password = passwordField.getText();
                 Date debut = new Date();
                 String role = "CIVIL";
+<<<<<<< HEAD
                 try {
                     Connection connection = (Connection) DriverManager.getConnection(
                             "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
@@ -142,11 +144,21 @@ public class UserRegister extends JFrame {
                 } catch (SQLDataException err) {
                     System.out.println(err);
                 }
+=======
+                // try {
+                // // User newUser = new User(userName, password, role, debut);
+                // } catch (SQLDataException err) {
+                // System.out.println(err);
+                // }
+>>>>>>> c23b3ca1318af482e57f0d2700683c9d815615f2
             }
         });
 
         contentPane.add(btnNewButton);
 
+    }
+
+    public UserRegister() {
     }
 
 }
