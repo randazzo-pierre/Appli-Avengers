@@ -22,6 +22,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
+import util.dbUtil;
 
 public class UserLogin extends JFrame {
 
@@ -39,7 +40,8 @@ public class UserLogin extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    UserLogin frame = new UserLogin();
+                   dbUtil utl = new dbUtil() ;
+                    UserLogin frame = new UserLogin(utl);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -51,7 +53,7 @@ public class UserLogin extends JFrame {
     /**
      * Create the frame.
      */
-    public UserLogin() {
+    public UserLogin(dbUtil dbUtil) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -126,7 +128,7 @@ public class UserLogin extends JFrame {
                     if (rs.next()) { // while (rs.next())
                         User user = new User(rs.getString(1), null, rs.getString(3), null, rs.getInt(5));
                         dispose();
-                        UserHome ah = new UserHome(user);
+                        UserHome ah = new UserHome(user, dbUtil);
                         ah.setVisible(true);
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
                     } else {

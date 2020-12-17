@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
+import util.dbUtil;
 
 public class UserHome extends JFrame {
 
@@ -44,7 +45,7 @@ public class UserHome extends JFrame {
     /**
      * Create the frame.
      */
-    public UserHome(User user) {
+    public UserHome(User user, dbUtil dbUtil) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -70,12 +71,14 @@ public class UserHome extends JFrame {
                 // JOptionPane.setRootFrame(null);
                 if (a == JOptionPane.YES_OPTION) {
                     dispose();
-                    UserLogin obj = new UserLogin();
+                    dbUtil utl = new dbUtil() ;
+                    UserLogin obj = new UserLogin(utl);
                     obj.setTitle("Student-Login");
                     obj.setVisible(true);
                 }
                 dispose();
-                UserLogin obj = new UserLogin();
+                dbUtil utl = new dbUtil() ;
+                UserLogin obj = new UserLogin(utl);
 
                 obj.setTitle("Student-Login");
                 obj.setVisible(true);
@@ -89,7 +92,7 @@ public class UserHome extends JFrame {
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user);
+                Dashboard bo = new Dashboard(user, dbUtil);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
             }

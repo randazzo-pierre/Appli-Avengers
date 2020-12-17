@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import acteurs.User;
+import util.dbUtil;
 
 public class Dashboard extends JFrame {
 
@@ -38,7 +39,7 @@ public class Dashboard extends JFrame {
     /**
      * Create the frame.
      */
-    public Dashboard(User user) {
+    public Dashboard(User user, dbUtil dbUtil) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -76,7 +77,7 @@ public class Dashboard extends JFrame {
         button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                FormulaireSatisfaction formulaireSatisfaction = new FormulaireSatisfaction(user);
+                FormulaireSatisfaction formulaireSatisfaction = new FormulaireSatisfaction(user, dbUtil);
                 formulaireSatisfaction.setVisible(true);
             }
         });
