@@ -9,12 +9,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 import acteurs.User;
+import actions.Mission;
+import java.sql.*;
+import util.* ;
 
 public class CreateMission extends JFrame {
 
@@ -44,10 +49,10 @@ public class CreateMission extends JFrame {
 	 * 
 	 * @param user
 	 */
-	public CreateMission(User user) {
+	public CreateMission(User user, dbUtil utl) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(550, 300, 1280, 1080);
+		setBounds(450, 190, 1014, 597);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(6, 6, 6, 6));
@@ -58,116 +63,141 @@ public class CreateMission extends JFrame {
 		// ======== CREATE MISSION ===========================================
 		// ============================================================================
 
+		// Titre page
 		JLabel lblForm = new JLabel("CREATION DE MISSION");
 		lblForm.setForeground(Color.BLACK);
-		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 		lblForm.setBounds(250, 5, 500, 93);
 		contentPane.add(lblForm);
 
+		// libelle titre mission
 		JLabel lblTitre = new JLabel("Titre");
 		lblTitre.setForeground(Color.BLACK);
 		lblTitre.setBackground(Color.CYAN);
-		lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 31));
+		lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTitre.setBounds(100, 75, 193, 52);
 		contentPane.add(lblTitre);
 
+		//zone de texte titre mission
 		JTextField textFieldTitre = new JTextField();
-		textFieldTitre.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFieldTitre.setBounds(310, 75, 550, 50);
+		textFieldTitre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldTitre.setBounds(310, 75, 550, 35);
 		contentPane.add(textFieldTitre);
 		textFieldTitre.setColumns(10);
 
-		JLabel lblAuteur = new JLabel("nature");
-		lblAuteur.setForeground(Color.BLACK);
-		lblAuteur.setBackground(Color.CYAN);
-		lblAuteur.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lblAuteur.setBounds(100, 150, 193, 52);
-		contentPane.add(lblAuteur);
+		// libelle description
+		JLabel lblDescript = new JLabel("Description");
+		lblDescript.setForeground(Color.BLACK);
+		lblDescript.setBackground(Color.CYAN);
+		lblDescript.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDescript.setBounds(100, 125, 193, 52);
+		contentPane.add(lblDescript);
 
-		JTextField textFieldAuteur = new JTextField();
-		textFieldAuteur.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFieldAuteur.setBounds(310, 150, 550, 50);
-		contentPane.add(textFieldAuteur);
-		textFieldAuteur.setColumns(10);
+		//zone de texte description mission
 
-		JLabel lbldatedeb = new JLabel("datedebut");
+		JTextField textFieldDescript = new JTextField();
+		textFieldDescript.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldDescript.setBounds(310, 125, 550, 35);
+		contentPane.add(textFieldDescript);
+		textFieldDescript.setColumns(10);
+
+		//libelle date début
+
+		JLabel lbldatedeb = new JLabel("Date de début");
 		lbldatedeb.setForeground(Color.BLACK);
 		lbldatedeb.setBackground(Color.CYAN);
-		lbldatedeb.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lbldatedeb.setBounds(100, 225, 193, 52);
+		lbldatedeb.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbldatedeb.setBounds(100, 175, 193, 52);
 		contentPane.add(lbldatedeb);
 
+		//zone de texte date debut
+
 		JTextField textFielddatedeb = new JTextField();
-		textFielddatedeb.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFielddatedeb.setBounds(310, 225, 550, 50);
+		textFielddatedeb.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFielddatedeb.setBounds(310, 175, 550, 35);
 		contentPane.add(textFielddatedeb);
 		textFielddatedeb.setColumns(10);
 
-		JLabel lbldatefin = new JLabel("datefin");
-		lbldatefin.setForeground(Color.BLACK);
-		lbldatefin.setBackground(Color.CYAN);
-		lbldatefin.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lbldatefin.setBounds(100, 325, 193, 52);
-		contentPane.add(lbldatefin);
+		//libelle héros
 
-		JTextField textFielddatefin = new JTextField();
-		textFielddatefin.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFielddatefin.setBounds(310, 310, 550, 50);
-		contentPane.add(textFielddatefin);
-		textFielddatefin.setColumns(10);
-
-		JLabel lblLeader = new JLabel("Leader");
+		JLabel lblLeader = new JLabel("Héros");
 		lblLeader.setForeground(Color.BLACK);
 		lblLeader.setBackground(Color.CYAN);
-		lblLeader.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lblLeader.setBounds(100, 400, 193, 52);
+		lblLeader.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblLeader.setBounds(100, 225, 193, 52);
 		contentPane.add(lblLeader);
 
+		//ici récup liste des héros
+		//choix du héros
+		try{
+			Connection cnx = utl.dbConnect() ;
+			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM MISSION") ;
+			JComboBox jc = new JComboBox() ;
+			while (rs.next()) {  
+				//int id=rs.getInt("ID_M") ;
+				String titreMission = rs.getString("TITREM") ;
+				//Object[] itemData = new Object[] {id, titreMission};
+				jc.addItem(titreMission);  
+			}
+
 		JTextField textFieldLeader = new JTextField();
-		textFieldLeader.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFieldLeader.setBounds(310, 400, 600, 50);
+		textFieldLeader.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldLeader.setBounds(310, 225, 600, 35);
 		contentPane.add(textFieldLeader);
 		textFieldLeader.setColumns(10);
 
-		JLabel lblassigner = new JLabel("Leader");
+		//libelle coéquipier
+
+		JLabel lblassigner = new JLabel("Coéquipier");
 		lblassigner.setForeground(Color.BLACK);
 		lblassigner.setBackground(Color.CYAN);
-		lblassigner.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lblassigner.setBounds(100, 475, 193, 52);
+		lblassigner.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblassigner.setBounds(100, 275, 193, 52);
 		contentPane.add(lblassigner);
 
+		//ici recup liste héros avec le précédent sélectionné en moins
+
 		JTextField textFieldassigner = new JTextField();
-		textFieldassigner.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFieldassigner.setBounds(310, 475, 600, 50);
+		textFieldassigner.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldassigner.setBounds(310, 275, 600, 35);
 		contentPane.add(textFieldassigner);
 		textFieldassigner.setColumns(10);
+
+		//libelle gravite
 
 		JLabel lblGravite = new JLabel("Gravité");
 		lblGravite.setForeground(Color.BLACK);
 		lblGravite.setBackground(Color.CYAN);
-		lblGravite.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lblGravite.setBounds(100, 550, 193, 52);
+		lblGravite.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblGravite.setBounds(100, 325, 193, 52);
 		contentPane.add(lblGravite);
 
+		//zone de texte gravite
+
 		JTextField textFieldGravite = new JTextField();
-		textFieldGravite.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFieldGravite.setBounds(310, 550, 600, 50);
+		textFieldGravite.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldGravite.setBounds(310, 325, 600, 35);
 		contentPane.add(textFieldGravite);
 		textFieldGravite.setColumns(10);
+
+		//libelle urgence
 
 		JLabel lblUrgence = new JLabel("Urgence");
 		lblUrgence.setForeground(Color.BLACK);
 		lblUrgence.setBackground(Color.CYAN);
-		lblUrgence.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lblUrgence.setBounds(100, 625, 193, 52);
+		lblUrgence.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUrgence.setBounds(100, 375, 193, 35);
 		contentPane.add(lblUrgence);
 
+		//zone de texte urgence
+
 		JTextField textFieldUrgence = new JTextField();
-		textFieldUrgence.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		textFieldUrgence.setBounds(310, 625, 600, 50);
+		textFieldUrgence.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textFieldUrgence.setBounds(310, 375, 600, 35);
 		contentPane.add(textFieldUrgence);
 		textFieldUrgence.setColumns(10);
 
+		//boutons
 		JButton button2 = new JButton("Retour");
 		button2.setBackground(UIManager.getColor("Button.disabledForeground"));
 		button2.addActionListener(new ActionListener() {
@@ -178,7 +208,7 @@ public class CreateMission extends JFrame {
 			}
 		});
 		button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		button2.setBounds(100, 700, 200, 50);
+		button2.setBounds(150, 460, 350, 50);
 		contentPane.add(button2);
 
 		JButton btnSumbit = new JButton("Valider");
@@ -190,8 +220,12 @@ public class CreateMission extends JFrame {
 
 			}
 		});
-		btnSumbit.setBounds(450, 700, 350, 50);
+		btnSumbit.setBounds(550, 460, 350, 50);
 		contentPane.add(btnSumbit);
+
+	} catch (SQLException e) {
+		System.out.println(e);
+	}
 
 	}
 }
