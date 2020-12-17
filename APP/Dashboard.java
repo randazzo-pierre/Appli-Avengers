@@ -95,13 +95,32 @@ public class Dashboard extends JFrame {
         button3.setFont(new Font("Tahoma", Font.PLAIN, 39));
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                CreateMission CreateMission = new CreateMission(user);
-                CreateMission.setTitle("Mission");
-                CreateMission.setVisible(true);
+                //CreateMission CreateMission = new CreateMission(user);
+                //CreateMission.setTitle("Mission");
+                //CreateMission.setVisible(true);
             }
         });
         button3.setBounds(50, 160, 850, 50);
         contentPane.add(button3);
+
+        // }
+
+        // ==========........======== FRONT => DEV | BACK => DEV =========
+        // if(user.role == "ORGA") {
+        JButton button9 = new JButton("Liste Vilain");
+        button9.setForeground(new Color(0, 0, 0));
+        button9.setBackground(new Color(20, 150, 20));
+        button9.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button9.setFont(new Font("Tahoma", Font.PLAIN, 39));
+        button9.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ListVilain list = new ListVilain(user);
+                list.setTitle("List Vilain");
+                list.setVisible(true);
+            }
+        });
+        button9.setBounds(50, 80, 850, 50);
+        contentPane.add(button9);
 
         // }
 
@@ -114,9 +133,9 @@ public class Dashboard extends JFrame {
         button4.setFont(new Font("Tahoma", Font.PLAIN, 39));
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                RapportMission RapportMission = new RapportMission(user);
-                RapportMission.setTitle("Rapport");
-                RapportMission.setVisible(true);
+                //RapportMission RapportMission = new RapportMission(user);
+                //RapportMission.setTitle("Rapport");
+                //RapportMission.setVisible(true);
             }
         });
         button4.setBounds(50, 240, 850, 50);

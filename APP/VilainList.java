@@ -90,16 +90,21 @@ public VilainList (User user) {
     
     // BOUTONS
 
-	JButton btnReset = new JButton("Reinitialiser");
-	btnReset.setForeground(new Color(0, 0, 0));
-	btnReset.setBackground(UIManager.getColor("Button.disabledForeground"));
-	btnReset.setFont(new Font("Tahoma", Font.PLAIN, 39));
-	btnReset.addActionListener(new ActionListener() {
+	JButton btnRetour = new JButton("Retour");
+	btnRetour.setForeground(new Color(0, 0, 0));
+	btnRetour.setBackground(UIManager.getColor("Button.disabledForeground"));
+	btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 39));
+	btnRetour.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
+            Dashboard bo = new Dashboard(user);
+            bo.setTitle("Dashboard " + user.role);
+            bo.setVisible(true);
 	    }
-	});
-	btnReset.setBounds(150, 400, 350, 50);
-	contentPane.add(btnReset);
+    });
+	btnRetour.setBounds(150, 400, 350, 50);
+	contentPane.add(btnRetour);
+
+
 	JButton btnSumbit = new JButton("Valider");
 	btnSumbit.setForeground(new Color(0, 0, 0));
 	btnSumbit.setBackground(UIManager.getColor("Button.disabledForeground"));

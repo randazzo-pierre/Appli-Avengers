@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -111,6 +112,8 @@ public class UserRegister extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String userName = textField.getText();
                 String password = passwordField.getText();
+                Date debut = new Date();
+                String role = "CIVIL";
                 try {
                     Connection connection = (Connection) DriverManager.getConnection(
                             "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
@@ -135,6 +138,9 @@ public class UserRegister extends JFrame {
                     }
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
+                    User newUser = new UserRegister(userName, password, role, debut);
+                } catch (SQLDataException err) {
+                    System.out.println(err);
                 }
             }
         });
@@ -142,6 +148,5 @@ public class UserRegister extends JFrame {
         contentPane.add(btnNewButton);
 
     }
-
 
 }
