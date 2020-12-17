@@ -9,7 +9,7 @@ import util.*;
 public class Mission {
     private int idM;
     private String nature;
-    private String titre;
+    private String titreM;
     private Date datedeb;
     private Date datefin;
     private ArrayList<String> itineraire;
@@ -17,12 +17,11 @@ public class Mission {
     private String urgence;
     private ArrayList<String> assignes;
     private String leader;
-    private Integer countMission;
 
     /**
      * @param idM
      * @param nature
-     * @param titre
+     * @param titreM
      * @param datedeb
      * @param datfin
      * @param Itineraire
@@ -31,11 +30,11 @@ public class Mission {
      * @param assignes
      * @param leader
      */
-    public Mission(int idM, String nature, String titre, Date datedeb, Date datfin, ArrayList<String> Itineraire, String gravite,
+    public Mission(int idM, String nature, String titreM, Date datedeb, Date datfin, ArrayList<String> Itineraire, String gravite,
                    String urgence, ArrayList<String> assignes, String leader) {
         this.idM = idM;
         this.nature = nature;
-        this.titre =  titre;
+        this.titreM =  titreM;
         this.datedeb = datedeb;
         this.datefin = datefin;
         this.itineraire = itineraire;
@@ -52,7 +51,7 @@ public class Mission {
        dbUtil utl = new dbUtil() ;
        Connection cnx = utl.dbConnect() ;
        try {
-           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+nature+"', '"+titre+"', '"+debut+"', '"+fin+"', '', '"+Gravite+"', '"+Urgence+"')" ;
+           String request = "INSERT INTO INCIDENT VALUES(ID_M,'"+nature+"', '"+titreM+"', '"+debut+"', '"+fin+"', '', '"+Gravite+"', '"+Urgence+"')" ;
            System.out.println(request);
         int insert = utl.dbCreate(cnx, request) ;
         this.setIdM(insert);
@@ -65,7 +64,9 @@ public class Mission {
         }
      
 
-    /**
+
+
+	/**
      * @return int
      */
     public int getIdM() {
