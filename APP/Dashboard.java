@@ -212,8 +212,6 @@ public class Dashboard extends JFrame {
         button7.setBounds(50, 480, 850, 50);
         contentPane.add(button7);
 
-
-
     }
 
 }
