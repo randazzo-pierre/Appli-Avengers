@@ -36,6 +36,7 @@ public class FormulaireSatisfaction extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -53,6 +54,7 @@ public class FormulaireSatisfaction extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * 
 	 * @param user
 	 */
 	public FormulaireSatisfaction(User user, dbUtil utl) {
@@ -101,10 +103,10 @@ public class FormulaireSatisfaction extends JFrame {
 				jc1.addItem(identifiantCivil);
 			}
 			// L'AGENT
-			ResultSet rs2 = utl.dbRead(cnx, "SELECT * FROM CIVIL WHERE type=1");
+			ResultSet rs2 = utl.dbRead(cnx, "SELECT * FROM HEROS");
 			JComboBox jc2 = new JComboBox();
 			while (rs2.next()) {
-				String identifiantAgent = rs2.getString("IDENTIFIANT");
+				String identifiantAgent = rs2.getString("TITREH");
 				jc2.addItem(identifiantAgent);
 			}
 			jc2.setBounds(310, 225, 550, 50);
@@ -143,7 +145,7 @@ public class FormulaireSatisfaction extends JFrame {
 			contentPane.add(lblAuteur);
 
 			// nom agent
-			JLabel lblAgent = new JLabel("Agent");
+			JLabel lblAgent = new JLabel("HEROS");
 			lblAgent.setForeground(Color.BLACK);
 			lblAgent.setBackground(Color.CYAN);
 			lblAgent.setFont(new Font("Tahoma", Font.PLAIN, 31));
