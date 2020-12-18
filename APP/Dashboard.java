@@ -81,7 +81,8 @@ public class Dashboard extends JFrame {
             contentPane.add(lblHero);
         }
 
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) ||"CIVIL".equals(user.role) || "ADMIN".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "CIVIL".equals(user.role)
+                || "ADMIN".equals(user.role)) {
             JLabel lblVilain = new JLabel("Vilains");
             lblVilain.setForeground(Color.BLACK);
             lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -217,7 +218,7 @@ public class Dashboard extends JFrame {
             contentPane.add(btnListMission);
         }
 
-        if ("CIVIL".equals(user.role) ||"ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
+        if ("CIVIL".equals(user.role) || "ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
 
             JButton button2 = new JButton("Formulaire Satisfaction");
             button2.setForeground(new Color(0, 0, 0));
