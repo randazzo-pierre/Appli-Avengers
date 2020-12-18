@@ -31,6 +31,7 @@ public class Litige extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -45,6 +46,11 @@ public class Litige extends JFrame {
         });
     }
 
+    /**
+     * Create the frame
+     * @param user
+     * @param dbUtil
+     */
     public Litige(User user, dbUtil dbUtil) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,7 +100,7 @@ public class Litige extends JFrame {
                     int i = 0;
                     String column[]={"idL","Titre","Description","Cible","Cout","Preuve","Victime"};
                     String data[][] = new String[7][20];
-                    while (rs.next()) { // while (rs.next())
+                    while (rs.next()) {
                         data[i][0] = rs.getString(1);
                         data[i][1] = rs.getString(2);
                         data[i][2] = rs.getString(3);

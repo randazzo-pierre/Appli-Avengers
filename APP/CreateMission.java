@@ -34,7 +34,6 @@ public class CreateMission extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -49,6 +48,10 @@ public class CreateMission extends JFrame {
 			}
 		});
 	}
+	/**
+	 * Create a list of countries
+	 * @return
+	 */
 	private Country[] createCountryList() {
 		String[] countryCodes = Locale.getISOCountries();
 		Country[] listCountry = new Country[countryCodes.length];
@@ -68,7 +71,6 @@ public class CreateMission extends JFrame {
 	
 	/**
 	 * Create the frame.
-	 * 
 	 * @param user
 	 */
 	public CreateMission(User user, dbUtil utl) {
@@ -85,14 +87,18 @@ public class CreateMission extends JFrame {
 		// ======== CREATE MISSION ===========================================
 		// ============================================================================
 
-		// Titre page
+		/**
+		 * Titre page
+		 */
 		JLabel lblForm = new JLabel("CREATION DE MISSION");
 		lblForm.setForeground(Color.BLACK);
 		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 		lblForm.setBounds(250, 5, 500, 93);
 		contentPane.add(lblForm);
 
-		// libelle titre mission
+		/**
+		 * libelle titre mission
+		 */
 		JLabel lblTitre = new JLabel("Incident source");
 		lblTitre.setForeground(Color.BLACK);
 		lblTitre.setBackground(Color.CYAN);
@@ -100,12 +106,6 @@ public class CreateMission extends JFrame {
 		lblTitre.setBounds(100, 75, 193, 52);
 		contentPane.add(lblTitre);
 
-		//zone de texte titre mission
-		/* JTextField textFieldTitre = new JTextField();
-		textFieldTitre.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textFieldTitre.setBounds(310, 75, 550, 35);
-		contentPane.add(textFieldTitre);
-		textFieldTitre.setColumns(10); */
 		try{
 			Connection cnx = utl.dbConnect() ;
 			ResultSet rs0 = utl.dbRead(cnx, "SELECT * FROM INCIDENT WHERE STATUTI='NEW'") ;
@@ -113,21 +113,20 @@ public class CreateMission extends JFrame {
 			while (rs0.next()) {  
 				int id=rs0.getInt("ID_I");
 				String nomIncident = rs0.getString("DESCRIPTIONI")+"-"+id ;
-			//	Object[] itemData = new Object[] {id, nomIncident};
 				jc2.addItem(nomIncident);  
-			//	jc2.setText((String)itemData[1]);
 			}
 			jc2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
 					int index = jc2.getSelectedIndex() ;
 					System.out.println(index);
-				//	String titre=(String) jc.getSelectedItem();
 					}
 			});
 			jc2.setBounds(310, 75, 550, 35);
 				contentPane.add(jc2) ;
-		// libelle description
+		/**
+		 * libelle description
+		 */
 		JLabel lblDescript = new JLabel("Description");
 		lblDescript.setForeground(Color.BLACK);
 		lblDescript.setBackground(Color.CYAN);
@@ -135,16 +134,18 @@ public class CreateMission extends JFrame {
 		lblDescript.setBounds(100, 125, 193, 52);
 		contentPane.add(lblDescript);
 
-		//zone de texte description mission
-
+		/**
+ 		* zone de texte description mission
+ 		*/
 		JTextField textFieldDescript = new JTextField();
 		textFieldDescript.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textFieldDescript.setBounds(310, 125, 550, 35);
 		contentPane.add(textFieldDescript);
 		textFieldDescript.setColumns(10);
 
-		//libelle pays
-
+		/**
+		 * libelle pays
+		 */
 		JLabel lblPays = new JLabel("Pays");
 		lblPays.setForeground(Color.BLACK);
 		lblPays.setBackground(Color.CYAN);
@@ -152,14 +153,17 @@ public class CreateMission extends JFrame {
 		lblPays.setBounds(100, 175, 193, 52);
 		contentPane.add(lblPays);
 
-		//liste des pays
-
+		/**
+		 * liste des pays
+		 */
 		Country[] listCountry = createCountryList();
 		JComboBox<Country> comboCountry = new JComboBox<>(listCountry);
 		comboCountry.setBounds(310, 175, 550, 35);
 		contentPane.add(comboCountry);
 
-		// libelle code zip
+		/**
+		 * libelle code zip
+		 */
 		JLabel lblZip = new JLabel("Code postal");
 		lblZip.setBackground(Color.BLACK);
 		lblZip.setForeground(Color.BLACK);
@@ -167,15 +171,18 @@ public class CreateMission extends JFrame {
 		lblZip.setBounds(100, 225, 193, 52);
 		contentPane.add(lblZip);
 
-		// zone de texte code zip
+		/**
+		 * zone de texte code zip
+		 */
 		textFieldZip = new JTextField();
 		textFieldZip.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textFieldZip.setBounds(310, 225, 550, 35);
 		contentPane.add(textFieldZip);
 		textFieldZip.setColumns(10);
 
-		//libelle héros
-
+		/**
+		 * libelle héros
+		 */
 		JLabel lblLeader = new JLabel("Héros");
 		lblLeader.setForeground(Color.BLACK);
 		lblLeader.setBackground(Color.CYAN);
@@ -183,10 +190,10 @@ public class CreateMission extends JFrame {
 		lblLeader.setBounds(100, 275, 193, 52);
 		contentPane.add(lblLeader);
 
-		//ici récup liste des héros
-		//choix du héros
-	
-		//	Connection cnx = utl.dbConnect() ;
+		/**
+		 * ici récup liste des héros
+		 * choix du héros
+		 */
 			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM HEROS") ;
 			JComboBox jc = new JComboBox() ;
 			while (rs.next()) {  
@@ -196,13 +203,14 @@ public class CreateMission extends JFrame {
 			jc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-				//	String titre=(String) jc.getSelectedItem();
 					}
 			});
 			jc.setBounds(310, 275, 550, 35);
 				contentPane.add(jc) ;
-		//libelle coéquipier
 
+		/**
+		 * libelle coéquipier
+		 */
 		JLabel lblassigner = new JLabel("Coéquipier");
 		lblassigner.setForeground(Color.BLACK);
 		lblassigner.setBackground(Color.CYAN);
@@ -210,27 +218,26 @@ public class CreateMission extends JFrame {
 		lblassigner.setBounds(100, 325, 193, 52);
 		contentPane.add(lblassigner);
 
-		//ici recup liste héros avec le précédent sélectionné en moins
+		/**
+		 * ici recup liste héros avec le précédent sélectionné en moins
+		 */
 		ResultSet rs1 = utl.dbRead(cnx, "SELECT * FROM HEROS") ;
 		JComboBox jc1 = new JComboBox() ;
 		while (rs1.next()) {  
-			//int id=rs.getInt("ID_M") ;
 			String nomHero2 = rs1.getString("TITREH") ;
-			//Object[] itemData = new Object[] {id, titreMission};
 			jc1.addItem(nomHero2);  
-		//	utl.dbKill(cnx) ;
 		}
 		jc1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				e.getSource();
-			//	String titre=(String) jc.getSelectedItem();
 				}
 		});
 		jc1.setBounds(310, 325, 550, 35);
 			contentPane.add(jc1) ;
 
-		//libelle gravite
-
+		/**
+		 * libelle gravite 
+		 */
 		JLabel lblGravite = new JLabel("Gravité");
 		lblGravite.setForeground(Color.BLACK);
 		lblGravite.setBackground(Color.CYAN);
@@ -238,8 +245,9 @@ public class CreateMission extends JFrame {
 		lblGravite.setBounds(100, 375, 193, 52);
 		contentPane.add(lblGravite);
 
-		//liste des niveau de gravite
-
+		/**
+		 * liste des niveau de gravite
+		 */
 		Object[] elements = new Object[]{"Très faible", "Faible", "Moyenne", "Forte", "Méga forte"};  ;
 				JComboBox jc3 = new JComboBox(elements) ;
 				jc3.setBounds(310, 375, 550, 35);
@@ -251,9 +259,9 @@ public class CreateMission extends JFrame {
 						}
 				});
 
-
-		//libelle urgence
-
+		/**
+		 * libelle urgence
+		 */
 		JLabel lblUrgence = new JLabel("Urgence");
 		lblUrgence.setForeground(Color.BLACK);
 		lblUrgence.setBackground(Color.CYAN);
@@ -261,8 +269,9 @@ public class CreateMission extends JFrame {
 		lblUrgence.setBounds(100, 425, 193, 35);
 		contentPane.add(lblUrgence);
 
-		//liste des niveau urgence
-
+		/**
+		 * liste des niveau urgence
+		 */
 		Object[] trucs = new Object[]{"Un peu urgent", "Moyen urgent", "Commence à devenir vraiment urgent", "Alors là ça urge beaucoup", "On est tous morts !"};  ;
 				JComboBox jc4 = new JComboBox(trucs) ;
 				jc4.setBounds(310, 425, 550, 35);
@@ -274,7 +283,9 @@ public class CreateMission extends JFrame {
 						}
 				});
 
-		//boutons
+		/**
+		 * boutons
+		 */
 		JButton button2 = new JButton("Retour");
 		button2.setBackground(UIManager.getColor("Button.disabledForeground"));
 		button2.addActionListener(new ActionListener() {
@@ -296,7 +307,9 @@ public class CreateMission extends JFrame {
 		btnSumbit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				//quand clic sur valider
+				/**
+				 * quand clic sur valider
+				 */
 				if(textFieldDescript.getText().isEmpty() || 
 				textFieldZip.getText().isEmpty()){
 					JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
@@ -334,7 +347,6 @@ public class CreateMission extends JFrame {
 					} catch (SQLDataException err) {
 						System.out.println(err);
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 				}
 			}

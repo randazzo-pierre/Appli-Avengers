@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
@@ -25,6 +24,7 @@ public class VilainList extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -41,6 +41,8 @@ public class VilainList extends JFrame {
 
     /**
      * Create the frame.
+     * @param user
+     * @param utl
      */
     public VilainList(User user, dbUtil utl) {
 
@@ -68,7 +70,7 @@ public class VilainList extends JFrame {
         contentPane.add(lblCivil);
 
 
-        //Choix du civil:
+        // Choix du civil:
 		try{
 			Connection cnx = utl.dbConnect() ;
 			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM CIVIL") ;
@@ -92,7 +94,7 @@ public class VilainList extends JFrame {
         lblVilain.setBounds(125, 250, 193, 52);
         contentPane.add(lblVilain);
 
-        //Choix du vilain :
+        // Choix du vilain :
         try{
             Connection cnx = utl.dbConnect() ;
             ResultSet rs = utl.dbRead(cnx, "SELECT * FROM VILAIN") ;
@@ -109,14 +111,7 @@ public class VilainList extends JFrame {
             System.out.println(e);
         }
 
-        /*JTextField textFieldVilain = new JTextField();
-        textFieldVilain.setFont(new Font("Tahoma", Font.PLAIN, 32));
-        textFieldVilain.setBounds(330, 250, 550, 50);
-        contentPane.add(textFieldVilain);
-        textFieldVilain.setColumns(10);*/
-
         // BOUTONS
-
         JButton btnRetour = new JButton("Retour");
         btnRetour.setForeground(new Color(0, 0, 0));
         btnRetour.setBackground(UIManager.getColor("Button.disabledForeground"));

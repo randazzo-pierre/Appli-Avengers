@@ -35,6 +35,7 @@ public class UserLogin extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -52,6 +53,7 @@ public class UserLogin extends JFrame {
 
     /**
      * Create the frame.
+     * @param dbUtil
      */
     public UserLogin(dbUtil dbUtil) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,7 +127,7 @@ public class UserLogin extends JFrame {
                     st.setString(1, userName);
                     st.setString(2, password);
                     ResultSet rs = st.executeQuery();
-                    if (rs.next()) { // while (rs.next())
+                    if (rs.next()) {
                         User user = new User(rs.getString(1), null, rs.getString(3), null, rs.getInt(5));
                         dispose();
                         UserHome ah = new UserHome(user, dbUtil);

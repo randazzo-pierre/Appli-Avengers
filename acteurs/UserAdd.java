@@ -1,7 +1,6 @@
 package acteurs;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 
 import util.dbUtil;
@@ -14,6 +13,15 @@ public class UserAdd {
     public Date create_time;
     public int id;
 
+    /**
+     * 
+     * @param username
+     * @param password
+     * @param role
+     * @param create_time
+     * @param id
+     * @throws SQLException
+     */
     public UserAdd(String username, String password, String role, Date create_time, int id) throws SQLException {
 
         this.username = username;
@@ -21,7 +29,9 @@ public class UserAdd {
         this.role = role;
         this.create_time = create_time;
         this.id = id;
-        // connexion bdd
+        /**
+         * connexion bdd
+         */
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
         try {
@@ -74,6 +84,42 @@ public class UserAdd {
      */
     public int getidC() {
         return id;
+    }
+
+    /**
+     * 
+     * @param id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    /**
+     * 
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    /**
+     * 
+     * @param password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    /**
+     * 
+     * @param role
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
+    /**
+     * 
+     * @param create_time
+     */
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
 }

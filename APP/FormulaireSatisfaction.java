@@ -36,7 +36,6 @@ public class FormulaireSatisfaction extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -54,7 +53,6 @@ public class FormulaireSatisfaction extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * 
 	 * @param user
 	 */
 	public FormulaireSatisfaction(User user, dbUtil utl) {
@@ -92,33 +90,22 @@ public class FormulaireSatisfaction extends JFrame {
 			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM MISSION");
 			JComboBox jc = new JComboBox();
 			while (rs.next()) {
-				// int id=rs.getInt("ID_M") ;
 				String titreMission = rs.getString("TITREM");
-				// Object[] itemData = new Object[] {id, titreMission};
 				jc.addItem(titreMission);
 			}
-			// utl.dbKill(cnx) ;
-			// Connection cnx = utl.dbConnect() ;
 			// L'AUTEUR
 			ResultSet rs1 = utl.dbRead(cnx, "SELECT * FROM CIVIL WHERE type!=1");
 			JComboBox jc1 = new JComboBox();
 			while (rs1.next()) {
-				// int id=rs.getInt("ID_M") ;
 				String identifiantCivil = rs1.getString("IDENTIFIANT");
-				// Object[] itemData = new Object[] {id, titreMission};
 				jc1.addItem(identifiantCivil);
-				// utl.dbKill(cnx) ;
 			}
 			// L'AGENT
-			// Connection cnx = utl.dbConnect() ;
 			ResultSet rs2 = utl.dbRead(cnx, "SELECT * FROM CIVIL WHERE type=1");
 			JComboBox jc2 = new JComboBox();
 			while (rs2.next()) {
-				// int id=rs.getInt("ID_M") ;
 				String identifiantAgent = rs2.getString("IDENTIFIANT");
-				// Object[] itemData = new Object[] {id, titreMission};
 				jc2.addItem(identifiantAgent);
-				// utl.dbKill(cnx) ;
 			}
 			jc2.setBounds(310, 225, 550, 50);
 			contentPane.add(jc2);
@@ -132,21 +119,18 @@ public class FormulaireSatisfaction extends JFrame {
 			jc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String titre=(String) jc.getSelectedItem();
 				}
 			});
 
 			jc1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String auteur=(String) jc1.getSelectedItem();
 				}
 			});
 
 			jc2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String agent=(String) jc2.getSelectedItem();
 				}
 			});
 
@@ -189,15 +173,7 @@ public class FormulaireSatisfaction extends JFrame {
 			lblScore.setBounds(100, 375, 193, 52);
 			contentPane.add(lblScore);
 
-			// zone de texte score
-			/*
-			 * JTextField textFieldScore = new JTextField(); textFieldScore.setFont(new
-			 * Font("Tahoma", Font.PLAIN, 32)); textFieldScore.setBounds(250, 375, 550, 50);
-			 * contentPane.add(textFieldScore); textFieldScore.setColumns(10);
-			 */
-
-			// - 2) --- définir les élément de la liste
-
+			// définir les élément de la liste
 			Object[] elements = new Object[] { "1", "2", "3", "4", "5" };
 			;
 			JComboBox jc3 = new JComboBox(elements);
@@ -207,7 +183,6 @@ public class FormulaireSatisfaction extends JFrame {
 			jc3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String score=(String) jc3.getSelectedItem();
 				}
 			});
 
@@ -241,7 +216,6 @@ public class FormulaireSatisfaction extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					if (textFieldCommentaire.getText().isEmpty()) {
-						// error
 						JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
 					} else {
 
@@ -261,7 +235,6 @@ public class FormulaireSatisfaction extends JFrame {
 						} catch (SQLDataException err) {
 							System.out.println(err);
 						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 

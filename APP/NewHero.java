@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -30,6 +29,7 @@ public class NewHero extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -44,12 +44,10 @@ public class NewHero extends JFrame {
         });
     }
 
-    public NewHero() {
-
-    }
-
     /**
      * Create the frame.
+     * @param user
+     * @param dbUtil
      */
     public NewHero(User user, dbUtil dbUtil) {
 
@@ -151,9 +149,6 @@ public class NewHero extends JFrame {
                     st.setString(1, pstr);
                     st.setString(2, user.username);
                     st.executeUpdate();
-                    // JOptionPane.showMessageDialog(btnSearch, "Password has been successfully
-                    // changed");
-
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                 }

@@ -1,6 +1,5 @@
 package actions;
 
-import java.util.*;
 
 public class Crise {
     private int idCr;
@@ -32,6 +31,13 @@ public int getidCr(){
         return idCr;
     }
 
+    /**
+     * 
+     * @return String
+     */
+    public String getNomCr() {
+        return nomCr;
+    }
 /**
  * @return String
  */

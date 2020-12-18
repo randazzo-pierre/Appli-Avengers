@@ -1,7 +1,6 @@
 package acteurs;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 import util.dbUtil;
 
@@ -40,7 +39,9 @@ public class Hero {
         this.nbMissionEff = nbMissionEff;
         this.commentaireHero = commentaireHero;
 
-        // connexion bdd
+        /**
+         * connexion bdd
+         */
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
         try {
@@ -59,38 +60,71 @@ public class Hero {
 
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getIdH() {
         return idH;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getIdC() {
         return idC;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getTitreh() {
         return titreh;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getPouvoirh() {
         return pouvoirh;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getPointFaibleh() {
         return pointFaibleh;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getIdentiteC() {
         return identiteC;
     }
-
+    /**
+    * 
+    * @return int
+    */
     public int getScoreh() {
         return scoreh;
     }
-
+    /**
+     * 
+     * @return int
+     */
     public int getNbMissionEff() {
         return nbMissionEff;
     }
-
+    /**
+     * 
+     * @return String
+     */
     public String getCommentaireHero() {
         return commentaireHero;
     }

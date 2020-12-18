@@ -1,9 +1,6 @@
 package actions;
 
-
-
 import java.sql.*;
-
 
 import util.*;
 
@@ -19,6 +16,7 @@ public class Mission {
     private int ZipM;
 
     /**
+     * 
      * @param idM
      * @param TitreM
      * @param DescriptionM
@@ -45,7 +43,9 @@ public class Mission {
 
     public  Mission(String inputTitre, String inputDescript, String coequipier, String hero, String gravite, String urgence, Country selectedCountry, int inputZip) throws SQLException {
         System.out.println("Création d'une mission avec les paramètres suivant Titre : "+inputTitre+" Description : "+inputDescript+" début : "+coequipier+" fin:"+hero+" Gravité : "+gravite+" Urgence : "+urgence+" Pays : "+selectedCountry+" Zip : "+inputZip);
-        //connexion bdd
+        /**
+         * connection bdd
+         */
        dbUtil utl = new dbUtil() ;
        Connection cnx = utl.dbConnect() ;
        try {
@@ -58,7 +58,6 @@ public class Mission {
        } catch(SQLException e){
         System.out.println(e);
        }
-        //return this.idI ;
         }
      
 

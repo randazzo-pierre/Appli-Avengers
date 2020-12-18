@@ -15,23 +15,19 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JFrame;
 
 import acteurs.User;
-import actions.Satisfaction;
-import util.dbUtil;
 import java.sql.*;
-import java.util.*;
 
 public class SatisfactionList extends JFrame {
 
     private static final long serialVersionUID = 1;
     private JPanel contentPane;
-    private JButton btnNewButton;
     public Object ArrayListSatisfaction;
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -46,6 +42,10 @@ public class SatisfactionList extends JFrame {
         });
     }
 
+    /**
+     * Create the frame
+     * @param user
+     */
     public SatisfactionList(User user) {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +95,7 @@ public class SatisfactionList extends JFrame {
                     int i = 0;
                     String column[]={"idS","idC","Titre","Auteur","Agent","Commentaire","Note","Fichier"};
                     String data[][] = new String[8][20];
-                    while (rs.next()) { // while (rs.next())
+                    while (rs.next()) {
                         data[i][0] = rs.getString(1);
                         data[i][1] = rs.getString(2);
                         data[i][2] = rs.getString(3);
