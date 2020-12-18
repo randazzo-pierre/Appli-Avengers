@@ -279,9 +279,10 @@ public class CreateMission extends JFrame {
 		button2.setBackground(UIManager.getColor("Button.disabledForeground"));
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Dashboard bo = new Dashboard(user, null);
+				Dashboard bo = new Dashboard(user, utl);
 				bo.setTitle("Dashboard " + user.role);
 				bo.setVisible(true);
+				dispose();
 			}
 		});
 		button2.setFont(new Font("Tahoma", Font.PLAIN, 35));

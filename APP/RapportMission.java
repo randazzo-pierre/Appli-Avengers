@@ -149,7 +149,7 @@ public class RapportMission extends JFrame {
 			contentPane.add(textFieldCommentaire);
 			textFieldCommentaire.setColumns(10);
 
-			// lieblle score
+			// libelle score
 			JLabel lblScore = new JLabel("Statut :");
 			lblScore.setForeground(Color.BLACK);
 			lblScore.setBackground(Color.CYAN);
@@ -187,6 +187,7 @@ public class RapportMission extends JFrame {
 					Dashboard bo = new Dashboard(user, utl);
 					bo.setTitle("Dashboard " + user.role);
 					bo.setVisible(true);
+					dispose();
 				}
 			});
 			button2.setFont(new Font("Tahoma", Font.PLAIN, 35));

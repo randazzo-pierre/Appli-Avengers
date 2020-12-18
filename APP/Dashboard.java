@@ -60,31 +60,40 @@ public class Dashboard extends JFrame {
         lblMission.setBounds(150, 15, 400, 93);
         contentPane.add(lblMission);
 
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) ) {
         JLabel lblHero = new JLabel("Heros");
         lblHero.setForeground(Color.BLACK);
         lblHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
         lblHero.setBounds(750, 25, 400, 93);
         contentPane.add(lblHero);
+        }
 
+        if ("ORGA".equals(user.role)) {
         JLabel lblVilain = new JLabel("Vilains");
         lblVilain.setForeground(Color.BLACK);
         lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
         lblVilain.setBounds(750, 175, 400, 93);
         contentPane.add(lblVilain);
+        }
 
+        if ("CIVIL".equals(user.role)) {
         JLabel lblCivil = new JLabel("Civil");
         lblCivil.setForeground(Color.BLACK);
         lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 39));
         lblCivil.setBounds(175, 250, 400, 90);
         contentPane.add(lblCivil);
+        }
 
+        if ("ORGA".equals(user.role)) {
         JLabel lblProbleme = new JLabel("Probleme");
         lblProbleme.setForeground(Color.BLACK);
         lblProbleme.setFont(new Font("Tahoma", Font.PLAIN, 39));
         lblProbleme.setBounds(150, 375, 400, 90);
         contentPane.add(lblProbleme);
+        }
 
         // ======== BEA ============ FRONT => OK | BACK => DEV =======
+
         JButton btnNewButton = new JButton("Incident");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -94,6 +103,7 @@ public class Dashboard extends JFrame {
                 DeclarerIncident incident = new DeclarerIncident(user);
                 // alert.setTitle();
                 incident.setVisible(true);
+                dispose();
             }
         });
         btnNewButton.setBounds(50, 120, 200, 40);
@@ -108,6 +118,7 @@ public class Dashboard extends JFrame {
                 ListeRapport listeRapport = new ListeRapport(user, dbUtil);
                 listeRapport.setTitle("Liste des rapports");
                 listeRapport.setVisible(true);
+                dispose();
             }
         });
 
@@ -123,6 +134,7 @@ public class Dashboard extends JFrame {
                 ListeMission listeMission = new ListeMission(user, dbUtil);
                 listeMission.setTitle("Mission Liste");
                 listeMission.setVisible(true);
+                dispose();
             }
         });
         btnListMission.setBounds(250, 120, 200, 40);
@@ -143,6 +155,7 @@ public class Dashboard extends JFrame {
             });
             button2.setBounds(450, 275, 200, 50);
             contentPane.add(button2);
+            dispose();
 
         }
 
@@ -158,10 +171,12 @@ public class Dashboard extends JFrame {
                     CreateMission CreateMission = new CreateMission(user, dbUtil);
                     CreateMission.setTitle("Mission");
                     CreateMission.setVisible(true);
+                    dispose();
                 }
             });
             button3.setBounds(50, 175, 200, 40);
             contentPane.add(button3);
+            
 
         }
 
@@ -177,6 +192,7 @@ public class Dashboard extends JFrame {
                     ListVilain list = new ListVilain(user);
                     list.setTitle("List Vilain");
                     list.setVisible(true);
+                    dispose();
                 }
             });
             button9.setBounds(700, 250, 200, 40);
@@ -196,6 +212,7 @@ public class Dashboard extends JFrame {
                     RapportMission RapportMission = new RapportMission(user, dbUtil);
                     RapportMission.setTitle("Rapport");
                     RapportMission.setVisible(true);
+                    dispose();
                 }
             });
             button4.setBounds(100, 220, 250, 40);
@@ -212,6 +229,7 @@ public class Dashboard extends JFrame {
                     VilainList vilain = new VilainList(user, dbUtil);
                     vilain.setTitle("Identifier un Vilain");
                     vilain.setVisible(true);
+                    dispose();
                 }
             });
             button5.setBounds(700, 320, 200, 40);
@@ -220,6 +238,7 @@ public class Dashboard extends JFrame {
         }
 
         // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
+        if ("ORGA".equals(user.role)) {
         JButton buttonListHero = new JButton("Liste Heros");
         buttonListHero.setForeground(new Color(0, 0, 0));
         buttonListHero.setBackground(new Color(20, 150, 20));
@@ -230,32 +249,54 @@ public class Dashboard extends JFrame {
                 ListHero vilain = new ListHero(user, dbUtil);
                 vilain.setTitle("Liste Heros");
                 vilain.setVisible(true);
+                dispose();
             }
         });
         buttonListHero.setBounds(700, 100, 200, 40);
         contentPane.add(buttonListHero);
 
         // ==========NATHAN========FRONT => OK | BACK => DEV =======
-        if ("ORGA".equals(user.role)) {
-            JButton button6 = new JButton("Satisfaction Info");
-            button6.setForeground(new Color(0, 0, 0));
-            button6.setBackground(new Color(20, 150, 20));
-            button6.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button6.setFont(new Font("Tahoma", Font.PLAIN, 25));
-            button6.addActionListener(new ActionListener() {
+        if ("CIVIL".equals(user.role)) {
+            JButton buttonFormSati = new JButton("Remplir Satisfaction");
+            buttonFormSati.setForeground(new Color(0, 0, 0));
+            buttonFormSati.setBackground(new Color(20, 150, 20));
+            buttonFormSati.setBackground(UIManager.getColor("Button.disabledForeground"));
+            buttonFormSati.setFont(new Font("Tahoma", Font.PLAIN, 20));
+            buttonFormSati.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    SatisfactionList list = new SatisfactionList(user);
-                    list.setTitle("Liste des Satisfactions");
+                    FormulaireSatisfaction list = new FormulaireSatisfaction(user, dbUtil);
+                    list.setTitle("Remplir Satisfaction");
                     list.setVisible(true);
-
+                    dispose();
                 }
             });
-            button6.setBounds(125, 325, 200, 40);
-            contentPane.add(button6);
+            buttonFormSati.setBounds(175, 325, 200, 40);
+            contentPane.add(buttonFormSati);
 
         }
 
+                // ==========NATHAN========FRONT => OK | BACK => DEV =======
+                if ("CIVIL".equals(user.role)) {
+                    JButton button6 = new JButton("Satisfaction liste");
+                    button6.setForeground(new Color(0, 0, 0));
+                    button6.setBackground(new Color(20, 150, 20));
+                    button6.setBackground(UIManager.getColor("Button.disabledForeground"));
+                    button6.setFont(new Font("Tahoma", Font.PLAIN, 20));
+                    button6.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            SatisfactionList list = new SatisfactionList(user);
+                            list.setTitle("Liste des Satisfactions");
+                            list.setVisible(true);
+                            dispose();
+                        }
+                    });
+                    button6.setBounds(125, 325, 200, 40);
+                    contentPane.add(button6);
+        
+                }
+
         // ==========NATHAN======== FRONT => DEV | BACK => DEV ============
+        if ("ORGA".equals(user.role)) {
         JButton button7 = new JButton("Litige");
         button7.setForeground(new Color(0, 0, 0));
         button7.setBackground(new Color(20, 150, 20));
@@ -266,12 +307,14 @@ public class Dashboard extends JFrame {
                 Litige litige = new Litige(user, dbUtil);
                 litige.setTitle("Creer un Litige");
                 litige.setVisible(true);
+                dispose();
 
             }
         });
         button7.setBounds(125, 480, 200, 40);
         contentPane.add(button7);
-
+        }
     }
 
+}
 }

@@ -95,6 +95,7 @@ public class UserHome extends JFrame {
                 Dashboard bo = new Dashboard(user, dbUtil);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
+                dispose();
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
