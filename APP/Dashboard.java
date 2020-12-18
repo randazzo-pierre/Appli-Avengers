@@ -386,5 +386,20 @@ public class Dashboard extends JFrame {
             contentPane.add(button7);
         }
 
+        JButton button2 = new JButton("Retour");
+        button2.setBackground(UIManager.getColor("Button.disabledForeground"));
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dbUtil utl = new dbUtil();
+                UserHome bo = new UserHome(user, utl);
+                bo.setTitle("Home " + user.role);
+                bo.setVisible(true);
+                dispose();
+            }
+        });
+        button2.setFont(new Font("Tahoma", Font.PLAIN, 35));
+        button2.setBounds(350, 480, 200, 40);
+        contentPane.add(button2);
+
     }
 }
