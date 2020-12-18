@@ -90,6 +90,22 @@ public class Rapport {
             sqlException.printStackTrace();
         }
 
+        Date date = new Date();
+
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                    "dbroot", "QeTuZ2LFJfSqtbpe");
+
+            PreparedStatement st = (PreparedStatement) con
+                    .prepareStatement("Update INCIDENT set DATEFINI=? where ID_I=?");
+            st.setDate(1, (java.sql.Date) date);
+            st.setString(2, idIncident);
+            st.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+
         // return this.idI ;
     }
 
