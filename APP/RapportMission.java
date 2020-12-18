@@ -149,7 +149,7 @@ public class RapportMission extends JFrame {
 			contentPane.add(textFieldCommentaire);
 			textFieldCommentaire.setColumns(10);
 
-			// lieblle score
+			// libelle score
 			JLabel lblScore = new JLabel("Status :");
 			lblScore.setForeground(Color.BLACK);
 			lblScore.setBackground(Color.CYAN);
