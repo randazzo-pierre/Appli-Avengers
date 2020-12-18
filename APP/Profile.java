@@ -24,13 +24,14 @@ public class Profile extends JFrame {
      */
     /**
      * Launch the application.
+     * 
      * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Profile frame = new Profile();
+                    Profile frame = new Profile(null, null);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -41,6 +42,7 @@ public class Profile extends JFrame {
 
     /**
      * Create the frame.
+     * 
      * @param user
      * @param dbUtil
      */

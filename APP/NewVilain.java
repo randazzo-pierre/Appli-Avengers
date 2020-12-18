@@ -31,13 +31,14 @@ public class NewVilain extends JFrame {
 
     /**
      * Launch the application.
+     * 
      * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    NewVilain frame = new NewVilain();
+                    NewVilain frame = new NewVilain(null, null);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -48,6 +49,7 @@ public class NewVilain extends JFrame {
 
     /**
      * Create the frame.
+     * 
      * @param user
      * @param dbUtil
      */
@@ -181,7 +183,7 @@ public class NewVilain extends JFrame {
                 Profile bo = new Profile(user, utl);
                 bo.setTitle("Profile ");
                 bo.setVisible(true);
-                
+
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));

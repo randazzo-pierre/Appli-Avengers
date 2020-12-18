@@ -29,13 +29,14 @@ public class NewHero extends JFrame {
 
     /**
      * Launch the application.
+     * 
      * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    NewHero frame = new NewHero();
+                    NewHero frame = new NewHero(null, null);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -46,6 +47,7 @@ public class NewHero extends JFrame {
 
     /**
      * Create the frame.
+     * 
      * @param user
      * @param dbUtil
      */
@@ -177,7 +179,7 @@ public class NewHero extends JFrame {
                 Profile bo = new Profile(user, utl);
                 bo.setTitle("Profile ");
                 bo.setVisible(true);
-                
+
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));

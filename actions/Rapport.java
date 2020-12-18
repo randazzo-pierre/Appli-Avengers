@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.sql.*;
+
 import util.*;
 
 public class Rapport {
@@ -30,7 +31,8 @@ public class Rapport {
      * @param statutR
      * @throws SQLException
      */
-    public Rapport(int idR, String titre, String heros, String status, String inputCommentaire) throws SQLException {
+    public Rapport(int idR, String titre, String heros, String status, String inputCommentaire, java.util.Date debut)
+            throws SQLException {
         this.idR = idR;
         this.titreR = titre;
         this.auteurR = heros;
@@ -94,7 +96,7 @@ public class Rapport {
             sqlException.printStackTrace();
         }
 
-        Date date = new Date();
+        String dateFin = "" + debut + "";
 
         try {
             Connection con = DriverManager.getConnection(
@@ -103,7 +105,7 @@ public class Rapport {
 
             PreparedStatement st = (PreparedStatement) con
                     .prepareStatement("Update INCIDENT set DATEFINI=? where ID_I=?");
-            st.setDate(1, (java.sql.Date) date);
+            st.setString(1, dateFin);
             st.setString(2, idIncident);
             st.executeUpdate();
         } catch (SQLException sqlException) {

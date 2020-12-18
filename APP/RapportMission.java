@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.util.Date;
 
 import acteurs.User;
 import actions.Rapport;
@@ -28,6 +29,7 @@ public class RapportMission extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -45,6 +47,7 @@ public class RapportMission extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * 
 	 * @param user
 	 */
 	public RapportMission(User user, dbUtil utl) {
@@ -188,8 +191,9 @@ public class RapportMission extends JFrame {
 
 						System.out.println(titre + " " + hero + " " + status + " " + inputCommentaire);
 						int id = 0;
+						Date debut = new Date();
 						try {
-							Rapport satis = new Rapport(id, titre, hero, status, inputCommentaire);
+							Rapport satis = new Rapport(id, titre, hero, status, inputCommentaire, debut);
 							JOptionPane.showMessageDialog(btnSumbit,
 									"Formulaire envoyé, merci de votre coopération !!");
 
