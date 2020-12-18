@@ -1,7 +1,6 @@
 package acteurs;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 import util.dbUtil;
 
@@ -40,7 +39,9 @@ public class Hero {
         this.nbMissionEff = nbMissionEff;
         this.commentaireHero = commentaireHero;
 
-        // connexion bdd
+        /**
+         * connexion bdd
+         */
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
         try {

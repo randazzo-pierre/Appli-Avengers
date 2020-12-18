@@ -1,7 +1,6 @@
 package actions;
 
 import java.util.*;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.sql.*;
@@ -37,7 +36,9 @@ public class Rapport {
         this.auteurR = heros;
         this.descriptionR = inputCommentaire;
         this.statutR = status;
-        // changement du status MISSION
+        /**
+         * changement du status MISSION
+         */
         try {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
@@ -52,7 +53,9 @@ public class Rapport {
             sqlException.printStackTrace();
         }
 
-        // connexion bdd
+        /**
+         * connexion bdd
+         */
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
         try {
@@ -67,8 +70,9 @@ public class Rapport {
             System.out.println(e);
         }
 
-        // changement du status INCIDENT
-
+        /**
+         * changement du status INCIDENT
+         */
         Pattern p = Pattern.compile("\\d+");
         Matcher m = p.matcher(titreR);
         if (m.find()) {
@@ -89,8 +93,6 @@ public class Rapport {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-
-        // return this.idI ;
     }
 
     /**

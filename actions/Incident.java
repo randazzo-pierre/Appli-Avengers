@@ -1,6 +1,5 @@
 package actions;
 
-import java.util.*;
 import java.util.Date;
 import java.sql.*;
 import java.text.DateFormat;
@@ -39,7 +38,9 @@ DateFormat dateFinInci, String descriptionInci){
 
 public  Incident(int declarant, Country selectedCountry, int inputzip, Date debut, String inputquoi) throws SQLException {
     System.out.println("Création d'un incident avec les paramètres suivant quoi : "+inputquoi+" Country : "+selectedCountry+" inputzip : "+inputzip+" créer par :"+declarant);
-    //connexion bdd
+    /**
+    * connexion bdd
+    */
    dbUtil utl = new dbUtil() ;
    Connection cnx = utl.dbConnect() ;
    try {
@@ -52,20 +53,7 @@ public  Incident(int declarant, Country selectedCountry, int inputzip, Date debu
    } catch(SQLException e){
     System.out.println(e);
    }
-    //return this.idI ;
 	}
- 
-//le constructeur de la class
-// public int __construct(String declaranInci, String paysInci, String zipInci, DateFormat dateDebutInci, String descriptionInci)
-//         throws SQLException {
-//             System.out.println("Création d'un incident avec les paramètres suivant quoi : "+descriptionInci+" Country : "+paysInci+" inputzip : "+zipInci+" créer par :"+declaranInci);
-//     //connexion bdd
-//    dbUtil utl = new dbUtil() ;
-//    Connection cnx = utl.dbConnect() ;
-//    int insert = utl.dbCreate(cnx, "INSERT INTO INCIDENT VALUES('', '', "+declaranInci+", "+paysInci+", "+zipInci+", "+dateDebutInci+", '', "+descriptionInci+")") ;
-//     this.setidI(insert);
-//     return this.idI ;
-// }
 
 /**
 * @return int

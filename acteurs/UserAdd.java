@@ -1,7 +1,6 @@
 package acteurs;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 
 import util.dbUtil;
@@ -30,7 +29,9 @@ public class UserAdd {
         this.role = role;
         this.create_time = create_time;
         this.id = id;
-        // connexion bdd
+        /**
+         * connexion bdd
+         */
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
         try {

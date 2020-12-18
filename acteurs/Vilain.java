@@ -1,8 +1,6 @@
 package acteurs;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
+import java.sql.*;
 import util.dbUtil;
 
 public class Vilain {
@@ -41,7 +39,9 @@ public class Vilain {
         this.nbCrimev = nbCrimev;
         this.commentaireVilain = commentaireVilain;
 
-        // connexion bdd
+        /**
+         * connexion bdd
+         */
         dbUtil utl = new dbUtil();
         Connection cnx = utl.dbConnect();
         try {

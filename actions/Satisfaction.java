@@ -1,6 +1,5 @@
 package actions;
 
-import java.util.*;
 import java.sql.*;
 
 import util.dbUtil;
@@ -38,7 +37,9 @@ public class Satisfaction {
      public Satisfaction(String titre, String auteur, String agent, String score, String inputCommentaire)
              throws SQLException {
          System.out.println("Création d'un formulaire de satisfaction avec les paramètres : "+titre+" créé par : "+auteur+" qui concerne l'agent : "+agent+" qui a eu le score de :"+score+" et le commentaire suivant :"+inputCommentaire);
-         // connexion bdd
+         /**
+          * connexion bdd
+          */
          dbUtil utl = new dbUtil();
          Connection cnx = utl.dbConnect();
          try {
