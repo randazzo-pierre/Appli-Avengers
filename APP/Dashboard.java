@@ -81,7 +81,7 @@ public class Dashboard extends JFrame {
             contentPane.add(lblHero);
         }
 
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "ADMIN".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) ||"CIVIL".equals(user.role) || "ADMIN".equals(user.role)) {
             JLabel lblVilain = new JLabel("Vilains");
             lblVilain.setForeground(Color.BLACK);
             lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -217,20 +217,20 @@ public class Dashboard extends JFrame {
             contentPane.add(btnListMission);
         }
 
-        if ("CIVIL".equals(user.role) || "ADMIN".equals(user.role)) {
+        if ("CIVIL".equals(user.role) ||"ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
 
             JButton button2 = new JButton("Formulaire Satisfaction");
             button2.setForeground(new Color(0, 0, 0));
             button2.setBackground(new Color(20, 150, 20));
             button2.setBackground(UIManager.getColor("Button.disabledForeground"));
-            button2.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            button2.setFont(new Font("Tahoma", Font.PLAIN, 20));
             button2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     FormulaireSatisfaction formulaireSatisfaction = new FormulaireSatisfaction(user, dbUtil);
                     formulaireSatisfaction.setVisible(true);
                 }
             });
-            button2.setBounds(450, 275, 200, 50);
+            button2.setBounds(250, 325, 200, 40);
             contentPane.add(button2);
         }
         // ==========PIERRE======== FRONT => OK | BACK => DEV =========
@@ -360,7 +360,7 @@ public class Dashboard extends JFrame {
 
                 }
             });
-            button6.setBounds(125, 325, 200, 40);
+            button6.setBounds(50, 325, 200, 40);
             contentPane.add(button6);
 
         }
