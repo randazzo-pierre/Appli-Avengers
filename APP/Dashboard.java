@@ -94,6 +94,7 @@ public class Dashboard extends JFrame {
                 DeclarerIncident incident = new DeclarerIncident(user);
                 // alert.setTitle();
                 incident.setVisible(true);
+                dispose();
             }
         });
         btnNewButton.setBounds(50, 120, 200, 40);
@@ -108,6 +109,7 @@ public class Dashboard extends JFrame {
                 ListeRapport listeRapport = new ListeRapport(user, dbUtil);
                 listeRapport.setTitle("Liste des rapports");
                 listeRapport.setVisible(true);
+                dispose();
             }
         });
 
@@ -123,6 +125,7 @@ public class Dashboard extends JFrame {
                 ListeMission listeMission = new ListeMission(user, dbUtil);
                 listeMission.setTitle("Mission Liste");
                 listeMission.setVisible(true);
+                dispose();
             }
         });
         btnListMission.setBounds(250, 120, 200, 40);
@@ -143,6 +146,7 @@ public class Dashboard extends JFrame {
             });
             button2.setBounds(450, 275, 200, 50);
             contentPane.add(button2);
+            dispose();
 
         }
 
@@ -158,10 +162,12 @@ public class Dashboard extends JFrame {
                     CreateMission CreateMission = new CreateMission(user, dbUtil);
                     CreateMission.setTitle("Mission");
                     CreateMission.setVisible(true);
+                    dispose();
                 }
             });
             button3.setBounds(50, 175, 200, 40);
             contentPane.add(button3);
+            dispose();
 
         }
 
@@ -177,6 +183,7 @@ public class Dashboard extends JFrame {
                     ListVilain list = new ListVilain(user);
                     list.setTitle("List Vilain");
                     list.setVisible(true);
+                    dispose();
                 }
             });
             button9.setBounds(700, 250, 200, 40);
@@ -196,6 +203,7 @@ public class Dashboard extends JFrame {
                     RapportMission RapportMission = new RapportMission(user, dbUtil);
                     RapportMission.setTitle("Rapport");
                     RapportMission.setVisible(true);
+                    dispose();
                 }
             });
             button4.setBounds(100, 220, 250, 40);
@@ -212,6 +220,7 @@ public class Dashboard extends JFrame {
                     VilainList vilain = new VilainList(user, dbUtil);
                     vilain.setTitle("Identifier un Vilain");
                     vilain.setVisible(true);
+                    dispose();
                 }
             });
             button5.setBounds(700, 320, 200, 40);
@@ -230,6 +239,7 @@ public class Dashboard extends JFrame {
                 ListHero vilain = new ListHero(user, dbUtil);
                 vilain.setTitle("Liste Heros");
                 vilain.setVisible(true);
+                dispose();
             }
         });
         buttonListHero.setBounds(700, 100, 200, 40);
@@ -247,7 +257,7 @@ public class Dashboard extends JFrame {
                     SatisfactionList list = new SatisfactionList(user);
                     list.setTitle("Liste des Satisfactions");
                     list.setVisible(true);
-
+                    dispose();
                 }
             });
             button6.setBounds(125, 325, 200, 40);
@@ -266,6 +276,7 @@ public class Dashboard extends JFrame {
                 Litige litige = new Litige(user, dbUtil);
                 litige.setTitle("Creer un Litige");
                 litige.setVisible(true);
+                dispose();
 
             }
         });

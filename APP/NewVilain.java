@@ -184,6 +184,7 @@ public class NewVilain extends JFrame {
                 Profile bo = new Profile(user, utl);
                 bo.setTitle("Profile ");
                 bo.setVisible(true);
+                
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));

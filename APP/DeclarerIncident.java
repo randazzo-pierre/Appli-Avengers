@@ -202,7 +202,8 @@ public class DeclarerIncident extends JFrame {
 				dbUtil utl = new dbUtil() ;
                 Dashboard bo = new Dashboard(user, utl);
                 bo.setTitle("Dashboard " + user.role);
-                bo.setVisible(true);
+				bo.setVisible(true);
+				dispose();
             }
         });
         button2.setFont(new Font("Tahoma", Font.PLAIN, 35));

@@ -72,6 +72,7 @@ public class SatisfactionList extends JFrame {
                 Dashboard bo = new Dashboard(user, null);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
+                dispose();
             }
         });
 	    btnRetour.setBounds(125, 450, 350, 50);
