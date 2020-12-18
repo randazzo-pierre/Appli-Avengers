@@ -16,6 +16,19 @@ public class Vilain {
     private int nbCrimev;
     private String commentaireVilain;
 
+    /**
+     * 
+     * @param idV
+     * @param idC
+     * @param titrev
+     * @param pouvoirv
+     * @param pointFaiblev
+     * @param identiteCivile
+     * @param dangerv
+     * @param nbCrimev
+     * @param commentaireVilain
+     * @throws SQLException
+     */
     public Vilain(int idV, int idC, String titrev, String pouvoirv, String pointFaiblev, String identiteCivile,
             int dangerv, int nbCrimev, String commentaireVilain) throws SQLException {
         this.idV = idV;
@@ -46,38 +59,74 @@ public class Vilain {
         return;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getIdV() {
         return idV;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getIdC() {
         return idC;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getTitrev() {
         return titrev;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getPouvoirv() {
         return pouvoirv;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getPointFaiblev() {
         return pointFaiblev;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getIdentiteCivile() {
         return identiteCivile;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getDangerv() {
         return dangerv;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getNbCrimev() {
         return nbCrimev;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getCommentaireVilain() {
         return commentaireVilain;
     }

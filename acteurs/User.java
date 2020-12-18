@@ -11,6 +11,15 @@ public class User {
    public Date create_time;
    public int id;
 
+   /**
+    * 
+    * @param username
+    * @param password
+    * @param role
+    * @param create_time
+    * @param id
+    * @throws SQLException
+    */
    public User(String username, String password, String role, Date create_time, int id) throws SQLException {
 
       this.username = username;
@@ -35,9 +44,6 @@ public class User {
       // }
       return;
    }
-
-   // private void setidI(int insert) {
-   // }
 
    /**
     * @return String
@@ -73,5 +79,39 @@ public class User {
    public int getidC() {
       return id;
    }
-
+/**
+ * 
+ * @param id
+ */
+   public void setId(int id) {
+      this.id = id;
+   }
+   /**
+    * 
+    * @param username
+    */
+   public void setUsername(String username) {
+      this.username = username;
+   }
+   /**
+    * 
+    * @param password
+    */
+   public void setPassword(String password) {
+      this.password = password;
+   }
+   /**
+    * 
+    * @param role
+    */
+   public void setRole(String role) {
+      this.role = role;
+   }
+   /**
+    * 
+    * @param create_time
+    */
+   public void setCreate_time(Date create_time) {
+      this.create_time = create_time;
+   }
 }

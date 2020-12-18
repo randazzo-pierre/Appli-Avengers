@@ -18,6 +18,7 @@ public class Organisations {
     private int nbMissionsImpliques;
 
     /**
+     * 
      * @param idO
      * @param nomOrga
      * @param adresse
@@ -29,10 +30,9 @@ public class Organisations {
      * @param commentaireOrga
      * @param dateAjout
      * @param dateDerniereModif
-     * @param nbIncidentDeclare;
+     * @param nbIncidentDeclare
      * @param nbMissionsImpliques
      */
-
      public Organisations(int idO, String nomOrga, String adresse, String ville ,String zip, String pays, int dirigeant,
      ArrayList<Integer> membres, String commentaireOrga, Date dateAjout, Date dateDerniereModif,
      int nbIncidentDeclare, int nbMissionsImpliques){

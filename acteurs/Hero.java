@@ -59,38 +59,71 @@ public class Hero {
 
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getIdH() {
         return idH;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getIdC() {
         return idC;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getTitreh() {
         return titreh;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getPouvoirh() {
         return pouvoirh;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getPointFaibleh() {
         return pointFaibleh;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getIdentiteC() {
         return identiteC;
     }
-
+    /**
+    * 
+    * @return int
+    */
     public int getScoreh() {
         return scoreh;
     }
-
+    /**
+     * 
+     * @return int
+     */
     public int getNbMissionEff() {
         return nbMissionEff;
     }
-
+    /**
+     * 
+     * @return String
+     */
     public String getCommentaireHero() {
         return commentaireHero;
     }

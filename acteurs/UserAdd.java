@@ -14,6 +14,15 @@ public class UserAdd {
     public Date create_time;
     public int id;
 
+    /**
+     * 
+     * @param username
+     * @param password
+     * @param role
+     * @param create_time
+     * @param id
+     * @throws SQLException
+     */
     public UserAdd(String username, String password, String role, Date create_time, int id) throws SQLException {
 
         this.username = username;
@@ -74,6 +83,42 @@ public class UserAdd {
      */
     public int getidC() {
         return id;
+    }
+
+    /**
+     * 
+     * @param id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+    /**
+     * 
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    /**
+     * 
+     * @param password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    /**
+     * 
+     * @param role
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
+    /**
+     * 
+     * @param create_time
+     */
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
 }
