@@ -150,7 +150,7 @@ public class RapportMission extends JFrame {
 			textFieldCommentaire.setColumns(10);
 
 			// lieblle score
-			JLabel lblScore = new JLabel("Status :");
+			JLabel lblScore = new JLabel("Statut :");
 			lblScore.setForeground(Color.BLACK);
 			lblScore.setBackground(Color.CYAN);
 			lblScore.setFont(new Font("Tahoma", Font.PLAIN, 31));
@@ -166,7 +166,7 @@ public class RapportMission extends JFrame {
 
 			// - 2) --- définir les élément de la liste
 
-			Object[] elements = new Object[] { "ERROR", "SUCCESS", "IN-PROGRESS" };
+			Object[] elements = new Object[] { "ECHEC", "SUCCESS", "IN-PROGRESS" };
 			;
 			JComboBox jc3 = new JComboBox(elements);
 			jc3.setBounds(310, 280, 550, 50);

@@ -44,7 +44,7 @@ public class Rapport {
                     "dbroot", "QeTuZ2LFJfSqtbpe");
 
             PreparedStatement st = (PreparedStatement) con
-                    .prepareStatement("UPDATE MISSION set STATUSM=? where TITREM=?");
+                    .prepareStatement("UPDATE MISSION set STATUTM=? where TITREM=?");
             st.setString(1, statutR);
             st.setString(2, titreR);
             st.executeUpdate();
