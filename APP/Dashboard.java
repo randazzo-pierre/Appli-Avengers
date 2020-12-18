@@ -60,80 +60,101 @@ public class Dashboard extends JFrame {
         lblMission.setBounds(150, 15, 400, 93);
         contentPane.add(lblMission);
 
-        JLabel lblHero = new JLabel("Heros");
-        lblHero.setForeground(Color.BLACK);
-        lblHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        lblHero.setBounds(750, 25, 400, 93);
-        contentPane.add(lblHero);
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "ADMIN".equals(user.role)) {
+            JLabel lblHero = new JLabel("Heros");
+            lblHero.setForeground(Color.BLACK);
+            lblHero.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            lblHero.setBounds(750, 25, 400, 93);
+            contentPane.add(lblHero);
+        }
 
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
-        JLabel lblVilain = new JLabel("Vilains");
-        lblVilain.setForeground(Color.BLACK);
-        lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        lblVilain.setBounds(750, 175, 400, 93);
-        contentPane.add(lblVilain);
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "ADMIN".equals(user.role)) {
+            JLabel lblVilain = new JLabel("Vilains");
+            lblVilain.setForeground(Color.BLACK);
+            lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            lblVilain.setBounds(750, 175, 400, 93);
+            contentPane.add(lblVilain);
+        }
 
-        JLabel lblCivil = new JLabel("Civil");
-        lblCivil.setForeground(Color.BLACK);
-        lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        lblCivil.setBounds(175, 250, 400, 90);
-        contentPane.add(lblCivil);
+        if ("ORGA".equals(user.role) || "CIVIL".equals(user.role) || "ADMIN".equals(user.role)) {
 
-        JLabel lblProbleme = new JLabel("Probleme");
-        lblProbleme.setForeground(Color.BLACK);
-        lblProbleme.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        lblProbleme.setBounds(150, 375, 400, 90);
-        contentPane.add(lblProbleme);
+            JLabel lblCivil = new JLabel("Civil");
+            lblCivil.setForeground(Color.BLACK);
+            lblCivil.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            lblCivil.setBounds(175, 250, 400, 90);
+            contentPane.add(lblCivil);
 
+        }
+
+        if ("ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
+
+            JLabel lblProbleme = new JLabel("Probleme");
+            lblProbleme.setForeground(Color.BLACK);
+            lblProbleme.setFont(new Font("Tahoma", Font.PLAIN, 39));
+            lblProbleme.setBounds(150, 375, 400, 90);
+            contentPane.add(lblProbleme);
+
+        }
         // ======== BEA ============ FRONT => OK | BACK => DEV =======
-        JButton btnNewButton = new JButton("Incident");
-        btnNewButton.setForeground(new Color(0, 0, 0));
-        btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                DeclarerIncident incident = new DeclarerIncident(user);
-                // alert.setTitle();
-                incident.setVisible(true);
-            }
-        });
-        btnNewButton.setBounds(50, 120, 200, 40);
-        contentPane.add(btnNewButton);
 
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
-        JButton btnListRapport = new JButton("Rapport liste");
-        btnListRapport.setForeground(new Color(0, 0, 0));
-        btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnListRapport.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnListRapport.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ListeRapport listeRapport = new ListeRapport(user, dbUtil);
-                listeRapport.setTitle("Liste des rapports");
-                listeRapport.setVisible(true);
-            }
-        });
-    
-        btnListRapport.setBounds(250, 175, 200, 40);
-        contentPane.add(btnListRapport);
-            }
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
-        JButton btnListMission = new JButton("Mission Liste");
-        btnListMission.setForeground(new Color(0, 0, 0));
-        btnListMission.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnListMission.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnListMission.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ListeMission listeMission = new ListeMission(user, dbUtil);
-                listeMission.setTitle("Mission Liste");
-                listeMission.setVisible(true);
-            }
-        });
-        btnListMission.setBounds(250, 120, 200, 40);
-        contentPane.add(btnListMission);
-    }
+        if ("ORGA".equals(user.role) || "CIVIL".equals(user.role) || "ADMIN".equals(user.role)
+                || "HEROS".equals(user.role)) {
+
+            JButton btnNewButton = new JButton("Incident");
+            btnNewButton.setForeground(new Color(0, 0, 0));
+            btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
+            btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
+            btnNewButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    DeclarerIncident incident = new DeclarerIncident(user);
+                    // alert.setTitle();
+                    incident.setVisible(true);
+                }
+            });
+            btnNewButton.setBounds(50, 120, 200, 40);
+            contentPane.add(btnNewButton);
+
+        }
+
+        if ("ORGA".equals(user.role) || "ADMIN".equals(user.role) || "HEROS".equals(user.role)) {
+
+            JButton btnListRapport = new JButton("Rapport liste");
+            btnListRapport.setForeground(new Color(0, 0, 0));
+            btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
+            btnListRapport.setFont(new Font("Tahoma", Font.PLAIN, 25));
+            btnListRapport.addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+                    ListeRapport listeRapport = new ListeRapport(user, dbUtil);
+                    listeRapport.setTitle("Liste des rapports");
+                    listeRapport.setVisible(true);
+                }
+
+            });
+
+            btnListRapport.setBounds(250, 175, 200, 40);
+            contentPane.add(btnListRapport);
+
+        }
+
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "ADMIN".equals(user.role)) {
+            JButton btnListMission = new JButton("Mission Liste");
+            btnListMission.setForeground(new Color(0, 0, 0));
+            btnListMission.setBackground(UIManager.getColor("Button.disabledForeground"));
+            btnListMission.setFont(new Font("Tahoma", Font.PLAIN, 25));
+            btnListMission.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    ListeMission listeMission = new ListeMission(user, dbUtil);
+                    listeMission.setTitle("Mission Liste");
+                    listeMission.setVisible(true);
+                }
+            });
+            btnListMission.setBounds(250, 120, 200, 40);
+            contentPane.add(btnListMission);
+        }
 
         // ==========THIB============= FRONT => OK | BACK => DEV =======
-        if ("CIVIL".equals(user.role)) {
+        if ("CIVIL".equals(user.role) || "ADMIN".equals(user.role)) {
             JButton button2 = new JButton("Formulaire Satisfaction");
             button2.setForeground(new Color(0, 0, 0));
             button2.setBackground(new Color(20, 150, 20));
@@ -147,10 +168,9 @@ public class Dashboard extends JFrame {
             });
             button2.setBounds(450, 275, 200, 50);
             contentPane.add(button2);
-
-
+        }
         // ==========PIERRE======== FRONT => OK | BACK => DEV =========
-        if ("ORGA".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
             JButton button3 = new JButton("Creer mission");
             button3.setForeground(new Color(0, 0, 0));
             button3.setBackground(new Color(20, 150, 20));
@@ -169,7 +189,7 @@ public class Dashboard extends JFrame {
         }
 
         // ==========........======== FRONT => DEV | BACK => DEV =========
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "ADMIN".equals(user.role)) {
             JButton button9 = new JButton("Liste Vilain");
             button9.setForeground(new Color(0, 0, 0));
             button9.setBackground(new Color(20, 150, 20));
@@ -188,7 +208,7 @@ public class Dashboard extends JFrame {
         }
 
         // ==========PIERRE============ FRONT => OK | BACK => DEV ========
-        if ("HEROS".equals(user.role) || "ORGA".equals(user.role)) {
+        if ("HEROS".equals(user.role) || "ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
             JButton button4 = new JButton("Rapport");
             button4.setForeground(new Color(0, 0, 0));
             button4.setBackground(new Color(20, 150, 20));
@@ -201,11 +221,12 @@ public class Dashboard extends JFrame {
                     RapportMission.setVisible(true);
                 }
             });
-            button4.setBounds(150, 175, 250, 40);
+            button4.setBounds(175, 220, 250, 40);
             contentPane.add(button4);
-                }
-            // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
-            if ("HEROS".equals(user.role) || "ORGA".equals(user.role)) {
+        }
+        // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
+        if ("HEROS".equals(user.role) || "ORGA".equals(user.role) || "ADMIN".equals(user.role)
+                || "CIVIL".equals(user.role)) {
             JButton button5 = new JButton("Identifier Vilain");
             button5.setForeground(new Color(0, 0, 0));
             button5.setBackground(new Color(20, 150, 20));
@@ -224,24 +245,24 @@ public class Dashboard extends JFrame {
         }
 
         // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
-        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
-        JButton buttonListHero = new JButton("Liste Heros");
-        buttonListHero.setForeground(new Color(0, 0, 0));
-        buttonListHero.setBackground(new Color(20, 150, 20));
-        buttonListHero.setBackground(UIManager.getColor("Button.disabledForeground"));
-        buttonListHero.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        buttonListHero.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ListHero vilain = new ListHero(user, dbUtil);
-                vilain.setTitle("Liste Heros");
-                vilain.setVisible(true);
-            }
-        });
-        buttonListHero.setBounds(700, 100, 200, 40);
-        contentPane.add(buttonListHero);
-    }
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role) || "ADMIN".equals(user.role)) {
+            JButton buttonListHero = new JButton("Liste Heros");
+            buttonListHero.setForeground(new Color(0, 0, 0));
+            buttonListHero.setBackground(new Color(20, 150, 20));
+            buttonListHero.setBackground(UIManager.getColor("Button.disabledForeground"));
+            buttonListHero.setFont(new Font("Tahoma", Font.PLAIN, 25));
+            buttonListHero.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    ListHero vilain = new ListHero(user, dbUtil);
+                    vilain.setTitle("Liste Heros");
+                    vilain.setVisible(true);
+                }
+            });
+            buttonListHero.setBounds(700, 100, 200, 40);
+            contentPane.add(buttonListHero);
+        }
         // ==========NATHAN========FRONT => OK | BACK => DEV =======
-        if ("ORGA".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
             JButton button6 = new JButton("Satisfaction Info");
             button6.setForeground(new Color(0, 0, 0));
             button6.setBackground(new Color(20, 150, 20));
@@ -261,25 +282,24 @@ public class Dashboard extends JFrame {
         }
 
         // ==========NATHAN======== FRONT => DEV | BACK => DEV ============
-        JButton button7 = new JButton("Litige");
-        button7.setForeground(new Color(0, 0, 0));
-        button7.setBackground(new Color(20, 150, 20));
-        button7.setBackground(UIManager.getColor("Button.disabledForeground"));
-        button7.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        button7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Litige litige = new Litige(user, dbUtil);
-                litige.setTitle("Creer un Litige");
-                litige.setVisible(true);
 
-            }
-        });
-        button7.setBounds(125, 480, 200, 40);
-        contentPane.add(button7);
+        if ("ORGA".equals(user.role) || "ADMIN".equals(user.role)) {
+            JButton button7 = new JButton("Litige");
+            button7.setForeground(new Color(0, 0, 0));
+            button7.setBackground(new Color(20, 150, 20));
+            button7.setBackground(UIManager.getColor("Button.disabledForeground"));
+            button7.setFont(new Font("Tahoma", Font.PLAIN, 25));
+            button7.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    Litige litige = new Litige(user, dbUtil);
+                    litige.setTitle("Creer un Litige");
+                    litige.setVisible(true);
 
-    }
-
-}
-    }
+                }
+            });
+            button7.setBounds(125, 480, 200, 40);
+            contentPane.add(button7);
         }
 
+    }
+}
