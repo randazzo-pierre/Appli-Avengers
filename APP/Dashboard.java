@@ -67,6 +67,7 @@ public class Dashboard extends JFrame {
         lblHero.setBounds(750, 25, 400, 93);
         contentPane.add(lblHero);
 
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JLabel lblVilain = new JLabel("Vilains");
         lblVilain.setForeground(Color.BLACK);
         lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -93,12 +94,12 @@ public class Dashboard extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 DeclarerIncident incident = new DeclarerIncident(user);
                 incident.setVisible(true);
-                dispose();
             }
         });
         btnNewButton.setBounds(50, 120, 200, 40);
         contentPane.add(btnNewButton);
 
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JButton btnListRapport = new JButton("Rapport liste");
         btnListRapport.setForeground(new Color(0, 0, 0));
         btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -108,13 +109,13 @@ public class Dashboard extends JFrame {
                 ListeRapport listeRapport = new ListeRapport(user, dbUtil);
                 listeRapport.setTitle("Liste des rapports");
                 listeRapport.setVisible(true);
-                dispose();
             }
         });
-
+    
         btnListRapport.setBounds(250, 175, 200, 40);
         contentPane.add(btnListRapport);
-
+            }
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JButton btnListMission = new JButton("Mission Liste");
         btnListMission.setForeground(new Color(0, 0, 0));
         btnListMission.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -124,11 +125,11 @@ public class Dashboard extends JFrame {
                 ListeMission listeMission = new ListeMission(user, dbUtil);
                 listeMission.setTitle("Mission Liste");
                 listeMission.setVisible(true);
-                dispose();
             }
         });
         btnListMission.setBounds(250, 120, 200, 40);
         contentPane.add(btnListMission);
+    }
 
         if ("CIVIL".equals(user.role)) {
             JButton button2 = new JButton("Formulaire Satisfaction");
@@ -144,9 +145,7 @@ public class Dashboard extends JFrame {
             });
             button2.setBounds(450, 275, 200, 50);
             contentPane.add(button2);
-            dispose();
 
-        }
 
         if ("ORGA".equals(user.role)) {
             JButton button3 = new JButton("Creer mission");
@@ -159,16 +158,14 @@ public class Dashboard extends JFrame {
                     CreateMission CreateMission = new CreateMission(user, dbUtil);
                     CreateMission.setTitle("Mission");
                     CreateMission.setVisible(true);
-                    dispose();
                 }
             });
             button3.setBounds(50, 175, 200, 40);
             contentPane.add(button3);
-            dispose();
 
         }
 
-        if ("ORGA".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
             JButton button9 = new JButton("Liste Vilain");
             button9.setForeground(new Color(0, 0, 0));
             button9.setBackground(new Color(20, 150, 20));
@@ -179,7 +176,6 @@ public class Dashboard extends JFrame {
                     ListVilain list = new ListVilain(user);
                     list.setTitle("List Vilain");
                     list.setVisible(true);
-                    dispose();
                 }
             });
             button9.setBounds(700, 250, 200, 40);
@@ -198,12 +194,13 @@ public class Dashboard extends JFrame {
                     RapportMission RapportMission = new RapportMission(user, dbUtil);
                     RapportMission.setTitle("Rapport");
                     RapportMission.setVisible(true);
-                    dispose();
                 }
             });
-            button4.setBounds(100, 220, 250, 40);
+            button4.setBounds(150, 175, 250, 40);
             contentPane.add(button4);
+                }
 
+            if ("HEROS".equals(user.role) || "ORGA".equals(user.role)) {
             JButton button5 = new JButton("Identifier Vilain");
             button5.setForeground(new Color(0, 0, 0));
             button5.setBackground(new Color(20, 150, 20));
@@ -214,7 +211,6 @@ public class Dashboard extends JFrame {
                     VilainList vilain = new VilainList(user, dbUtil);
                     vilain.setTitle("Identifier un Vilain");
                     vilain.setVisible(true);
-                    dispose();
                 }
             });
             button5.setBounds(700, 320, 200, 40);
@@ -222,6 +218,7 @@ public class Dashboard extends JFrame {
 
         }
 
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JButton buttonListHero = new JButton("Liste Heros");
         buttonListHero.setForeground(new Color(0, 0, 0));
         buttonListHero.setBackground(new Color(20, 150, 20));
@@ -232,12 +229,11 @@ public class Dashboard extends JFrame {
                 ListHero vilain = new ListHero(user, dbUtil);
                 vilain.setTitle("Liste Heros");
                 vilain.setVisible(true);
-                dispose();
             }
         });
         buttonListHero.setBounds(700, 100, 200, 40);
         contentPane.add(buttonListHero);
-
+    }
         if ("ORGA".equals(user.role)) {
             JButton button6 = new JButton("Satisfaction Info");
             button6.setForeground(new Color(0, 0, 0));
@@ -249,7 +245,7 @@ public class Dashboard extends JFrame {
                     SatisfactionList list = new SatisfactionList(user);
                     list.setTitle("Liste des Satisfactions");
                     list.setVisible(true);
-                    dispose();
+
                 }
             });
             button6.setBounds(125, 325, 200, 40);
@@ -267,7 +263,6 @@ public class Dashboard extends JFrame {
                 Litige litige = new Litige(user, dbUtil);
                 litige.setTitle("Creer un Litige");
                 litige.setVisible(true);
-                dispose();
 
             }
         });
@@ -277,3 +272,6 @@ public class Dashboard extends JFrame {
     }
 
 }
+    }
+        }
+

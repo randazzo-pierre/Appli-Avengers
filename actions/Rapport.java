@@ -45,7 +45,7 @@ public class Rapport {
                     "dbroot", "QeTuZ2LFJfSqtbpe");
 
             PreparedStatement st = (PreparedStatement) con
-                    .prepareStatement("UPDATE MISSION set STATUSM=? where TITREM=?");
+                    .prepareStatement("UPDATE MISSION set STATUTM=? where TITREM=?");
             st.setString(1, statutR);
             st.setString(2, titreR);
             st.executeUpdate();
@@ -93,6 +93,24 @@ public class Rapport {
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
+
+        Date date = new Date();
+
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://rds-mysql-avengersapp.cdx9i8eyllsk.eu-west-3.rds.amazonaws.com:3306/BDD_AVENGERS_DEV",
+                    "dbroot", "QeTuZ2LFJfSqtbpe");
+
+            PreparedStatement st = (PreparedStatement) con
+                    .prepareStatement("Update INCIDENT set DATEFINI=? where ID_I=?");
+            st.setDate(1, (java.sql.Date) date);
+            st.setString(2, idIncident);
+            st.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+
+        // return this.idI ;
     }
 
     /**

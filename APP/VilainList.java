@@ -118,9 +118,10 @@ public class VilainList extends JFrame {
         btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 39));
         btnRetour.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user, null);
+                Dashboard bo = new Dashboard(user, utl);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
+                dispose();
             }
         });
         btnRetour.setBounds(150, 400, 350, 50);
