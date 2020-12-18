@@ -66,6 +66,7 @@ public class Dashboard extends JFrame {
         lblHero.setBounds(750, 25, 400, 93);
         contentPane.add(lblHero);
 
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JLabel lblVilain = new JLabel("Vilains");
         lblVilain.setForeground(Color.BLACK);
         lblVilain.setFont(new Font("Tahoma", Font.PLAIN, 39));
@@ -99,6 +100,7 @@ public class Dashboard extends JFrame {
         btnNewButton.setBounds(50, 120, 200, 40);
         contentPane.add(btnNewButton);
 
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JButton btnListRapport = new JButton("Rapport liste");
         btnListRapport.setForeground(new Color(0, 0, 0));
         btnListRapport.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -110,10 +112,11 @@ public class Dashboard extends JFrame {
                 listeRapport.setVisible(true);
             }
         });
-
+    
         btnListRapport.setBounds(250, 175, 200, 40);
         contentPane.add(btnListRapport);
-
+            }
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JButton btnListMission = new JButton("Mission Liste");
         btnListMission.setForeground(new Color(0, 0, 0));
         btnListMission.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -127,6 +130,7 @@ public class Dashboard extends JFrame {
         });
         btnListMission.setBounds(250, 120, 200, 40);
         contentPane.add(btnListMission);
+    }
 
         // ==========THIB============= FRONT => OK | BACK => DEV =======
         if ("CIVIL".equals(user.role)) {
@@ -144,7 +148,6 @@ public class Dashboard extends JFrame {
             button2.setBounds(450, 275, 200, 50);
             contentPane.add(button2);
 
-        }
 
         // ==========PIERRE======== FRONT => OK | BACK => DEV =========
         if ("ORGA".equals(user.role)) {
@@ -166,7 +169,7 @@ public class Dashboard extends JFrame {
         }
 
         // ==========........======== FRONT => DEV | BACK => DEV =========
-        if ("ORGA".equals(user.role)) {
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
             JButton button9 = new JButton("Liste Vilain");
             button9.setForeground(new Color(0, 0, 0));
             button9.setBackground(new Color(20, 150, 20));
@@ -200,8 +203,9 @@ public class Dashboard extends JFrame {
             });
             button4.setBounds(150, 175, 250, 40);
             contentPane.add(button4);
-
+                }
             // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
+            if ("HEROS".equals(user.role) || "ORGA".equals(user.role)) {
             JButton button5 = new JButton("Identifier Vilain");
             button5.setForeground(new Color(0, 0, 0));
             button5.setBackground(new Color(20, 150, 20));
@@ -220,6 +224,7 @@ public class Dashboard extends JFrame {
         }
 
         // ==========THIBAUT========== FRONT => DEV | BACK => DEV ==========
+        if ("ORGA".equals(user.role) || "HEROS".equals(user.role)) {
         JButton buttonListHero = new JButton("Liste Heros");
         buttonListHero.setForeground(new Color(0, 0, 0));
         buttonListHero.setBackground(new Color(20, 150, 20));
@@ -234,7 +239,7 @@ public class Dashboard extends JFrame {
         });
         buttonListHero.setBounds(700, 100, 200, 40);
         contentPane.add(buttonListHero);
-
+    }
         // ==========NATHAN========FRONT => OK | BACK => DEV =======
         if ("ORGA".equals(user.role)) {
             JButton button6 = new JButton("Satisfaction Info");
@@ -275,3 +280,6 @@ public class Dashboard extends JFrame {
     }
 
 }
+    }
+        }
+
