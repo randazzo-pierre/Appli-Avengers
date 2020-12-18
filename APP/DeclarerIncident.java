@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.util.*;
 
 import javax.swing.JButton;
@@ -32,12 +31,10 @@ public class DeclarerIncident extends JFrame {
 	private JPanel contentPane;
 	private JLabel label;
 	private JTextField textFieldQuoi;
-	private JTextField textFieldPays;
 	private JTextField textFieldZip;
 
 	/**
 	 * Launch the application.
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -53,6 +50,10 @@ public class DeclarerIncident extends JFrame {
 		});
 	}
 
+	/**
+	 * create a country list
+	 * @return
+	 */
 	private Country[] createCountryList() {
 		String[] countryCodes = Locale.getISOCountries();
 		Country[] listCountry = new Country[countryCodes.length];
@@ -72,7 +73,6 @@ public class DeclarerIncident extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * 
 	 * @param user
 	 */
 
@@ -121,23 +121,10 @@ public class DeclarerIncident extends JFrame {
 		contentPane.add(lblPays);
 
 		// liste des pays
-		/*
-		 * String[] pays = {"Europe", "Afrique", "Amerique", "Russie", "Inde",
-		 * "Australie"}; JComboBox listePays = new JComboBox(pays);
-		 * listePays.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		 * listePays.setBounds(481, 170, 281, 68); contentPane.add(listePays);
-		 */
 		Country[] listCountry = createCountryList();
 		JComboBox<Country> comboCountry = new JComboBox<>(listCountry);
 		comboCountry.setBounds(310, 200, 550, 50);
 		contentPane.add(comboCountry);
-
-		// zone de texte pays
-		/*
-		 * textFieldPays = new JTextField(); textFieldPays.setFont(new Font("Tahoma",
-		 * Font.PLAIN, 18)); textFieldPays.setBounds(310, 200, 550, 50);
-		 * contentPane.add(textFieldPays); textFieldPays.setColumns(10);
-		 */
 
 		// libelle code zip
 		JLabel lblZip = new JLabel("C'est ou exactement ?");
@@ -155,21 +142,19 @@ public class DeclarerIncident extends JFrame {
 		textFieldZip.setColumns(10);
 
 		// bouton
-
 		JButton btnEnvoyer = new JButton("Envoyer");
 		btnEnvoyer.setForeground(new Color(0, 0, 0));
 		btnEnvoyer.setBackground(UIManager.getColor("Button.disabledForeground"));
 		btnEnvoyer.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnEnvoyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Au clique sur le boutton envoyer
-				// On récupère le texte de ce qu'il se passe :
-				
-				// On récupère le pays
-				
-				// On récupère le zipCode
+				/**
+				 * Au clique sur le boutton envoyer
+				 * On récupère le texte de ce qu'il se passe :
+				 * On récupère le pays
+				 * On récupère le zipCode
+				 */
 				if(textFieldZip.getText().isEmpty() || textFieldQuoi.getText().isEmpty()){
-					//error
 					JOptionPane.showMessageDialog(btnEnvoyer, "Vous devez completer tous les champs");
 				}  else {
 							String inputzip = textFieldZip.getText();
@@ -185,7 +170,6 @@ public class DeclarerIncident extends JFrame {
 							} catch (SQLDataException err) {
 								System.out.println(err);
 							} catch (SQLException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						}
@@ -195,7 +179,7 @@ public class DeclarerIncident extends JFrame {
 	        btnEnvoyer.setBounds(550, 392, 162, 73);
 			contentPane.add(btnEnvoyer);
 
-			JButton button2 = new JButton("Retour");
+		JButton button2 = new JButton("Retour");
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

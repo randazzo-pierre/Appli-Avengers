@@ -26,6 +26,7 @@ public class ListeMission extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -40,10 +41,11 @@ public class ListeMission extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
-
+     /**
+      * Create the frame.
+      * @param user
+      * @param utl
+      */
     public ListeMission(User user, dbUtil utl) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
@@ -97,7 +99,7 @@ public class ListeMission extends JFrame {
                     int i = 0;
                     String column[]={"ID","Titre","Description","Assigné","Leader","Gravité","Urgence","Pays", "ZIP code"};
                     String data[][] = new String[9][20];
-                    while (rs.next()) { // while (rs.next())
+                    while (rs.next()) { 
                         data[i][0] = rs.getString(1);
                         data[i][1] = rs.getString(2);
                         data[i][2] = rs.getString(3);

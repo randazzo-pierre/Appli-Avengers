@@ -85,7 +85,7 @@ public class FormLitige extends JFrame{
         	lblCommentaire.setBounds(250, 286, 193, 52);
 			contentPane.add(lblCommentaire);
 
-// todo -> inclure des fichiers 
+			// todo -> inclure des fichiers 
 
 			JLabel lblScore = new JLabel("Score");
         	lblScore.setForeground(Color.BLACK);

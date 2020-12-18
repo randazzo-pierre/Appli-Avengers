@@ -21,7 +21,10 @@ public class Profile extends JFrame {
     private JPanel contentPane;
 
     /**
+     */
+    /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -36,12 +39,10 @@ public class Profile extends JFrame {
         });
     }
 
-    public Profile() {
-
-    }
-
     /**
      * Create the frame.
+     * @param user
+     * @param dbUtil
      */
     public Profile(User user, dbUtil dbUtil) {
 
@@ -60,7 +61,6 @@ public class Profile extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int a = JOptionPane.showConfirmDialog(btnNewButton, "Are you sure?");
-                // JOptionPane.setRootFrame(null);
                 if (a == JOptionPane.YES_OPTION) {
                     dispose();
                     dbUtil utl = new dbUtil();
@@ -81,7 +81,6 @@ public class Profile extends JFrame {
         contentPane.add(btnNewButton);
 
         // devenir un super heros
-
         if ("CIVIL".equals(user.role)) {
 
             JButton button2 = new JButton("DEVENIR UN HEROS");
@@ -99,7 +98,6 @@ public class Profile extends JFrame {
         }
 
         // devenir un super vilain
-
         if ("CIVIL".equals(user.role)) {
 
             JButton button2 = new JButton("DEVENIR UN VILAIN");

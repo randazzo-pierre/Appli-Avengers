@@ -12,19 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import acteurs.User;
 import actions.Rapport;
-import actions.Satisfaction;
 import util.dbUtil;
 import java.sql.*;
-import java.util.*;
 
 public class RapportMission extends JFrame {
 
@@ -33,7 +28,6 @@ public class RapportMission extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -51,7 +45,6 @@ public class RapportMission extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * 
 	 * @param user
 	 */
 	public RapportMission(User user, dbUtil utl) {
@@ -88,22 +81,15 @@ public class RapportMission extends JFrame {
 			ResultSet rs = utl.dbRead(cnx, "SELECT * FROM MISSION");
 			JComboBox jc = new JComboBox();
 			while (rs.next()) {
-				// int id=rs.getInt("ID_M") ;
 				String titreMission = rs.getString("TITREM");
-				// Object[] itemData = new Object[] {id, titreMission};
 				jc.addItem(titreMission);
 			}
-			// utl.dbKill(cnx) ;
-			// Connection cnx = utl.dbConnect() ;
 			// Le Heros :
 			ResultSet rs1 = utl.dbRead(cnx, "SELECT * FROM HEROS");
 			JComboBox jc1 = new JComboBox();
 			while (rs1.next()) {
-				// int id=rs.getInt("ID_M") ;
 				String identifiantCivil = rs1.getString("TITREH");
-				// Object[] itemData = new Object[] {id, titreMission};
 				jc1.addItem(identifiantCivil);
-				// utl.dbKill(cnx) ;
 			}
 
 			jc1.setBounds(310, 150, 550, 50);
@@ -115,14 +101,12 @@ public class RapportMission extends JFrame {
 			jc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String titre=(String) jc.getSelectedItem();
 				}
 			});
 
 			jc1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String auteur=(String) jc1.getSelectedItem();
 				}
 			});
 
@@ -157,15 +141,7 @@ public class RapportMission extends JFrame {
 			lblScore.setBounds(100, 280, 193, 52);
 			contentPane.add(lblScore);
 
-			// zone de texte score
-			/*
-			 * JTextField textFieldScore = new JTextField(); textFieldScore.setFont(new
-			 * Font("Tahoma", Font.PLAIN, 32)); textFieldScore.setBounds(250, 375, 550, 50);
-			 * contentPane.add(textFieldScore); textFieldScore.setColumns(10);
-			 */
-
-			// - 2) --- définir les élément de la liste
-
+			// définir les élément de la liste
 			Object[] elements = new Object[] { "ERROR", "SUCCESS", "IN-PROGRESS" };
 			;
 			JComboBox jc3 = new JComboBox(elements);
@@ -175,7 +151,6 @@ public class RapportMission extends JFrame {
 			jc3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					e.getSource();
-					// String score=(String) jc3.getSelectedItem();
 				}
 			});
 
@@ -202,7 +177,6 @@ public class RapportMission extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					if (textFieldCommentaire.getText().isEmpty()) {
-						// error
 						JOptionPane.showMessageDialog(btnSumbit, "Vous devez completer tous les champs");
 					} else {
 

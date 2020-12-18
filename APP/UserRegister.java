@@ -29,6 +29,7 @@ public class UserRegister extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -43,6 +44,9 @@ public class UserRegister extends JFrame {
         });
     }
 
+    /**
+     * Create the frame
+     */
     public UserRegister() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

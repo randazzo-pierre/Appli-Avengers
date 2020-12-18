@@ -24,6 +24,7 @@ public class UserHome extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -44,6 +45,8 @@ public class UserHome extends JFrame {
 
     /**
      * Create the frame.
+     * @param user
+     * @param dbUtil
      */
     public UserHome(User user, dbUtil dbUtil) {
 
@@ -60,33 +63,6 @@ public class UserHome extends JFrame {
         lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
         lblNewLabel.setBounds(250, 13, 673, 93);
         contentPane.add(lblNewLabel);
-
-        // JButton btnNewButton = new JButton("Logout");
-        // btnNewButton.setForeground(new Color(0, 0, 0));
-        // btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
-        // btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 39));
-        // btnNewButton.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent e) {
-        // int a = JOptionPane.showConfirmDialog(btnNewButton, "Are you sure?");
-        // // JOptionPane.setRootFrame(null);
-        // if (a == JOptionPane.YES_OPTION) {
-        // dispose();
-        // dbUtil utl = new dbUtil();
-        // UserLogin obj = new UserLogin(utl);
-        // obj.setTitle("Student-Login");
-        // obj.setVisible(true);
-        // }
-        // dispose();
-        // dbUtil utl = new dbUtil();
-        // UserLogin obj = new UserLogin(utl);
-
-        // obj.setTitle("Student-Login");
-        // obj.setVisible(true);
-
-        // }
-        // });
-        // btnNewButton.setBounds(247, 100, 491, 114);
-        // contentPane.add(btnNewButton);
 
         JButton button2 = new JButton("Dashboard");
         button2.setBackground(UIManager.getColor("Button.disabledForeground"));

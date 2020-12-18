@@ -29,6 +29,7 @@ public class ChangePassword extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -44,6 +45,7 @@ public class ChangePassword extends JFrame {
 
     /**
      * Create the frame.
+     * @param user
      */
     public ChangePassword(User user) {
         setBounds(450, 360, 1024, 234);

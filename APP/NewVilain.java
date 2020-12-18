@@ -31,12 +31,13 @@ public class NewVilain extends JFrame {
 
     /**
      * Launch the application.
+     * @param args
      */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    NewHero frame = new NewHero();
+                    NewVilain frame = new NewVilain();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -45,12 +46,10 @@ public class NewVilain extends JFrame {
         });
     }
 
-    public NewVilain() {
-
-    }
-
     /**
      * Create the frame.
+     * @param user
+     * @param dbUtil
      */
     public NewVilain(User user, dbUtil dbUtil) {
 
@@ -152,8 +151,6 @@ public class NewVilain extends JFrame {
                     st.setString(1, pstr);
                     st.setString(2, user.username);
                     st.executeUpdate();
-                    // JOptionPane.showMessageDialog(btnSearch, "Password has been successfully
-                    // changed");
 
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();

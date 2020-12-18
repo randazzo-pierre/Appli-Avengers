@@ -5,11 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,11 +17,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import acteurs.User;
+import util.dbUtil;
+import java.sql.*;
 
-public class ListVilain extends JFrame {
+public class ListHero extends JFrame {
     private static final long serialVersionUID = 1;
     private JPanel contentPane;
 
+    /**
+     */
     /**
      * Launch the application.
      * @param args
@@ -45,10 +44,12 @@ public class ListVilain extends JFrame {
     }
 
     /**
+     * 
      * Create the frame.
      * @param user
+     * @param utl
      */
-    public ListVilain(User user) {
+    public ListHero(User user, dbUtil utl) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -61,12 +62,14 @@ public class ListVilain extends JFrame {
         // ========CIVIL & ORGANISATION & HERO ========================================
         // ============================================================================
 
+
         // Titre page
-        JLabel lblForm = new JLabel("Liste des vilains");
-        lblForm.setForeground(Color.BLACK);
-        lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        lblForm.setBounds(375, 4, 500, 93);
-        contentPane.add(lblForm);
+		JLabel lblForm = new JLabel("Liste des héros");
+		lblForm.setForeground(Color.BLACK);
+		lblForm.setFont(new Font("Times New Roman", Font.PLAIN, 46));
+		lblForm.setBounds(375, 4, 500, 93);
+		contentPane.add(lblForm);
+
 
         JButton btnRetour = new JButton("Retour");
         btnRetour.setForeground(new Color(0, 0, 0));
@@ -74,7 +77,7 @@ public class ListVilain extends JFrame {
         btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 39));
         btnRetour.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Dashboard bo = new Dashboard(user,null);
+                Dashboard bo = new Dashboard(user, null);
                 bo.setTitle("Dashboard " + user.role);
                 bo.setVisible(true);
                 dispose();
@@ -82,11 +85,11 @@ public class ListVilain extends JFrame {
         });
 	    btnRetour.setBounds(125, 450, 350, 50);
         contentPane.add(btnRetour);
-
+        
         JButton btnActualiser = new JButton("Actualiser");
-        btnActualiser.setForeground(new Color(0, 0, 0));
-        btnActualiser.setBackground(UIManager.getColor("Button.disabledForeground"));
-        btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
+	    btnActualiser.setForeground(new Color(0, 0, 0));
+	    btnActualiser.setBackground(UIManager.getColor("Button.disabledForeground"));
+	    btnActualiser.setFont(new Font("Tahoma", Font.PLAIN, 39));
         btnActualiser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -95,7 +98,7 @@ public class ListVilain extends JFrame {
                             "dbroot", "QeTuZ2LFJfSqtbpe");
 
                     PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("SELECT * FROM VILAIN");
+                            .prepareStatement("SELECT * FROM HEROS");
                     ResultSet rs = st.executeQuery();
                     int i = 0;
                     String column[]={"idH","idC","Titre","Pouvoir","Point faible","Identité","Score","Nb mission", "Commentaire"};
@@ -122,7 +125,6 @@ public class ListVilain extends JFrame {
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                 }
-
             }
         });
 	    btnActualiser.setBounds(525, 450, 350, 50);
